@@ -64,4 +64,5 @@ public class FullTime extends NhanVien{
         super.Xuat();
         System.out.print("||"+"\tCong viec: "+getcongviec()+"||"+"\tNgay Cong: "+getngaycong()+"||"+"\n");
     }
+
 }
