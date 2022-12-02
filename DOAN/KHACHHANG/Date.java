@@ -1,5 +1,6 @@
 package KHACHHANG;
 
+import java.util.Calendar;
 import java.util.Scanner;
 
 public class Date {
@@ -10,9 +11,7 @@ public class Date {
     Scanner input=new Scanner(System.in);
     public Date()
     {
-        ngay=1;
-        thang=1;
-        nam=1;
+        Today();
     }
     public Date(int ngay,int thang,int nam)
     {
@@ -148,5 +147,12 @@ public class Date {
             }
         }
         return day;
+    }
+
+    public void Today() {
+        Calendar t = Calendar.getInstance();
+        nam = t.get(Calendar.YEAR);
+        thang = t.get(Calendar.MONTH) + 1;
+        ngay = t.get(Calendar.DAY_OF_MONTH);
     }
 }
