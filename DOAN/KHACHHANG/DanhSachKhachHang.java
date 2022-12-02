@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 
@@ -150,6 +148,7 @@ public class DanhSachKhachHang implements DocGhiFile {
         GhiFile();
     }
 
+
     public KhachHang TimHotenKhachHang()
     {
         System.out.println("Nhap Ho ten can tim");
@@ -217,6 +216,7 @@ public class DanhSachKhachHang implements DocGhiFile {
                 List.remove(i);
             }
         }
+        GhiFile();
     }
 
     public void suaKH()
