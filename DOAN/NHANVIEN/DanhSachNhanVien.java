@@ -1,5 +1,6 @@
 package NHANVIEN;
 
+import java.util.Random;
 import java.util.Scanner;
 import java.io.*;
 import KHACHHANG.*;
@@ -25,6 +26,50 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
             sumSalary +=dsnv[i].calSalary();
         }
         return sumSalary;
+    }
+
+    public boolean checkmaNV(String mnv) {
+        boolean diff = true;
+        for (int i=0;i<stt;i++) {
+            if (dsnv[i].getmaNV().equalsIgnoreCase(mnv)) {
+                diff = true;
+                break;
+            }
+        }
+        return diff;
+    }
+
+    public String taoMNVF(){
+        Random rd=new Random();
+        String mnv;
+        while (true) {
+            mnv="FT"+rd.nextInt(1000,9999);
+            if(checkmaNV(mnv))
+                break;
+        }
+        return mnv;
+    }
+
+    public String taoMNVP(){
+        Random rd=new Random();
+        String mnv;
+        while (true) {
+            mnv="PT"+rd.nextInt(1000,9999);
+            if(checkmaNV(mnv))
+                break;
+        }
+        return mnv;
+    }
+
+    public String taoMNVM(){
+        Random rd=new Random();
+        String mnv;
+        while (true) {
+            mnv="MN"+rd.nextInt(1000,9999);
+            if(checkmaNV(mnv))
+                break;
+        }
+        return mnv;
     }
 
     public void DocFile(){
@@ -83,7 +128,25 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
     //         System.out.println("Loi ghi du lieu len file!");
     //     }
     // }
-
+    public void GhiFile()
+    {
+        try {
+            // FileWriter fw = new FileWriter("KHACHHANG/text");
+            PrintWriter pw = new PrintWriter("NHANVIEN/text");
+            // BufferedWriter bw = new BufferedWriter(fw);
+            for(int i=0;i<stt;i++){
+                // s=s+List.get(i).toString();
+                pw.println(dsnv[i].toString());
+            }
+        // bw.write(temp);
+        // bw.close();
+        pw.flush();
+        pw.close();
+        } catch (Exception e) {
+            System.out.println("Loi ghhi File");
+        }
+        System.out.println("Success...");
+    }
     public void ThemNhanVien(){    
         int chose;  
         do{  
@@ -106,8 +169,9 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                     newPT[i]=new PartTime();
                     System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n",i+1);
                     newPT[i].Nhap();
-                    GhiFile(newPT[i].toString());
+                    newPT[i].setMaNV(taoMNVP());
                 }
+                GhiFile();
             }
             break;
                 
@@ -120,8 +184,9 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                     newFT[i]=new FullTime();
                     System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n",i+1);
                     newFT[i].Nhap();
-                    GhiFile(newFT[i].toString());
+                    newFT[i].setMaNV(taoMNVF());
                 }
+                GhiFile();
             }
             break;
               
@@ -134,8 +199,9 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                     newMN[i]=new Manager();
                     System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n",i+1);
                     newMN[i].Nhap();
-                    GhiFile(newMN[i].toString());
+                    newMN[i].setMaNV(taoMNVM());
                 }
+                GhiFile();
             }
             break;
 
@@ -164,11 +230,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                 }
             }
         }
-        File fp = new File("NhanVien.txt");
-        fp.delete();                            //Xoa file cu
-        for(int k=0;k<stt;k++){
-            GhiFile(dsnv[k].toString());
-        }
+        GhiFile();
     }
 
     public void TinhLuong(){       //Tinh luong cua tat ca nhan vien

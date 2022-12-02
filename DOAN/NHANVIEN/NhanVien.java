@@ -12,16 +12,21 @@ public abstract class NhanVien extends connguoi {
     public Scanner sc = new Scanner(System.in);
     
     public NhanVien() {
+        maNV=null;
     }
 
-    public NhanVien(String hoten, String diachi, Date ngaysinh, String sdt){
+    public NhanVien(String maNV,String hoten, String diachi, Date ngaysinh, String sdt){
         super(hoten,diachi,ngaysinh,sdt);
+        this.maNV=maNV;
     }
     
-    public void setmaNV(String maNV){
-        System.out.println("Moi nhap vao ma nhan vien: ");
-        maNV=sc.nextLine();
-        this.maNV=maNV;
+    // public void setmaNV(){
+    //     System.out.println("Moi nhap vao ma nhan vien: ");
+    //     maNV=sc.nextLine();
+    // }
+
+    public void setMaNV(String maNV) {
+        this.maNV = maNV;
     }
 
     public String getmaNV(){
@@ -78,7 +83,7 @@ public abstract class NhanVien extends connguoi {
     public abstract double calSalary();
 
     public void Nhap(){
-        setmaNV(maNV);
+        // setmaNV();
         setHoten();
         setdiachi(diachi);
         setNgaysinh(ngaysinh);

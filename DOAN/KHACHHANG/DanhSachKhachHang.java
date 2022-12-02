@@ -38,7 +38,7 @@ public class DanhSachKhachHang implements DocGhiFile {
         boolean diff = true;
         for (KhachHang a : List) {
             if (a.getMSKH().equalsIgnoreCase(mkh)) {
-                diff = true;
+                diff = false;
                 break;
             }
         }
