@@ -1,6 +1,6 @@
 package NHANVIEN;
 
-import KHACHHANG.Date;
+import CONNGUOI.*;
 import java.util.Scanner;
 
 public class PartTime extends NhanVien{

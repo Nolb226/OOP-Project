@@ -1,7 +1,7 @@
 package NHANVIEN;
 
 import java.util.Scanner;
-import KHACHHANG.Date;
+import CONNGUOI.*;
 
 public class Manager extends NhanVien{
     private int capbac;
@@ -10,17 +10,17 @@ public class Manager extends NhanVien{
     public Scanner sc = new Scanner(System.in);
     
     public  Manager(){
+        this.capbac = 0;
+        this.congviec = null;
     }
 
-    public Manager(String maNV, String hoten, String diachi, Date namsinh, String sdt, String congviec,int capbac){
-        super(maNV, hoten, diachi, namsinh, sdt);
+    public Manager(String maNV, String hoten, String diachi, Date ngaySinh, String sdt, int capbac, String congviec){
+        super(maNV, hoten, diachi, ngaySinh, sdt);
         this.capbac=capbac;
         this.congviec=congviec;
     }
 
     public void setCapbac(int capbac) {
-        System.out.println("Moi nhap vao cap bac: ");
-        capbac=Integer.parseInt(sc.nextLine());
         this.capbac = capbac;
     }
 
@@ -29,8 +29,6 @@ public class Manager extends NhanVien{
     }
 
     public void setCongviec(String congviec) {
-        System.out.println("Moi nhap vao cong viec: ");
-        congviec=sc.nextLine();
         this.congviec = congviec;
     }
 
@@ -56,8 +54,11 @@ public class Manager extends NhanVien{
     @Override
     public void Nhap(){
         super.Nhap();
-        setCapbac(capbac);
-        setCongviec(congviec);
+        System.out.print("Nhap cap bac quan ly: ");
+        setCapbac(scanner.nextInt());
+        scanner.nextLine();
+        System.out.print("Nhap cong viec cu the: ");
+        setCongviec(scanner.nextLine());
     }
 
     @Override
@@ -68,6 +69,6 @@ public class Manager extends NhanVien{
     @Override
     public void Xuat(){
         super.Xuat();
-        System.out.println("||"+"\tCap bac quan ly: "+getCapbac()+"||"+"\tCong viec: "+getCongviec()+"||"+"\n");
+        System.out.print(" || " + "Cap bac quan ly: " + getCapbac() + " || " + "Cong viec: " + getCongviec() + "\n");
     }
 }

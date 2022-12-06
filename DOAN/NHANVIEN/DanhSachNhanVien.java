@@ -3,7 +3,7 @@ package NHANVIEN;
 import java.util.Random;
 import java.util.Scanner;
 import java.io.*;
-import KHACHHANG.*;
+import CONNGUOI.*;
 import INTERFACE.*;
 
 public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
@@ -40,10 +40,10 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
     }
 
     public String taoMNVF(){
-        Random rd=new Random();
+        Random ran = new Random();
         String mnv;
         while (true) {
-            mnv="FT"+rd.nextInt(1000,9999);
+            mnv="FT"+ ran.nextInt(1000);
             if(checkmaNV(mnv))
                 break;
         }
@@ -54,7 +54,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
         Random rd=new Random();
         String mnv;
         while (true) {
-            mnv="PT"+rd.nextInt(1000,9999);
+            mnv="PT"+rd.nextInt(1000);
             if(checkmaNV(mnv))
                 break;
         }
@@ -65,7 +65,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
         Random rd=new Random();
         String mnv;
         while (true) {
-            mnv="MN"+rd.nextInt(1000,9999);
+            mnv="MN"+rd.nextInt(1000);
             if(checkmaNV(mnv))
                 break;
         }
@@ -73,48 +73,49 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
     }
 
     public void DocFile(){
-            try{
-                String line;
-                FileReader fr=new FileReader("NHANVIEN/NhanVien");
-                BufferedReader br=new BufferedReader(fr); 
-                while(true){
-                    line=br.readLine();
-                    if(line==null) {
-                        break;
-                    }
-                    String []st=line.split(";");
-                    String ma,ten,diachi,sdt; Date birthDate=new Date();
-                    ma=st[0]; ten=st[1]; diachi=st[2]; birthDate.xulyngay(st[3]); sdt = st[4];
-                    if(ma.contains("PT")){
-                        String congviec;
-                        int giocong;
-                        congviec = st[5];
-                        giocong = Integer.parseInt(st[6]);
-                        dsnv[stt]=new PartTime(ma,ten,diachi,birthDate,sdt,congviec,giocong);
-                        stt++;
-                    }
-                    if(ma.contains("FT")){
-                        String congviec;
-                        int ngaycong;
-                        congviec = st[5];
-                        ngaycong=Integer.parseInt(st[6]);
-                        dsnv[stt]=new FullTime(ma,ten,diachi,birthDate,sdt,congviec,ngaycong);
-                        stt++;
-                    }
-                    if(ma.contains("MN")){
-                        int capbac;
-                        String congviec;
-                        capbac = Integer.parseInt(st[5]);
-                        congviec = st[6];
-                        dsnv[stt]= new Manager(ma,ten,diachi,birthDate,sdt,congviec,capbac);
-                        stt++;
-                    }
+        try{
+            String line;
+            FileReader fr=new FileReader("NHANVIEN/NhanVien");
+            BufferedReader br=new BufferedReader(fr); 
+            while(true){
+                line=br.readLine();
+                if(line==null) {
+                    break;
                 }
-                br.close();
-                fr.close();
-            }catch(IOException ex){
-                System.out.println("Loi doc du lieu len file");
+                String []st=line.split(";");
+                String ma,ten,diachi,sdt; 
+                Date birthDate=new Date();
+                ma=st[0]; ten=st[1]; diachi=st[2]; birthDate.xulyngay(st[3]); sdt = st[4];
+                if(ma.contains("PT")){
+                    String congviec;
+                    int giocong;
+                    congviec = st[5];
+                    giocong = Integer.parseInt(st[6]);
+                    dsnv[stt]=new PartTime(ma,ten,diachi,birthDate,sdt,congviec,giocong);
+                    stt++;
+                }
+                if(ma.contains("FT")){
+                    String congviec;
+                    int ngaycong;
+                    congviec = st[5];
+                    ngaycong = Integer.parseInt(st[6]);
+                    dsnv[stt] = new FullTime(ma, ten, diachi, birthDate, sdt, congviec, ngaycong);
+                    stt++;
+                }
+                if(ma.contains("MN")) {
+                    int capbac;
+                    String congviec;
+                    capbac = Integer.parseInt(st[5]);
+                    congviec = st[6];
+                    // dsnv[stt] = new Manager(ma,ten,diachi,birthDate,sdt,congviec,capbac);
+                    stt++;
+                }
             }
+            br.close();
+            fr.close();
+            } catch(IOException ex) {
+                System.out.println("Loi doc du lieu len file");
+        }
     }
 
     // public void GhiFile(String input){
