@@ -15,6 +15,7 @@ public class DanhSachMonAn extends MonAn implements DocGhiFile {
         DocFile();
     }
 
+    @Override
     public void DocFile() {
         try {
             String s;
@@ -53,6 +54,7 @@ public class DanhSachMonAn extends MonAn implements DocGhiFile {
         }
 
     }
+
     private Integer findLongestName() {
         Integer max = foodList[0].getTenMon().length();
         for (int i = 1; i < length; i++) {
@@ -98,17 +100,45 @@ public class DanhSachMonAn extends MonAn implements DocGhiFile {
         }
     }
 
-    public void TimKiemMonAn(String input) {
-        int count = 0;
-        for (int i = 0; i < length; i++) {
-            if (foodList[i].getMaMon().equalsIgnoreCase(input)) {
-                foodList[i].Xuat();
-                count++;
+    public void findFoodId() {
+        
+    }
+
+    public void TimKiemMonAn() {
+        do {
+            while (true) {
+                System.out.println("\n1.Tìm kiếm theo mã Món Ăn\n\n2.Tìm kiếm theo tên Món Ăn\n\n3.Tìm kiếm theo giá");
+                System.out.println("Nhập lựa chọn :");
+                String selection = sc.next();
+                Integer c = Integer.parseInt(selection);
+
+                switch (c) {
+                    case 1: {
+                        System.out.println("Chọn 1");
+
+                        break;
+                    }
+                    case 2: {
+                        System.out.println("Chọn 2");
+
+                        break;
+                    }
+                    default: {
+                        break;
+                    }
+                }
+                if (c < 1 || c > 2) {
+                    System.out.println("Vui lòng nhập lại");
+
+                } else {
+                    System.out.println("Nhập T hoặc t để dừng chương trình hoặc nhấn bất kỳ để tiếp tục");
+
+                    break;
+                }
             }
-        }
-        if (count == 0) {
-            System.out.println("Khong tim thay mon tren he thong. Vui long nhap lai");
-        }
+        } while (!sc.next().equalsIgnoreCase("T"));
+
+        // } while (sc.next().trim().charAt(0) != 'T');
     }
 
     public void XuatDanhSach() {
@@ -117,7 +147,8 @@ public class DanhSachMonAn extends MonAn implements DocGhiFile {
         System.out.printf(" %-10s| %-" + longestName + "s | %10s\n\n", "Mã Món", "Tên Món", "Giá Tiền");
         for (int i = 0; i < length; i++) {
             System.out.printf("-----------------------------------\rMón ăn số " + (i + 1) + "\n\n");
-            System.out.printf(" %-10s %-" + longestName + "s %10.3fVNĐ  \n\n", foodList[i].getMaMon(),foodList[i].getTenMon(), foodList[i].getGiaTien());
+            System.out.printf(" %-10s %-" + longestName + "s %10.3fVNĐ  \n\n", foodList[i].getMaMon(),
+                    foodList[i].getTenMon(), foodList[i].getGiaTien());
         }
         System.out.println("===========================================");
         System.out.print("\n");
@@ -182,6 +213,6 @@ public class DanhSachMonAn extends MonAn implements DocGhiFile {
     public static void main(String[] args) {
         DanhSachMonAn testdrive = new DanhSachMonAn();
 
-        testdrive.XuatDanhSach();
+        testdrive.TimKiemMonAn();
     }
 }
