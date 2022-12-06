@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.PrintWriter;
 import java.nio.file.Files;
+import CONNGUOI.*;
 
 public class DanhSachKhachHang implements DocGhiFile {
     private ArrayList<KhachHang> List;
@@ -24,10 +25,12 @@ public class DanhSachKhachHang implements DocGhiFile {
         String word[] = s.split(",");
         KhachHang temp = new KhachHang();
         temp.setMSKH(word[0]);
-        temp.Hoten = word[1];
-        temp.ngaysinh.xulyngay(word[2]);
-        temp.Sdt = word[3];
-        temp.setDiachi(word[4]);
+        temp.setHoten(word[1]);
+        Date d = new Date();
+        d.xulyngay(word[2]);
+        temp.setNgaySinh(d);
+        temp.setSdt(word[3]);
+        temp.setDiaChi(word[4]);
         // temp.Xuat();
         List.add(temp);
     }
@@ -47,7 +50,7 @@ public class DanhSachKhachHang implements DocGhiFile {
         Random rd=new Random();
         String mkh;
         while (true) {
-            mkh="KH"+rd.nextInt(1000,9999);
+            mkh="KH"+(Math.random()) * ((9999 - 1000) + 1) + 9999;
             if(checkmaKH(mkh))
                 break;
         }
