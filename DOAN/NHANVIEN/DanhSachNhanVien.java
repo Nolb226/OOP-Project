@@ -1,11 +1,12 @@
 package NHANVIEN;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.io.*;
 import CONNGUOI.*;
 import INTERFACE.*;
-import KHACHHANG.checkLoi;
+import EXCEPTION.*;;
 
 public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
     NhanVien[] dsnv; 
@@ -103,6 +104,8 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
 
                 // Check loai nhan vien
 
+                System.out.println(stt);
+
                 if(maNV.contains("PT")){
                     String congviec;
                     int giocong;
@@ -131,6 +134,10 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                 }
             }
 
+            stt--;
+
+            dsnv = Arrays.copyOf(dsnv, stt);
+
             bufferedReader.close();
             readerFile.close();
         }
@@ -156,7 +163,8 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
     {
         try {
             PrintWriter writerFile = new PrintWriter(fileNameNV);
-            for(int i = 0; i < stt; i++){
+            
+            for(int i = 0; i < stt; i++) {
                 writerFile.print(dsnv[i].toString());
             }
 
@@ -194,7 +202,13 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                         System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n",i+1);
                         newPT[i].Nhap();
                         newPT[i].setMaNV(taoMNVPT());
+
+                        // Cap nhat danh sach nhan vien
+                        dsnv = Arrays.copyOf(dsnv, stt + 1);
+                        dsnv[stt - 1] = newPT[i];
                     }
+                    XuatDanhSach();
+                    
                     GhiFile();
                 }
                 break;
@@ -266,18 +280,18 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
     }
 
     public void XuatDanhSach(){     //Xuat ra tat ca nhan vien tren he thong
-        if(dsnv[0]==null){
+        DocFile();
+        if(dsnv[0] == null){
             System.out.println("Khong co du lieu tren he thong!");
         }
-        for(int i=0;i<stt;i++){
-            System.out.printf("\n---------Nhan vien thu %d----------\n",i+1);
+        for(int i = 0; i < dsnv.length; i++){
+            System.out.printf("\n---------Nhan vien thu %d----------\n", i + 1);
             dsnv[i].Xuat();
         }
     }
 
     public void TimKiemNhanVien(String input){
         int count = 0;
-        System.out.println(input);
 
         for(int i = 0; i < stt; i++){
             if(dsnv[i].getMaNV().equalsIgnoreCase(input)){
@@ -286,8 +300,19 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                 count++;
             }
         }
-        if(count == 0)
-        System.out.println("Khong tim thay nhan vien.");
+
+        if(count == 0) {
+            System.out.println("Khong tim thay nhan vien.");
+        }
+    }
+
+    public int TimKiemNhanVienReturnIndex(String input){
+        for(int i = 0; i < stt; i++){
+            if(dsnv[i].getMaNV().equalsIgnoreCase(input)){
+                return i;
+            }
+        }
+        return -1;
     }
 
     public void QuanLyNhanVien() {
@@ -359,7 +384,10 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
     }
 
     public static void main(String[] args) {
+
         DanhSachNhanVien ds = new DanhSachNhanVien();
+        ds.DocFile();
+        System.out.println(ds.dsnv);
         // ds.ThemNhanVien();
         ds.QuanLyNhanVien();
     }

@@ -63,7 +63,7 @@ public class Manager extends NhanVien{
 
     @Override
     public String toString() {
-        return super.toString()+getCongviec()+";"+getCapbac()+"\n";
+        return super.toString() + ";" + getCongviec() + ";" + getCapbac() + "\n";
     }
 
     @Override
