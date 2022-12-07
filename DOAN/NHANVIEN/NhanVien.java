@@ -6,8 +6,8 @@ import CONNGUOI.*;
 public abstract class NhanVien extends ConNguoi {
     private String maNV;
 
-    private static double luongcobantheogio = 24000;
-    private static double luongcoban = 5000000;        //Muc luong cua Full-time va Manager
+    private static double luongCoBanTheoGio = 24000;
+    private static double luongCoBan = 5000000;        //Muc luong cua Full-time va Manager
 
     public Scanner scanner = new Scanner(System.in);
     
@@ -25,7 +25,7 @@ public abstract class NhanVien extends ConNguoi {
         this.maNV = maNV;
     }
 
-    public String getmaNV(){
+    public String getMaNV(){
         return maNV;
     }
 
@@ -68,12 +68,12 @@ public abstract class NhanVien extends ConNguoi {
     //     return getSdt();
     // }
 
-    public double getluongcobantheogio(){
-        return luongcobantheogio;
+    public double getLuongCoBanTheoGio(){
+        return luongCoBanTheoGio;
     }
 
-    public double getluongcoban(){
-        return luongcoban;
+    public double getLuongCoBan(){
+        return luongCoBan;
     }
 
     public abstract double calSalary();
@@ -81,17 +81,17 @@ public abstract class NhanVien extends ConNguoi {
     @Override
     public void Nhap(){
         super.Nhap();
-        System.out.print("Nhap ma nhan vien: ");
-        setMaNV(scanner.nextLine());
+        // System.out.print("Nhap ma nhan vien: ");
+        // setMaNV(scanner.nextLine());
     }
 
     @Override
     public String toString() {
-        return getmaNV() + ";" + getHoten() + ";"+getDiaChi()+";" + getNgaySinh() + ";" + getSdt();
+        return getMaNV() + ";" + getHoten() + ";"+getDiaChi()+";" + getNgaySinh() + ";" + getSdt();
     }
 
     
     public void Xuat(){
-        System.out.println("Ma nhan vien: " + getmaNV() + " || " + "Ho ten : " + getHoten() + " || " + "Dia chi : " + getDiaChi() + " || " + "Nam sinh: " + getNgaySinh() + " || " + "So dien thoai: " + getSdt());
+        System.out.print("Ma nhan vien: " + getMaNV() + " || " + "Ho ten : " + getHoten() + " || " + "Dia chi : " + getDiaChi() + " || " + "Nam sinh: " + getNgaySinh() + " || " + "So dien thoai: " + getSdt());
     }
 }

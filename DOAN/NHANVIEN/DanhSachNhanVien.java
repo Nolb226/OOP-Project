@@ -5,68 +5,72 @@ import java.util.Scanner;
 import java.io.*;
 import CONNGUOI.*;
 import INTERFACE.*;
+import KHACHHANG.checkLoi;
 
 public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
     NhanVien[] dsnv; 
     int stt;
 
+    public static String fileNameNV = "DOAN/NHANVIEN/NhanVien.txt";
+
     public DanhSachNhanVien(){
-        dsnv = null;
         stt = 0 ;
-        dsnv= new NhanVien[100];
+        dsnv = new NhanVien[100];
         DocFile();
     }
 
     public Scanner sc = new Scanner(System.in);
 
     @Override
-    public double calSalary() {     //Ham tinh tong luong cua tat ca nhan vien tren he thong
-        double sumSalary=0;       
-        for (int i=0;i<stt;i++){
-            sumSalary +=dsnv[i].calSalary();
+    // TINH LUONG TAT CA NHAN VIEN 
+    public double calSalary() {     
+        double sumSalary = 0;       
+        for (int i = 0; i < stt; i++){
+            sumSalary += dsnv[i].calSalary();
         }
         return sumSalary;
     }
+    
 
-    public boolean checkmaNV(String mnv) {
+    public boolean checkMaNV(String mnv) {
         boolean diff = true;
-        for (int i=0;i<stt;i++) {
-            if (dsnv[i].getmaNV().equalsIgnoreCase(mnv)) {
-                diff = true;
+        for (int i = 0; i < stt; i++) {
+            if (dsnv[i].getMaNV().equalsIgnoreCase(mnv)) {
+                diff = false;
                 break;
             }
         }
         return diff;
     }
 
-    public String taoMNVF(){
+    public String taoMNVFT(){
         Random ran = new Random();
         String mnv;
         while (true) {
-            mnv="FT"+ ran.nextInt(1000);
-            if(checkmaNV(mnv))
+            mnv = "FT" + ran.nextInt(1000);
+            if(!checkMaNV(mnv))
                 break;
         }
         return mnv;
     }
 
-    public String taoMNVP(){
-        Random rd=new Random();
+    public String taoMNVPT(){
+        Random rd = new Random();
         String mnv;
         while (true) {
-            mnv="PT"+rd.nextInt(1000);
-            if(checkmaNV(mnv))
+            mnv = "PT" + rd.nextInt(1000);
+            if(checkMaNV(mnv))
                 break;
         }
         return mnv;
     }
 
-    public String taoMNVM(){
-        Random rd=new Random();
+    public String taoMNVMN(){
+        Random rd = new Random();
         String mnv;
         while (true) {
-            mnv="MN"+rd.nextInt(1000);
-            if(checkmaNV(mnv))
+            mnv = "MN" + rd.nextInt(1000);
+            if(!checkMaNV(mnv))
                 break;
         }
         return mnv;
@@ -75,156 +79,175 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
     public void DocFile(){
         try{
             String line;
-            FileReader fr=new FileReader("NHANVIEN/NhanVien");
-            BufferedReader br=new BufferedReader(fr); 
+            FileReader readerFile = new FileReader(fileNameNV);
+            BufferedReader bufferedReader = new BufferedReader(readerFile); 
+
             while(true){
-                line=br.readLine();
-                if(line==null) {
+                line = bufferedReader.readLine();
+                if(line == null) {
                     break;
                 }
-                String []st=line.split(";");
-                String ma,ten,diachi,sdt; 
-                Date birthDate=new Date();
-                ma=st[0]; ten=st[1]; diachi=st[2]; birthDate.xulyngay(st[3]); sdt = st[4];
-                if(ma.contains("PT")){
+
+                String temp[] = line.split(";");
+
+                String maNV, ten, diaChi, sdt; 
+
+                Date birthDate = new Date();
+
+                maNV = temp[0]; 
+                // System.out.println(temp.length);
+                ten = temp[1]; 
+                diaChi = temp[2]; 
+                birthDate.xulyngay(temp[3]); 
+                sdt = temp[4];
+
+                // Check loai nhan vien
+
+                if(maNV.contains("PT")){
                     String congviec;
                     int giocong;
-                    congviec = st[5];
-                    giocong = Integer.parseInt(st[6]);
-                    dsnv[stt]=new PartTime(ma,ten,diachi,birthDate,sdt,congviec,giocong);
+                    congviec = temp[5];
+                    giocong = Integer.parseInt(temp[6]);
+                    dsnv[stt] = new PartTime(maNV, ten, diaChi, birthDate, sdt, congviec, giocong);
                     stt++;
                 }
-                if(ma.contains("FT")){
+
+                if(maNV.contains("FT")){
                     String congviec;
                     int ngaycong;
-                    congviec = st[5];
-                    ngaycong = Integer.parseInt(st[6]);
-                    dsnv[stt] = new FullTime(ma, ten, diachi, birthDate, sdt, congviec, ngaycong);
+                    congviec = temp[5];
+                    ngaycong = Integer.parseInt(temp[6]);
+                    dsnv[stt] = new FullTime(maNV, ten, diaChi, birthDate, sdt, congviec, ngaycong);
                     stt++;
                 }
-                if(ma.contains("MN")) {
+
+                if(maNV.contains("MN")) {
                     int capbac;
                     String congviec;
-                    capbac = Integer.parseInt(st[5]);
-                    congviec = st[6];
-                    // dsnv[stt] = new Manager(ma,ten,diachi,birthDate,sdt,congviec,capbac);
+                    capbac = Integer.parseInt(temp[6]);
+                    congviec = temp[5];
+                    dsnv[stt] = new Manager(maNV, ten, diaChi, birthDate, sdt, congviec, capbac);
                     stt++;
                 }
             }
-            br.close();
-            fr.close();
-            } catch(IOException ex) {
-                System.out.println("Loi doc du lieu len file");
+
+            bufferedReader.close();
+            readerFile.close();
+        }
+
+        catch(IOException ex) {
+            System.out.println("Loi doc du lieu len file");
         }
     }
 
     // public void GhiFile(String input){
     //     try{
     //         FileWriter fw = new FileWriter("NHANVIEN/NhanVien",true);
-    //         BufferedWriter bw = new BufferedWriter(fw);
-    //         bw.write(input);
-    //         bw.close();
+    //         BufferedWriter bufferedWriter = new BufferedWriter(fw);
+    //         bufferedWriter.write(input);
+    //         bufferedWriter.close();
     //         fw.close();
     //     } catch (IOException e ){
     //         System.out.println("Loi ghi du lieu len file!");
     //     }
     // }
+
     public void GhiFile()
     {
         try {
-            // FileWriter fw = new FileWriter("KHACHHANG/text");
-            PrintWriter pw = new PrintWriter("NHANVIEN/text");
-            // BufferedWriter bw = new BufferedWriter(fw);
-            for(int i=0;i<stt;i++){
-                // s=s+List.get(i).toString();
-                pw.println(dsnv[i].toString());
+            PrintWriter writerFile = new PrintWriter(fileNameNV);
+            for(int i = 0; i < stt; i++){
+                writerFile.print(dsnv[i].toString());
             }
-        // bw.write(temp);
-        // bw.close();
-        pw.flush();
-        pw.close();
+
+            writerFile.flush();
+            writerFile.close();
+
         } catch (Exception e) {
-            System.out.println("Loi ghhi File");
+            System.out.println("Lỗi ghi File");
         }
-        System.out.println("Success...");
+
+        System.out.println("Ghi file thành công !");
     }
+
     public void ThemNhanVien(){    
         int chose;  
         do{  
-        System.out.println("|-----------------------------------MENU-----------------------------------|");
-        System.out.println("|1.Them vao he thong nhan vien Parttime                                    |");
-        System.out.println("|2.Them vao he thong nhan vien Fulltime                                    |");
-        System.out.println("|3.Them vao he thong nhan vien Manager                                     |");
-        System.out.println("|Chu y ma nhan vien cua Parttime(PTxx),cua Fulltime(FTxx),cua Manager(MNxx)|");
-        System.out.println("|4.Thoat                                                                   |");
-        System.out.println("|--------------------------------------------------------------------------|");
-        System.out.println("Nhap lua chon: ");
-        chose = Integer.parseInt(sc.nextLine());
-        switch (chose) {
-            case 1:{
-                int n;
-                System.out.println("Nhap vao so luong nhan vien Parttime can them: ");
-                n=Integer.parseInt(sc.nextLine());
-                NhanVien[] newPT = new NhanVien[n];
-                for(int i = 0 ;i<n;i++){
-                    newPT[i]=new PartTime();
-                    System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n",i+1);
-                    newPT[i].Nhap();
-                    newPT[i].setMaNV(taoMNVP());
+            System.out.println("|------------------------------MENU--------------------------------|");
+            System.out.println("|\t1.Them vao he thong nhan vien Parttime                     |");
+            System.out.println("|\t2.Them vao he thong nhan vien Fulltime                     |");
+            System.out.println("|\t3.Them vao he thong nhan vien Manager                      |");
+            System.out.println("|\t4.Thoat                                                    |");
+            System.out.println("|*Note: Ma nhan vien Parttime(PTxx), Fulltime(FTxx), Manager(MNxx) |");
+            System.out.println("|------------------------------------------------------------------|");
+            System.out.println("Nhap lua chon: ");
+            
+            chose = checkLoi.checkSo(sc.next());
+            switch (chose) {
+                case 1:{
+                    int n;
+                    System.out.println("Nhap vao so luong nhan vien Part-time can them: ");
+                    n = sc.nextInt();
+                    NhanVien[] newPT = new NhanVien[n];
+                    for(int i = 0; i < n; i++){
+                        newPT[i] = new PartTime();
+                        System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n",i+1);
+                        newPT[i].Nhap();
+                        newPT[i].setMaNV(taoMNVPT());
+                    }
+                    GhiFile();
                 }
-                GhiFile();
-            }
-            break;
+                break;
+                    
+                case 2:{
+                    int n;
+                    System.out.println("Nhap vao so luong nhan vien Full-time can them: ");
+                    n=Integer.parseInt(sc.nextLine());
+                    NhanVien[] newFT = new NhanVien[n];
+                    for(int i = 0 ;i<n;i++){
+                        newFT[i]=new FullTime();
+                        System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n",i+1);
+                        newFT[i].Nhap();
+                        newFT[i].setMaNV(taoMNVFT());
+                    }
+                    GhiFile();
+                }
+                break;
                 
-            case 2:{
-                int n;
-                System.out.println("Nhap vao so luong nhan vien Fulltime can them: ");
-                n=Integer.parseInt(sc.nextLine());
-                NhanVien[] newFT = new NhanVien[n];
-                for(int i = 0 ;i<n;i++){
-                    newFT[i]=new FullTime();
-                    System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n",i+1);
-                    newFT[i].Nhap();
-                    newFT[i].setMaNV(taoMNVF());
+                case 3:{
+                    int n;
+                    System.out.println("Nhap vao so luong nhan vien Manager can them: ");
+                    n=Integer.parseInt(sc.nextLine());
+                    NhanVien[] newMN = new NhanVien[n];
+                    for(int i = 0 ;i<n;i++){
+                        newMN[i]=new Manager();
+                        System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n",i+1);
+                        newMN[i].Nhap();
+                        newMN[i].setMaNV(taoMNVMN());
+                    }
+                    GhiFile();
                 }
-                GhiFile();
-            }
-            break;
-              
-            case 3:{
-                int n;
-                System.out.println("Nhap vao so luong nhan vien Manager can them: ");
-                n=Integer.parseInt(sc.nextLine());
-                NhanVien[] newMN = new NhanVien[n];
-                for(int i = 0 ;i<n;i++){
-                    newMN[i]=new Manager();
-                    System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n",i+1);
-                    newMN[i].Nhap();
-                    newMN[i].setMaNV(taoMNVM());
-                }
-                GhiFile();
-            }
-            break;
+                break;
 
-            case 4:continue;
+                case 4: continue;
 
-            default:System.out.println("Nhap sai moi nhap lai!");   
-            break;          
-        }
-        }while(chose !=4);
+                default:System.out.println("Nhap sai moi nhap lai!");   
+                break;          
+            }
+        } while(chose != 4);
     }
 
     public void XoaNhanVien(){     
         int n;
-        System.out.println("Moi nhap vao so luong nhan vien can xoa tren he thong: ");
+        System.out.println("Ma nhan vien can xoa tren he thong: ");
         n=Integer.parseInt(sc.nextLine());
         for(int i = 0;i<n;i++){
             System.out.printf("-------Moi nhap vao ma nhan vien thu %d can xoa-------\n",i+1);
             String input;
             input=sc.nextLine();
             for(int j=0;j<stt;j++){
-                if(dsnv[j].getmaNV().equalsIgnoreCase(input)){
-                    for(int u = j ;u<stt-1;u++){
+                if(dsnv[j].getMaNV().equalsIgnoreCase(input)){
+                    for(int u = j; u < stt - 1; u++){
                         dsnv[u]=dsnv[u+1];
                     }
                     stt--;
@@ -247,21 +270,97 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
             System.out.println("Khong co du lieu tren he thong!");
         }
         for(int i=0;i<stt;i++){
-            System.out.printf("---------Nhan vien thu %d----------\n",i+1);
+            System.out.printf("\n---------Nhan vien thu %d----------\n",i+1);
             dsnv[i].Xuat();
         }
     }
 
-    public void TinKiemNhanVien(String input){
-        int count=0;
-        for(int i=0;i<stt;i++){
-            if(dsnv[i].getmaNV().equalsIgnoreCase(input)){
+    public void TimKiemNhanVien(String input){
+        int count = 0;
+        System.out.println(input);
+
+        for(int i = 0; i < stt; i++){
+            if(dsnv[i].getMaNV().equalsIgnoreCase(input)){
                 dsnv[i].Xuat();
-                System.out.println("Luong: "+dsnv[i].calSalary());
+                System.out.println("Luong: " + dsnv[i].calSalary());
                 count++;
             }
         }
-        if(count==0)
-        System.out.println("Khong tim thay nhan vien: ");
+        if(count == 0)
+        System.out.println("Khong tim thay nhan vien.");
+    }
+
+    public void QuanLyNhanVien() {
+        int selection;
+        while(true)
+        {
+            // system("cls");
+            System.out.print("\n\n\t\t========== MENU ==========");
+            System.out.print("\n\t1. Xuat danh sach nhan vien.");
+            System.out.print("\n\t2. Them nhan vien vao danh sach.");
+            System.out.print("\n\t3. Tim kiem nhan vien.");
+            System.out.print("\n\t4. Tinh tong cac phan tu trong danh sach.");
+            System.out.print("\n\t5. Dem so nguyen to trong danh sach.");
+            System.out.print("\n\t6. Dem so am, duong, 0 trong danh sach.");
+            System.out.print("\n\t7. Dem so phan tu = x.");
+            System.out.print("\n\t8. Tim min.");
+            System.out.print("\n\t0. Exit.");
+            System.out.print("\n\n\t\t========== END ==========");
+
+            System.out.print("\nNhap lua chon: ");
+            selection = sc.nextInt() ;
+
+            if(selection < 0 || selection > 8)
+            {
+                System.out.print("\nLua chon khong hop le !");
+            }
+
+            else if(selection == 1) {
+                XuatDanhSach();
+            }
+                
+            else if(selection == 2)
+            {
+                ThemNhanVien();
+            }
+            else if(selection == 3)
+            {
+                System.out.print("\nNhap ma nhan vien can tim: ");
+                String maNV = sc.next();
+                System.out.println(maNV);
+                TimKiemNhanVien(maNV);
+            }
+            else if(selection == 4)
+            {
+                
+            }
+            else if(selection == 5)
+            {
+                
+            }
+            else if(selection == 6)
+            {
+               
+            }
+            
+            else if(selection == 7)
+            {
+                
+            }
+
+            else if(selection == 8)
+            {
+                
+            }
+
+            else
+                break;
+        }
+    }
+
+    public static void main(String[] args) {
+        DanhSachNhanVien ds = new DanhSachNhanVien();
+        // ds.ThemNhanVien();
+        ds.QuanLyNhanVien();
     }
 }

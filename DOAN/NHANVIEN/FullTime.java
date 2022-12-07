@@ -40,10 +40,10 @@ public class FullTime extends NhanVien{
     
     public double calSalary(){
         if(getngaycong()<20){
-            return getluongcoban()-getluongcoban()*0.15;
+            return getLuongCoBan()-getLuongCoBan()*0.15;
         }
         else{
-            return getluongcoban();
+            return getLuongCoBan();
         }
     }
 
