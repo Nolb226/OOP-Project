@@ -14,7 +14,7 @@ public class Manager extends NhanVien{
         this.congviec = null;
     }
 
-    public Manager(String maNV, String hoten, String diachi, Date ngaySinh, String sdt, int capbac, String congviec){
+    public Manager(String maNV, String hoten, String diachi, Date ngaySinh, String sdt, String congviec,  int capbac){
         super(maNV, hoten, diachi, ngaySinh, sdt);
         this.capbac=capbac;
         this.congviec=congviec;
@@ -38,13 +38,13 @@ public class Manager extends NhanVien{
 
     public double calSalary(){
         if(getCapbac()==1){
-            return getluongcoban()+2000000;
+            return getLuongCoBan()+2000000;
         }
         if(getCapbac()==2){
-            return getluongcoban()+3000000;
+            return getLuongCoBan()+3000000;
         }
         if(getCapbac()==3){
-            return getluongcoban()+4000000;
+            return getLuongCoBan()+4000000;
         }
         else{
             return -1;
@@ -63,7 +63,7 @@ public class Manager extends NhanVien{
 
     @Override
     public String toString() {
-        return super.toString()+getCongviec()+";"+getCapbac()+"\n";
+        return super.toString() + ";" + getCongviec() + ";" + getCapbac() + "\n";
     }
 
     @Override

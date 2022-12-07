@@ -39,7 +39,7 @@ public class PartTime extends NhanVien{
     }
 
     public double calSalary(){
-        return (getgiocong()*getluongcobantheogio())+150000;
+        return (getgiocong()*getLuongCoBanTheoGio())+150000;
     }
 
     @Override

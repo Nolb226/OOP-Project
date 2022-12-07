@@ -1,0 +1,10 @@
+PT01;Nguyen Nhat Khang;61 Pham Hung Q.Binh Chanh;12/5/2002;0907568784;Sale ;30
+PT02;Truong Tri Tai;2190 Pham The Hien Q.8;11/6/2002;0982315522;Sale ;35
+PT05;Pham Nhat Duy;40 Bong Sao Q.8;1/1/2002;0963156452;Pha che;35
+PT06;Vu Minh Khang;73 Nguyen Trai Q.5;20/10/2000;0943651203;Server;35
+FT01;Nguyen Duc Dang Khoa;1200 Pham The Hien Q.8;13/11/1999;0976121233;Sale;25
+FT02;Tran Ha Tuan Kiet;332A Tran Binh Trong Q.5;8/7/2001;0908155687;Sale;20
+FT03;Nguyen Thi Thuy Tien;4 Nguyen Trai Q.5;12/6/1998;0913456745;Barista;27
+FT04;Dang Thi Tuyet;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Server;30
+MN10;Le Minh Quang ;34 Tran Binh Trong Q.5;5/10/1993;0973081197;Quan li cua hang A;2
+PT215;b;b;2/2/2;0977777777;b;5
