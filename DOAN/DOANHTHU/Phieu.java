@@ -1,6 +1,8 @@
 package DOANHTHU;
 
 import KHACHHANG.DanhSachKhachHang;
+import MONAN.*;
+import CONNGUOI.*;
 import KHACHHANG.*;
 import NHANVIEN.DanhSachNhanVien;
 import NHANVIEN.NhanVien;
@@ -10,7 +12,7 @@ public abstract class Phieu {
     protected Date Date;
     protected NhanVien nv;
     protected int n;
-    protected SanPham[] sp;
+    protected MonAn[] sp;
     protected int[] soLuong;
 
     public Phieu() {
@@ -18,7 +20,7 @@ public abstract class Phieu {
         Date = new Date();
         nv = null;
         n = 0;
-        sp = new SanPham[n];
+        sp = new MonAn[n];
         soLuong = new int[n];
     }
 
@@ -46,11 +48,11 @@ public abstract class Phieu {
         return nv;
     }
 
-    public void setSp(SanPham[] sp) {
+    public void setSp(MonAn[] sp) {
         this.sp = sp;
     }
 
-    public SanPham[] getSp() {
+    public MonAn[] getSp() {
         return sp;
     }
 
@@ -72,20 +74,17 @@ public abstract class Phieu {
 
     public abstract void taoPhieu(NhanVien a, KhachHang b);
 
-    public abstract void addSP(SanPham a, int sl);
+    public abstract void addSP(MonAn a, int sl);
 
     public abstract double price();
 
     public abstract void inPhieu();
 
-    public abstract void TachTT(String data, DanhSachNhanVien a, DanhSachSanPham b, DanhSachKhachHang c);
+    public abstract void TachTT(String data, DanhSachNhanVien a, DanhSachMonAn b, DanhSachKhachHang c);
 
     public abstract String toString();
 
     public abstract void xuat();
-
-
-
 }
 
 

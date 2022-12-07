@@ -8,6 +8,12 @@ public class QuanLyDoanhThu{
     }
     public void money(){    
     }
+    public void money_usage(){
+    }
+    public void money_salary(){
+    }
+    public void money_tax(){
+    }
     public void profit(){
     }
     public float tax(){
