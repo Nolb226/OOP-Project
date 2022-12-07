@@ -8,10 +8,15 @@ public class Account {
     public String password;
     Scanner scanner = new Scanner(System.in);
 
-    public Account(String userName  ){
-        this.userName=userName;
-        this.password="123456";
-    } 
+    // public Account(String userName,String password ){
+    //     this.userName=userName;
+    //     this.password=password;
+    // } 
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
     public Account( ){
         this.userName=null;
         this.password="123456";
