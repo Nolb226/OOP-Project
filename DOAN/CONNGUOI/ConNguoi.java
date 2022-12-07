@@ -126,7 +126,7 @@ public abstract class ConNguoi {
     }
 
     public String toString(){
-        return hoTen + ',' + ngaySinh.toString() + ',' + sdt + ',' + diaChi + '\n';
+        return hoTen + ',' + ngaySinh.toString() + ',' + sdt + ',' + diaChi;
     }
 
 }

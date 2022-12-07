@@ -7,11 +7,11 @@ public class main {
         // s.Xuat();
         DanhSachKhachHang s=new DanhSachKhachHang();
         //s.Nhap();
-        s.DocFile();
-        s.Xuat();
-
-        s.NhapThemKh();
-        s.Xuat();
+        // s.DocFile();
+        // s.Xuat();
+        s.QuanlyKH();
+        // s.NhapThemKh();
+        // s.Xuat();
         // s.NhapThemKh();
         // s.suaKH();
         // s.writeFile();
