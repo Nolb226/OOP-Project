@@ -10,6 +10,7 @@ import KHACHHANG.*;
 public class Bill extends Phieu{
 
     
+    
     private KhachHang kh;
 
 
