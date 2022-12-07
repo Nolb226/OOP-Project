@@ -137,7 +137,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
             // BufferedWriter bw = new BufferedWriter(fw);
             for(int i=0;i<stt;i++){
                 // s=s+List.get(i).toString();
-                pw.println(dsnv[i].toString());
+                pw.print(dsnv[i].toString());
             }
         // bw.write(temp);
         // bw.close();
