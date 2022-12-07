@@ -9,10 +9,12 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import CONNGUOI.*;
+import EXCEPTION.*;
 
 public class DanhSachKhachHang implements DocGhiFile {
     private ArrayList<KhachHang> List;
     static Scanner scanner = new Scanner(System.in);
+    static Scanner string = new Scanner(System.in);
     String[] data={"KH1234,Nguyen Ngoc Son,20/5/2003,0898504720,49/1Q NHC MyHue TrungChanh HocMon.",
                 "KH2345,Nguyen Ngoc Son,20/5/2003,0898504720,49/1Q NHC MyHue TrungChanh HocMon.",
                 "KH3456,Nguyen Truong Khanh Hoang,20/5/2003,0898504720,49/1Q NHC MyHue TrungChanh HocMon.",
@@ -47,10 +49,12 @@ public class DanhSachKhachHang implements DocGhiFile {
     }
 
     public String taoMKH(){
-        Random rd=new Random();
+        // Random rd=new Random();
         String mkh;
         while (true) {
-            mkh="KH"+(Math.random()) * ((9999 - 1000) + 1) + 9999;
+            // mkh="KH"+(int)((Math.random()) * ((9999 - 1000) + 1) + 9999);
+            // mkh="KH"+(int)((Math.random()) * ((9999-1000)+1)+1000);
+            mkh="KH"+(int)((Math.random()) * (10000));
             if(checkmaKH(mkh))
                 break;
         }
@@ -65,10 +69,11 @@ public class DanhSachKhachHang implements DocGhiFile {
             this.themKH(a);
             System.out.println("Nhap 't' de dung");
         } while (scanner.nextLine().charAt(0) != 't');
+        GhiFile();
     }
 
     public void DocFile() {
-        File fin = new File("KHACHHANG/text");
+        File fin = new File("DOAN/KHACHHANG/text.txt");
         try {
             BufferedReader brsp = Files.newBufferedReader(fin.toPath());
             if(brsp==null)
@@ -89,6 +94,7 @@ public class DanhSachKhachHang implements DocGhiFile {
         } 
         catch (Exception e) 
         {
+            e.printStackTrace();
             for ( String s : data ) {
                 xulytt(s);
                 
@@ -101,7 +107,7 @@ public class DanhSachKhachHang implements DocGhiFile {
     {
         try {
             // FileWriter fw = new FileWriter("KHACHHANG/text");
-            PrintWriter pw = new PrintWriter("KHACHHANG/text");
+            PrintWriter pw = new PrintWriter("DOAN/KHACHHANG/text.txt");
             // BufferedWriter bw = new BufferedWriter(fw);
             for(int i=0;i<List.size();i++){
                 // s=s+List.get(i).toString();
@@ -236,6 +242,7 @@ public class DanhSachKhachHang implements DocGhiFile {
     }
 
     public void Xuat() {
+        DocFile();
         int j;
         System.out.print(" ");
         for (int i = 0; i < 152; i++) {
@@ -258,6 +265,75 @@ public class DanhSachKhachHang implements DocGhiFile {
         for (int k = 0; k < List.size(); k++) {
             List.get(k).Xuat();
         }
+    }
+
+    public void TimKH()
+    {
+        int choose;
+        do{
+            System.out.print("|---------------------Quan ly khach hang---------------------|\n"
+                            +"|1.Tim theo ma so khach hang                                 |\n"
+                            +"|2.Tim theo ho ten khach hang                                |\n"
+                            +"|3.Tim theo so dien thoai khach hang                         |\n"
+                            +"|4.Quay ve menu chinh                                        |\n"
+                            +"|------------------------------------------------------------|\n");
+            choose=checkLoi.checkSo(string.nextLine());
+            switch (choose) {
+                case 1:
+                    timxuatMskhKhachHang();
+                    break;
+                case 2:
+                    timHotenKhachHang();
+                    break;
+                case 3:
+                    timSDTKhachHang();
+                    break;
+                case 4:
+                    break;
+                default:
+                    System.out.println("Lua chon khong dung moi nhap lai");
+                    break;
+            }
+        }while(choose!=4);
+    }
+
+    public void QuanlyKH()
+    {
+        int choose;
+        do{
+            System.out.print("|---------------------Quan ly khach hang---------------------|\n"
+                            +"|1.Xuat danh sach khach hang                                 |\n"
+                            +"|2.Them khach hang                                           |\n"
+                            +"|3.Xoa khach hang                                            |\n"
+                            +"|4.Tim khach hang                                            |\n"
+                            +"|5.Sua thong tin khach hang                                  |\n"
+                            +"|6.Quay ve menu chinh                                        |\n"
+                            +"|------------------------------------------------------------|\n");
+            System.out.print("Nhap lua chon");
+            choose=checkLoi.checkSo(string.nextLine());
+            switch (choose) {
+                case 1:
+                    Xuat();
+                    break;
+                case 2:
+                    NhapThemKh();
+                    break;
+                case 3:
+                    xoaKH();
+                    break;
+                case 4:
+                    TimKH();
+                    break;
+                case 5:
+                    suaKH();
+                    break;
+                case 6:
+                    break;
+                default:
+                    System.out.println("Lua chon khong dung moi nhap lai");
+                    break;
+            }
+        }while(choose != 6);
     }
 
 }
