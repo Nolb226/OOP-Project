@@ -7,4 +7,5 @@ FT02;Tran Ha Tuan Kiet;332A Tran Binh Trong Q.5;8/7/2001;0908155687;Sale;20
 FT03;Nguyen Thi Thuy Tien;4 Nguyen Trai Q.5;12/6/1998;0913456745;Barista;27
 FT04;Dang Thi Tuyet;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Server;30
 MN10;Le Minh Quang ;34 Tran Binh Trong Q.5;5/10/1993;0973081197;Quan li cua hang A;2
-PT215;b;b;2/2/2;0977777777;b;5
+PT127;a;1;1/1/1;0961198450;a;2
+PT113;b;123;2/2/2;0961198450;a;5
