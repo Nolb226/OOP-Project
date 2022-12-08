@@ -101,17 +101,19 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                 diaChi = temp[2]; 
                 birthDate.xulyngay(temp[3]); 
                 sdt = temp[4];
-
+                
+                
                 // Check loai nhan vien
-
+                
                 // System.out.println(stt);
-
+                
                 if(maNV.contains("PT")){
                     String congviec;
                     int giocong;
                     congviec = temp[5];
                     giocong = Integer.parseInt(temp[6]);
                     dsnv[stt] = new PartTime(maNV, ten, diaChi, birthDate, sdt, congviec, giocong);
+                    dsnv[stt].set_Username(maNV);
                     stt++;
                 }
 
@@ -121,6 +123,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                     congviec = temp[5];
                     ngaycong = Integer.parseInt(temp[6]);
                     dsnv[stt] = new FullTime(maNV, ten, diaChi, birthDate, sdt, congviec, ngaycong);
+                    dsnv[stt].set_Username(maNV);
                     stt++;
                 }
 
@@ -130,6 +133,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                     capbac = Integer.parseInt(temp[6]);
                     congviec = temp[5];
                     dsnv[stt] = new Manager(maNV, ten, diaChi, birthDate, sdt, congviec, capbac);
+                    dsnv[stt].set_Username(maNV);
                     stt++;
                 }
             }
