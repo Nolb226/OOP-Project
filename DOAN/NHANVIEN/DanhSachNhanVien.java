@@ -4,13 +4,14 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 import java.io.*;
+
 import CONNGUOI.*;
 import INTERFACE.*;
 import EXCEPTION.*;;
 
 public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
-    NhanVien[] dsnv; 
-    int stt;
+    public NhanVien[] dsnv; 
+    public int stt;
 
     public static String fileNameNV = "DOAN/NHANVIEN/NhanVien.txt";
 
@@ -32,6 +33,183 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
         return sumSalary;
     }
     
+    // SUA NHAN VIEN
+    public void suaNhanVien(Integer k) {
+        int chose;  
+        if(dsnv[k] instanceof Manager) {
+            Manager temp = (Manager)dsnv[k];
+            do{  
+                System.out.println("|------------------------SUA THONG TIN MANAGER---------------------|");
+                System.out.println("|\t1.Sua ho ten                     |");
+                System.out.println("|\t2.Sua dia chi                     |");
+                System.out.println("|\t3.Ngay thang nam sinh                      |");
+                System.out.println("|\t4.So dien thoai                                                   |");
+                System.out.println("|\t5.Sua cap bac quan ly                                                   |");
+                System.out.println("|\t6.Sua cong viec                                                   |");
+                System.out.println("|\t0.Thoat                                                  |");
+                System.out.println("|------------------------------------------------------------------|");
+                System.out.println("Nhap lua chon: ");
+                
+                chose = checkLoi.checkSo(sc.next());
+                switch (chose) {
+                    case 1:{
+                        temp.sethoten(hoTen);
+                        GhiFile();
+                    }
+                    break;
+                        
+                    case 2:{
+                        temp.setdiachi(diaChi);
+                        GhiFile();
+                    }
+                    break;
+                    
+                    case 3:{
+                        temp.setNgaySinh(ngaySinh);
+                        GhiFile();
+                    }
+                    break;
+    
+                    case 4: {
+                        temp.setSdt(sdt);
+                        GhiFile();
+                    };
+                    break;
+
+                    case 5: {
+                        temp.setCapbac(0);
+                        GhiFile();
+                    };
+                    break;
+
+                    case 6: {
+                        temp.setCongviec("");
+                        GhiFile();
+                    };
+                    break;
+    
+                    default:System.out.println("Nhap sai moi nhap lai!");   
+                    break;          
+                }
+            } while(chose != 0);
+        }
+
+        if(dsnv[k] instanceof PartTime) {
+            PartTime temp = (PartTime)dsnv[k];
+            do{  
+                System.out.println("|-----------------------SUA THONG TIN PART-TIME--------------------|");
+                System.out.println("|\t1.Sua ho ten                     |");
+                System.out.println("|\t2.Sua dia chi                     |");
+                System.out.println("|\t3.Ngay thang nam sinh                      |");
+                System.out.println("|\t4.So dien thoai                                                   |");
+                System.out.println("|\t5.Sua cong viec                                                  |");
+                System.out.println("|\t6.Sua gio cong                                                   |");
+                System.out.println("|\t0.Thoat                                                  |");
+                System.out.println("|------------------------------------------------------------------|");
+                System.out.println("Nhap lua chon: ");
+                
+                chose = checkLoi.checkSo(sc.next());
+                switch (chose) {
+                    case 1:{
+                        temp.sethoten(hoTen);
+                        GhiFile();
+                    }
+                    break;
+                        
+                    case 2:{
+                        temp.setdiachi(diaChi);
+                        GhiFile();
+                    }
+                    break;
+                    
+                    case 3:{
+                        temp.setNgaySinh(ngaySinh);
+                        GhiFile();
+                    }
+                    break;
+    
+                    case 4: {
+                        temp.setSdt(sdt);
+                        GhiFile();
+                    };
+
+                    case 5: {
+                        temp.setcongviec("");;
+                        GhiFile();
+                    };
+
+                    case 6: {
+                        temp.setgiocong(0);
+                        GhiFile();
+                    };
+    
+                    default:System.out.println("Nhap sai moi nhap lai!");   
+                    break;          
+                }
+            } while(chose != 0);
+
+        }
+
+        if(dsnv[k] instanceof FullTime) {
+            FullTime temp = (FullTime)dsnv[k];
+            do{  
+                System.out.println("|------------------------SUA THONG TIN FULL-TIME---------------------|");
+                System.out.println("|\t1.Sua ho ten                     |");
+                System.out.println("|\t2.Sua dia chi                     |");
+                System.out.println("|\t3.Ngay thang nam sinh                      |");
+                System.out.println("|\t4.So dien thoai                                                   |");
+                System.out.println("|\t5.Sua cong viec                                                  |");
+                System.out.println("|\t6.Sua ngay cong                                                    |");
+                System.out.println("|\t0.Thoat                                                  |");
+                System.out.println("|------------------------------------------------------------------|");
+                System.out.println("Nhap lua chon: ");
+                
+                chose = checkLoi.checkSo(sc.next());
+                switch (chose) {
+                    case 0: break;
+
+                    case 1:{
+                        temp.sethoten(hoTen);
+                        GhiFile();
+                    }
+                    break;
+                        
+                    case 2:{
+                        temp.setdiachi(diaChi);
+                        GhiFile();
+                    }
+                    break;
+                    
+                    case 3:{
+                        temp.setNgaySinh(ngaySinh);
+                        GhiFile();
+                    }
+                    break;
+    
+                    case 4: {
+                        temp.setSdt(sdt);
+                        GhiFile();
+                    };
+                    break;
+
+                    case 5: {
+                        temp.setcongviec("");;
+                        GhiFile();
+                    };
+                    break;
+
+                    case 6: {
+                        temp.setngaycong(0);
+                        GhiFile();
+                    };
+                    break;
+    
+                    default:System.out.println("Nhap sai moi nhap lai!");   
+                    break;          
+                }
+            } while(chose != 0);
+        }
+    }
 
     public boolean checkMaNV(String mnv) {
         boolean diff = true;
@@ -48,8 +226,8 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
         Random ran = new Random();
         String mnv;
         while (true) {
-            mnv = "FT" + ran.nextInt(1000);
-            if(!checkMaNV(mnv))
+            mnv = "FT" + ran.nextInt(999);
+            if(checkMaNV(mnv))
                 break;
         }
         return mnv;
@@ -59,7 +237,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
         Random rd = new Random();
         String mnv;
         while (true) {
-            mnv = "PT" + rd.nextInt(1000);
+            mnv = "PT" + rd.nextInt(999);
             if(checkMaNV(mnv))
                 break;
         }
@@ -70,8 +248,8 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
         Random rd = new Random();
         String mnv;
         while (true) {
-            mnv = "MN" + rd.nextInt(1000);
-            if(!checkMaNV(mnv))
+            mnv = "MN" + rd.nextInt(999);
+            if(checkMaNV(mnv))
                 break;
         }
         return mnv;
@@ -81,10 +259,12 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
         try{
             String line;
             FileReader readerFile = new FileReader(fileNameNV);
-            BufferedReader bufferedReader = new BufferedReader(readerFile); 
+            BufferedReader bufferedReader = new BufferedReader(readerFile);
+            stt = 0; 
 
             while(true){
                 line = bufferedReader.readLine();
+
                 if(line == null) {
                     break;
                 }
@@ -117,7 +297,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                     stt++;
                 }
 
-                if(maNV.contains("FT")){
+                else if(maNV.contains("FT")){
                     String congviec;
                     int ngaycong;
                     congviec = temp[5];
@@ -127,7 +307,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                     stt++;
                 }
 
-                if(maNV.contains("MN")) {
+                else if(maNV.contains("MN")) {
                     int capbac;
                     String congviec;
                     capbac = Integer.parseInt(temp[6]);
@@ -138,7 +318,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                 }
             }
 
-            stt--;
+            
 
             dsnv = Arrays.copyOf(dsnv, stt);
 
@@ -209,41 +389,54 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
 
                         // Cap nhat danh sach nhan vien
                         dsnv = Arrays.copyOf(dsnv, stt + 1);
-                        dsnv[stt - 1] = newPT[i];
+                        dsnv[dsnv.length - 1] = newPT[i];
+                        stt++;
+                        GhiFile();
                     }
                     XuatDanhSach();
-                    
-                    GhiFile();
                 }
                 break;
                     
                 case 2:{
                     int n;
                     System.out.println("Nhap vao so luong nhan vien Full-time can them: ");
-                    n=Integer.parseInt(sc.nextLine());
+                    n = sc.nextInt();
                     NhanVien[] newFT = new NhanVien[n];
-                    for(int i = 0 ;i<n;i++){
-                        newFT[i]=new FullTime();
+                    for(int i = 0; i < n; i++){
+                        newFT[i] = new FullTime();
                         System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n",i+1);
                         newFT[i].Nhap();
                         newFT[i].setMaNV(taoMNVFT());
+                        System.out.println("hello");
+
+                        // Cap nhat danh sach nhan vien
+                        dsnv = Arrays.copyOf(dsnv, stt + 1);
+                        dsnv[dsnv.length - 1] = newFT[i];
+                        stt++;
+                        GhiFile();
                     }
-                    GhiFile();
+                    XuatDanhSach();
                 }
                 break;
                 
                 case 3:{
                     int n;
                     System.out.println("Nhap vao so luong nhan vien Manager can them: ");
-                    n=Integer.parseInt(sc.nextLine());
+                    n = sc.nextInt();
                     NhanVien[] newMN = new NhanVien[n];
-                    for(int i = 0 ;i<n;i++){
+                    for(int i = 0; i < n; i++) {
                         newMN[i]=new Manager();
                         System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n",i+1);
                         newMN[i].Nhap();
                         newMN[i].setMaNV(taoMNVMN());
+
+                        // Cap nhat danh sach nhan vien
+                        dsnv = Arrays.copyOf(dsnv, stt + 1);
+                        dsnv[dsnv.length - 1] = newMN[i];
+                        stt++;
+                        GhiFile();
                     }
-                    GhiFile();
+                    XuatDanhSach();
                 }
                 break;
 
@@ -255,23 +448,11 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
         } while(chose != 4);
     }
 
-    public void XoaNhanVien(){     
-        int n;
-        System.out.println("Ma nhan vien can xoa tren he thong: ");
-        n=Integer.parseInt(sc.nextLine());
-        for(int i = 0;i<n;i++){
-            System.out.printf("-------Moi nhap vao ma nhan vien thu %d can xoa-------\n",i+1);
-            String input;
-            input=sc.nextLine();
-            for(int j=0;j<stt;j++){
-                if(dsnv[j].getMaNV().equalsIgnoreCase(input)){
-                    for(int u = j; u < stt - 1; u++){
-                        dsnv[u]=dsnv[u+1];
-                    }
-                    stt--;
-                }
-            }
+    public void XoaNhanVien(int k){    
+        for(int i = k; i < stt - 1; i++){
+            dsnv[i] = dsnv[i+1];
         }
+        stt--;
         GhiFile();
     }
 
@@ -284,7 +465,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
     }
 
     public void XuatDanhSach(){     //Xuat ra tat ca nhan vien tren he thong
-        DocFile();
+        
         if(dsnv[0] == null){
             System.out.println("Khong co du lieu tren he thong!");
         }
@@ -319,80 +500,11 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
         return -1;
     }
 
-    public void QuanLyNhanVien() {
-        int selection;
-        while(true)
-        {
-            // system("cls");
-            System.out.print("\n\n\t\t========== MENU ==========");
-            System.out.print("\n\t1. Xuat danh sach nhan vien.");
-            System.out.print("\n\t2. Them nhan vien vao danh sach.");
-            System.out.print("\n\t3. Tim kiem nhan vien.");
-            System.out.print("\n\t4. Tinh tong cac phan tu trong danh sach.");
-            System.out.print("\n\t5. Dem so nguyen to trong danh sach.");
-            System.out.print("\n\t6. Dem so am, duong, 0 trong danh sach.");
-            System.out.print("\n\t7. Dem so phan tu = x.");
-            System.out.print("\n\t8. Tim min.");
-            System.out.print("\n\t0. Exit.");
-            System.out.print("\n\n\t\t========== END ==========");
-
-            System.out.print("\nNhap lua chon: ");
-            selection = sc.nextInt() ;
-
-            if(selection < 0 || selection > 8)
-            {
-                System.out.print("\nLua chon khong hop le !");
-            }
-
-            else if(selection == 1) {
-                XuatDanhSach();
-            }
-                
-            else if(selection == 2)
-            {
-                ThemNhanVien();
-            }
-            else if(selection == 3)
-            {
-                System.out.print("\nNhap ma nhan vien can tim: ");
-                String maNV = sc.next();
-                System.out.println(maNV);
-                TimKiemNhanVien(maNV);
-            }
-            else if(selection == 4)
-            {
-                
-            }
-            else if(selection == 5)
-            {
-                
-            }
-            else if(selection == 6)
-            {
-               
-            }
-            
-            else if(selection == 7)
-            {
-                
-            }
-
-            else if(selection == 8)
-            {
-                
-            }
-
-            else
-                break;
-        }
-    }
+    
 
     public static void main(String[] args) {
-
         DanhSachNhanVien ds = new DanhSachNhanVien();
-        ds.DocFile();
-        System.out.println(ds.dsnv);
-        // ds.ThemNhanVien();
-        ds.QuanLyNhanVien();
+        // ds.DocFile();
+        // ds.QuanLyNhanVien();
     }
 }
