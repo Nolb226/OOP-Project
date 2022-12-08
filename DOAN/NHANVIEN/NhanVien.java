@@ -5,6 +5,7 @@ import CONNGUOI.*;
 
 public abstract class NhanVien extends ConNguoi {
     private String maNV;
+    private Account taiKhoan; 
 
     private static double luongCoBanTheoGio = 24000;
     private static double luongCoBan = 5000000;        //Muc luong cua Full-time va Manager
@@ -14,6 +15,17 @@ public abstract class NhanVien extends ConNguoi {
     public NhanVien() {
         super();
         this.maNV = null;
+        taiKhoan=new Account();
+    }
+
+    public NhanVien(String tk ) {
+        super();
+        this.maNV = null;
+        taiKhoan=new Account(tk);
+    }
+
+    public String getpassword() {
+        return taiKhoan.password;
     }
 
     public NhanVien(String maNV, String hoten, String diachi, Date ngaysinh, String sdt){

@@ -6,6 +6,7 @@ import CONNGUOI.*;
 public class KhachHang extends ConNguoi {
     private String MSKH;
     Scanner inp = new Scanner(System.in);
+    Scanner scanner =new Scanner(System.in);
 
     public KhachHang()
     {
@@ -42,15 +43,23 @@ public class KhachHang extends ConNguoi {
             switch (n) {
                 case 1:
                     super.setHoten();
+                    System.out.print("Da chinh sua, nhan phim bat ki de tiep tuc.");
+                    scanner.nextLine();
                     break;
                 case 2:
                     super.setDiaChi();
+                    System.out.print("Da chinh sua, nhan phim bat ki de tiep tuc.");
+                    scanner.nextLine();
                     break;
                 case 3:
                     super.setSdt();
+                    System.out.print("Da chinh sua, nhan phim bat ki de tiep tuc.");
+                    scanner.nextLine();
                     break;
                 case 4:
                     super.setNgaySinh();
+                    System.out.print("Da chinh sua, nhan phim bat ki de tiep tuc.");
+                    scanner.nextLine();
                     break;
             }
             System.out.println("nhap t de tiep tuc sua");
