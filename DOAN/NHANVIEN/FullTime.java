@@ -1,6 +1,7 @@
 package NHANVIEN;
 
 import CONNGUOI.*;
+import EXCEPTION.*;
 import java.util.Scanner;
 
 public class FullTime extends NhanVien{  
@@ -20,7 +21,13 @@ public class FullTime extends NhanVien{
 
     public void setngaycong(int ngaycong){
         System.out.println("Moi nhap vao so ngay cong: ");
-        ngaycong=Integer.parseInt(sc.nextLine());
+        do{
+            ngaycong = checkLoi.checkSo((sc.next()));
+            if(ngaycong == -1)
+                System.out.println("Du lieu nhap khong hop le, moi nhap lai !");
+
+        }while(ngaycong == -1);
+
         this.ngaycong=ngaycong;
     }
 
@@ -40,10 +47,10 @@ public class FullTime extends NhanVien{
     
     public double calSalary(){
         if(getngaycong()<20){
-            return getluongcoban()-getluongcoban()*0.15;
+            return getLuongCoBan()-getLuongCoBan()*0.15;
         }
         else{
-            return getluongcoban();
+            return getLuongCoBan();
         }
     }
 
