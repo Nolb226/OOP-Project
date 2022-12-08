@@ -3,26 +3,37 @@ package MONAN;
 import java.util.Scanner;
 
 public class MonAn {
-    String maMon;
-    String tenMon;
-    Double giaTien;
-    Integer soLuong;
+    protected String maMon;
+    protected String tenMon;
+    // protected Double giaTien;
+    protected Integer soLuong;
+    protected Double giaBan;
+    protected Double giaNhap;
 
     public Scanner sc = new Scanner(System.in);
 
     public MonAn() {
+        maMon = "";
+        tenMon = "";
+        giaBan = 0.0;
+        giaNhap = 0.0;
     }
 
     public MonAn(MonAn a) {
         this.maMon = a.maMon;
         this.tenMon = a.tenMon;
-        this.giaTien = a.giaTien;
+        this.soLuong = a.soLuong;
+        this.giaBan = a.giaBan;
+        this.giaNhap = a.giaNhap;
+
     }
 
-    public MonAn(String maMon, String tenMon, double giaTien) {
+    public MonAn(String maMon, String tenMon, Integer soLuong, Double giaBan, Double giaNhap) {
         this.maMon = maMon;
         this.tenMon = tenMon;
-        this.giaTien = giaTien;
+        this.soLuong = soLuong;
+        this.giaBan = giaBan;
+        this.giaNhap = giaNhap;
     }
 
     public void setMaMon(String maMon) {
@@ -44,15 +55,20 @@ public class MonAn {
         return tenMon;
     }
 
-    public void setGiaTien(double giaTien) {
-        System.out.println("Mời nhập vào giá tiền của món ăn:");
-        System.out.printf("%15s \r", "VNĐ");
-        giaTien = sc.nextDouble();
-        this.giaTien = giaTien;
+    public void setGiaBan(Double giaBan) {
+        this.giaBan = giaBan;
     }
 
-    public double getGiaTien() {
-        return giaTien;
+    public Double getGiaBan() {
+        return giaBan;
+    }
+
+    public void setGiaNhap(Double giaNhap) {
+        this.giaNhap = giaNhap;
+    }
+
+    public Double getGiaNhap() {
+        return giaNhap;
     }
 
     public void setSoLuong(Integer soLuong) {
@@ -66,7 +82,7 @@ public class MonAn {
     public void Nhap() {
         // setMaMon(maMon);
         setTenMon(tenMon);
-        setGiaTien(giaTien);
+
     }
 
     public MonAn clone() {
@@ -75,10 +91,10 @@ public class MonAn {
 
     @Override
     public String toString() {
-        return getMaMon() + ";" + getTenMon() + ";" + getGiaTien() + "\n";
+        return getMaMon() + ";" + getTenMon() + ";" + getSoLuong() + ";" + getGiaBan() + ";" + getGiaNhap() + ";"+ "\n";
     }
 
     public void Xuat() {
-        System.out.println("|" + getMaMon() + "|\t|" + getTenMon() + "|\t|" + getGiaTien() + "|");
+        System.out.println("|" + getMaMon() + "|\t|" + getTenMon() + "|\t|" + getSoLuong() + "|");
     }
 }
