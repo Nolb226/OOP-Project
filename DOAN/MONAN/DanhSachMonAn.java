@@ -15,6 +15,18 @@ public class DanhSachMonAn extends MonAn implements DocGhiFile {
         DocFile();
     }
 
+    public DanhSachMonAn(MonAn[] foodList) {
+        this.foodList = foodList;
+    }
+
+    public DanhSachMonAn(DanhSachMonAn orther) {
+        this.foodList = orther.foodList;
+    }
+
+    public MonAn[] getSpList() {
+        return foodList;
+    }
+
     @Override
     public void DocFile() {
         try {
@@ -46,7 +58,6 @@ public class DanhSachMonAn extends MonAn implements DocGhiFile {
     public void GhiFile() {
         try {
             FileWriter fw = new FileWriter(fileName);
-
             BufferedWriter bw = new BufferedWriter(fw);
             for (int i = 0; i < length; i++) {
                 bw.write(foodList[i].toString());
