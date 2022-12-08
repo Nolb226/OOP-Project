@@ -1,4 +1,5 @@
 package MONAN;
+
 import java.util.Scanner;
 
 public class MonAn {
@@ -8,35 +9,43 @@ public class MonAn {
 
     public Scanner sc = new Scanner(System.in);
 
-    public MonAn(){}
+    public MonAn() {
+    }
 
-    public MonAn(String maMon, String tenMon, double giaTien){
-        this.maMon=maMon;
-        this.tenMon=tenMon;
-        this.giaTien=giaTien;
+    public MonAn(MonAn a) {
+        this.maMon = a.maMon;
+        this.tenMon = a.tenMon;
+        this.giaTien = a.giaTien;
+    }
+
+    public MonAn(String maMon, String tenMon, double giaTien) {
+        this.maMon = maMon;
+        this.tenMon = tenMon;
+        this.giaTien = giaTien;
     }
 
     public void setMaMon(String maMon) {
-        System.out.println("Moi nhap vao ma mon an:");
-        maMon=sc.nextLine();
+
         this.maMon = maMon;
     }
 
     public String getMaMon() {
         return maMon;
     }
+
     public void setTenMon(String tenMon) {
-        System.out.println("Moi nhap vao ten mon: ");
-        tenMon=sc.nextLine();
+        System.out.println("Mời nhập vào tên món: ");
+        tenMon = sc.next();
         this.tenMon = tenMon;
     }
-    
+
     public String getTenMon() {
         return tenMon;
     }
 
     public void setGiaTien(double giaTien) {
-        System.out.println("Moi nhap vao gia tien cua mon an:");
+        System.out.println("Mời nhập vào giá tiền của món ăn:");
+        System.out.printf("%15s \r", "VNĐ");
         giaTien = sc.nextDouble();
         this.giaTien = giaTien;
     }
@@ -45,18 +54,22 @@ public class MonAn {
         return giaTien;
     }
 
-    public void Nhap () {
-        setMaMon(maMon);
+    public void Nhap() {
+        // setMaMon(maMon);
         setTenMon(tenMon);
         setGiaTien(giaTien);
     }
 
-    @Override
-    public String toString (){
-        return getMaMon()+";"+ getTenMon()+";"+ getGiaTien()+"\n";
+    public MonAn clone() {
+        return new MonAn(this);
     }
-    
-    public void Xuat(){
-        System.out.println("|"+getMaMon()+"|\t|"+ getTenMon()+"|\t|"+ getGiaTien()+"|");
+
+    @Override
+    public String toString() {
+        return getMaMon() + ";" + getTenMon() + ";" + getGiaTien() + "\n";
+    }
+
+    public void Xuat() {
+        System.out.println("|" + getMaMon() + "|\t|" + getTenMon() + "|\t|" + getGiaTien() + "|");
     }
 }
