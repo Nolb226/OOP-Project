@@ -2,6 +2,7 @@ package NHANVIEN;
 
 import java.util.Scanner;
 import CONNGUOI.*;
+import KHACHHANG.DanhSachKhachHang;
 
 public abstract class NhanVien extends ConNguoi {
     private String maNV;
@@ -89,6 +90,40 @@ public abstract class NhanVien extends ConNguoi {
     }
 
     public abstract double calSalary();
+
+
+    public void QuanLy() {
+        DanhSachKhachHang dskh = new DanhSachKhachHang();
+        int selection;
+        while(true)
+        {
+            System.out.print("\n\n\t\t========== MENU ==========");
+            System.out.print("\n\t1. Quan ly khach hang");
+            System.out.print("\n\t2. Xem doanh thu");
+            System.out.print("\n\t0. Exit.");
+            System.out.print("\n\n\t\t========== END ==========");
+
+            System.out.print("\nNhap lua chon: ");
+            selection = scanner.nextInt() ;
+
+            if(selection < 0 || selection > 2)
+            {
+                System.out.print("\nLua chon khong hop le !");
+            }
+
+            else if(selection == 1) {
+                dskh.QuanlyKH();
+            }
+                
+            else if(selection == 2)
+            {
+                // Xem doanh thu
+            }
+
+            else
+                break;
+        }
+    }
 
     @Override
     public void Nhap(){

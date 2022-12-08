@@ -6,3 +6,5 @@ FT01;Ngoc Son;1200 Pham The Hien Q.8;13/11/1999;0976121233;Sale;5
 FT02;Tran Ha Tuan Kiet;332A Tran Binh Trong Q.5;8/7/2001;0908155687;Sale;20
 FT03;Nguyen Thi Thuy Tien;4 Nguyen Trai Q.5;12/6/1998;0913456745;Barista;27
 FT04;Dang Thi Tuyet;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Server;30
+MN10;Nguyen Thanh Dat;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Quan ly chi nhanh A;3
+MN15;Nguyen Ngoc Son;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Quan ly chi nhanh B;1
