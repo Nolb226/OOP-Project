@@ -22,7 +22,7 @@ public class FullTime extends NhanVien{
     public void setngaycong(int ngaycong){
         System.out.println("Moi nhap vao so ngay cong: ");
         do{
-            ngaycong = checkLoi.checkSo((sc.nextLine()));
+            ngaycong = checkLoi.checkSo((sc.next()));
             if(ngaycong == -1)
                 System.out.println("Du lieu nhap khong hop le, moi nhap lai !");
 
