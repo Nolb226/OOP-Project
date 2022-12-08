@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class MonAn {
     String maMon;
     String tenMon;
-    double giaTien;
+    Double giaTien;
+    Integer soLuong;
 
     public Scanner sc = new Scanner(System.in);
 
@@ -52,6 +53,14 @@ public class MonAn {
 
     public double getGiaTien() {
         return giaTien;
+    }
+
+    public void setSoLuong(Integer soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    public Integer getSoLuong() {
+        return soLuong;
     }
 
     public void Nhap() {
