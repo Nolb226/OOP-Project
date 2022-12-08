@@ -1,6 +1,8 @@
 package NHANVIEN;
 
 import CONNGUOI.*;
+import EXCEPTION.checkLoi;
+
 import java.util.Scanner;
 
 public class PartTime extends NhanVien{
@@ -30,7 +32,13 @@ public class PartTime extends NhanVien{
 
     public void setgiocong(int giocong){
         System.out.println("Moi nhap vao gio cong:");
-        giocong=Integer.parseInt(sc.nextLine());
+        do{
+            giocong = checkLoi.checkSo((sc.nextLine()));
+            if(giocong == -1)
+                System.out.println("Du lieu nhap khong hop le, moi nhap lai !");
+
+        }while(giocong == -1);
+
         this.giocong=giocong;
     }
 
@@ -39,7 +47,7 @@ public class PartTime extends NhanVien{
     }
 
     public double calSalary(){
-        return (getgiocong()*getluongcobantheogio())+150000;
+        return (getgiocong()*getLuongCoBanTheoGio())+150000;
     }
 
     @Override
