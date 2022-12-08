@@ -1,5 +1,6 @@
 package MONAN;
 
+import EXCEPTION.*;
 import INTERFACE.*;
 import java.io.*;
 import java.util.Arrays;
@@ -42,13 +43,14 @@ public class DanhSachMonAn extends MonAn implements DocGhiFile {
     @Override
     public void GhiFile() {
         try {
-            FileWriter fw = new FileWriter(fileName, true);
-            BufferedWriter bw = new BufferedWriter(fw);
-            for (MonAn i : foodList) {
-                bw.write(i.toString());
-                bw.close();
+            FileWriter fw = new FileWriter(fileName);
 
+            BufferedWriter bw = new BufferedWriter(fw);
+            for (int i = 0; i < length; i++) {
+                bw.write(foodList[i].toString());
             }
+            bw.close();
+            fw.close();
         } catch (Exception e) {
 
         }
@@ -58,25 +60,61 @@ public class DanhSachMonAn extends MonAn implements DocGhiFile {
     private Integer findLongestName() {
         Integer max = foodList[0].getTenMon().length();
         for (int i = 1; i < length; i++) {
-            max = max > foodList[0].getTenMon().length() ? max : foodList[0].getTenMon().length();
+
+            max = max > foodList[i].getTenMon().length() ? max : foodList[i].getTenMon().length();
+
         }
         return max;
     }
 
-    public void ThemMonAn() { // Them n mon an vao cuoi file
-        int n;
-        System.out.println("Nhap so luong mon an can them vao he thong: ");
-        n = Integer.parseInt(sc.nextLine());
-        MonAn[] maNew = new MonAn[n];
-        for (int i = 0; i < n; i++) {
-            maNew[i] = new MonAn();
-            System.out.printf("-----------Moi nhap thong tin mon an thu %d------------\n", i + 1);
-            maNew[i].Nhap();
-            GhiFile();
+    private void sortDanhSach() {
+        MonAn[] copy = Arrays.copyOf(foodList, length);
+        for (MonAn i : copy) {
+            foodList[Integer.parseInt(i.getMaMon().split("MH")[1]) - 1] = i;
         }
+        GhiFile();
     }
 
-    public void XoaMonAn() { // Xoa n mon an tren he thong
+    //
+    // Thêm
+    public void themMonAnCuoiDanhSach() {
+        int n;
+        System.out.println("Nhập số món ăn thêm vào một lúc ");
+        n = checkLoi.checkSo(sc.next());
+        n += length;
+        for (int i = length; i < n; i++) {
+            foodList = Arrays.copyOf(foodList, i + 1);
+            System.out.printf("-----------Mời nhập thông tin món ăn thứ %d trong danh sách------------\n", i + 1);
+            foodList[i] = new MonAn();
+            foodList[i].setMaMon("MH" + (i + 1));
+            foodList[i].Nhap();
+        }
+        length = n;
+        xuatDanhSach();
+        GhiFile();
+    }
+
+    public void themMonAnOViTriK(Integer vitri) {
+        foodList = Arrays.copyOf(foodList, length + 1);
+
+        for (int i = length; i > vitri - 1; i--) {
+
+            foodList[i] = foodList[i - 1].clone();
+            foodList[i].setMaMon(String.format("MH%02d", i + 1));
+        }
+
+        foodList[vitri - 1].Nhap();
+        foodList[vitri - 1].setMaMon(String.format("MH%02d", vitri));
+
+        System.out.println(vitri - 1);
+        length++;
+        xuatDanhSach();
+        // GhiFile();
+    }
+
+    //
+    // Xoá
+    public void xoaMonAn() { // Xoa n mon an tren he thong
         int n;
         System.out.println("Moi nhap vao so luong mon an can xoa tren he thong: ");
         n = Integer.parseInt(sc.nextLine());
@@ -93,29 +131,40 @@ public class DanhSachMonAn extends MonAn implements DocGhiFile {
                 }
             }
         }
-        File fp = new File(fileName);
-        fp.delete(); // Xoa file cu
-        for (int k = 0; k < length; k++) {
-            GhiFile();
+        GhiFile();
+    }
+
+    //
+    // Tim kiem
+    public void timKiemMaMon(String input) {
+        for (int i = 0; i < length; i++) {
+            if (foodList[i].getMaMon().equals(input.trim())) {
+                xuatMotMonAn(foodList[i]);
+            }
         }
     }
 
-    public void findFoodId() {
-        
+    public void tiemKiemTenMonAn(String input) {
+        for (int i = 0; i < length; i++) {
+            if (foodList[i].getTenMon().equalsIgnoreCase(input.trim())) {
+                xuatMotMonAn(foodList[i]);
+            }
+        }
     }
 
-    public void TimKiemMonAn() {
+    public void timKiemMonAn() {
         do {
             while (true) {
                 System.out.println("\n1.Tìm kiếm theo mã Món Ăn\n\n2.Tìm kiếm theo tên Món Ăn\n\n3.Tìm kiếm theo giá");
                 System.out.println("Nhập lựa chọn :");
                 String selection = sc.next();
-                Integer c = Integer.parseInt(selection);
+                Integer c = checkLoi.checkSo(selection);
 
                 switch (c) {
                     case 1: {
-                        System.out.println("Chọn 1");
-
+                        System.out.println("1.Tìm kiếm theo mã Món Ăn");
+                        String id = sc.next();
+                        timKiemMaMon(id);
                         break;
                     }
                     case 2: {
@@ -141,16 +190,58 @@ public class DanhSachMonAn extends MonAn implements DocGhiFile {
         // } while (sc.next().trim().charAt(0) != 'T');
     }
 
-    public void XuatDanhSach() {
-        Integer longestName = findLongestName();
-        System.out.println("=================Mon An====================");
-        System.out.printf(" %-10s| %-" + longestName + "s | %10s\n\n", "Mã Món", "Tên Món", "Giá Tiền");
-        for (int i = 0; i < length; i++) {
-            System.out.printf("-----------------------------------\rMón ăn số " + (i + 1) + "\n\n");
-            System.out.printf(" %-10s %-" + longestName + "s %10.3fVNĐ  \n\n", foodList[i].getMaMon(),
-                    foodList[i].getTenMon(), foodList[i].getGiaTien());
+    //
+    // Xuat
+    public void keVienTren(int space) {
+        for (int i = 0; i <= space + 1; i++) {
+            System.out.print("_");
         }
-        System.out.println("===========================================");
+        System.out.println();
+    }
+
+    public void keVienDuoi(int space) {
+        for (int i = 0; i <= space + 1; i++) {
+            System.out.print("‾");
+        }
+        System.out.println();
+    }
+
+    public void xuatMotMonAn(MonAn i) {
+        Integer spaceName = findLongestName();
+        int space = (spaceName + 40);
+        ///
+        System.out.printf("%" + spaceName + "s   Món ăn \n", " ");
+        keVienTren(space);
+        System.out.printf("  %" + space + "s\r| %-10s| %-" + spaceName + "s | %" + spaceName + "s\n", "|", " Mã Món","Tên Món", "Giá Tiền");
+        System.out.printf("| %" + space + "s\n\r", "|");
+        System.out.printf( "  %" + space + "s\r-----------------------------------\r| Món ăn số " + i.getMaMon().split("MH")[1]+ "\n","|");
+        System.out.printf("| %" + space + "s\n\r", "|");
+        System.out.printf("  %" + space + "s\r| %-10s %-" + spaceName + "s %" + spaceName + ".1fVNĐ \n", "|",i.getMaMon(), i.getTenMon(), i.getGiaTien());
+        System.out.printf("| %" + space + "s\n\r", "|");
+        keVienDuoi(space);
+    }
+
+    public void xuatDanhSach() {
+        Integer spaceName = findLongestName();
+        int space = (spaceName + 40);
+        ///
+        System.out.printf("%" + spaceName + "s   Danh sách món ăn \n", " ");
+        keVienTren(space);
+        System.out.printf("  %" + space + "s\r| %-10s| %-" + spaceName + "s | %" + spaceName + "s\n", "|", " Mã Món",
+                "Tên Món", "Giá Tiền");
+        System.out.printf("| %" + space + "s\n\r", "|");
+
+        ///
+        for (int i = 0; i < length; i++) {
+            System.out.printf("  %" + space + "s\r-----------------------------------\r| Món ăn số " + (i + 1) + "\n","|");
+            System.out.printf("| %" + space + "s\n\r", "|"); // Render |       text            |
+            System.out.printf("  %" + space + "s\r| %-10s %-" + spaceName + "s %" + spaceName + ".1fVNĐ \n", "|",foodList[i].getMaMon(), foodList[i].getTenMon(), foodList[i].getGiaTien());
+            System.out.printf("| %" + space + "s\n\r", "|");
+
+        }
+        keVienDuoi(space);
+        ///
+
         System.out.print("\n");
     }
 
@@ -213,6 +304,12 @@ public class DanhSachMonAn extends MonAn implements DocGhiFile {
     public static void main(String[] args) {
         DanhSachMonAn testdrive = new DanhSachMonAn();
 
-        testdrive.TimKiemMonAn();
+        // testdrive.TimKiemMonAn();
+        // testdrive.xuatDanhSach();
+        // testdrive.sortDanhSach();
+        // testdrive.themMonAnCuoiDanhSach();
+        // testdrive.themMonAnOViTriK(6);
+        testdrive.tiemKiemTenMonAn("  banh bao  ");
+
     }
 }
