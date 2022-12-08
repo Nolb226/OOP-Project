@@ -104,7 +104,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
 
                 // Check loai nhan vien
 
-                System.out.println(stt);
+                // System.out.println(stt);
 
                 if(maNV.contains("PT")){
                     String congviec;

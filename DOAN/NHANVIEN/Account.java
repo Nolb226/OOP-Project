@@ -1,17 +1,17 @@
 package NHANVIEN;
 
 import java.util.Scanner;
-import NHANVIEN.*;
+// import NHANVIEN.*;
 import EXCEPTION.*;
 public class Account {
     public String userName;
     public String password;
     Scanner scanner = new Scanner(System.in);
 
-    // public Account(String userName,String password ){
-    //     this.userName=userName;
-    //     this.password=password;
-    // } 
+    public Account(String userName ){
+        this.userName=userName;
+        this.password="123456";
+    } 
 
     public void setUserName(String userName) {
         this.userName = userName;

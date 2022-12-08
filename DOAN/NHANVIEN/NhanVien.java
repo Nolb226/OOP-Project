@@ -18,6 +18,12 @@ public abstract class NhanVien extends ConNguoi {
         taiKhoan=new Account();
     }
 
+    public NhanVien(String tk ) {
+        super();
+        this.maNV = null;
+        taiKhoan=new Account(tk);
+    }
+
     public String getpassword() {
         return taiKhoan.password;
     }
