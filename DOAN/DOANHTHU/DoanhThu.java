@@ -1,5 +1,6 @@
 package DOANHTHU;
 
+
 import NHANVIEN.*;
 import CONNGUOI.*;
 
@@ -8,7 +9,6 @@ public class DoanhThu{
     private double out;
     private double in;
 
-    Thue t=new Thue();
     DanhSachNhanVien dsnv=new DanhSachNhanVien();
 
     public DoanhThu() {
@@ -64,12 +64,6 @@ public class DoanhThu{
 
     public String toString() {
         return ngay.toString() + "," + out + "," + in;
-    }
-
-    public void tachTT(String[] word) {
-        ngay.Tachtt(word[0]);
-        setOut(Double.parseDouble(word[1]));
-        setIn(Double.parseDouble(word[2]));
     }
 
     public void moreIN(double newIn) { //Cong them vao tien ban hang

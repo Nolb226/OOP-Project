@@ -1,11 +1,10 @@
 package DOANHTHU;
 
-import KHACHHANG.DanhSachKhachHang;
-import MONAN.*;
-import CONNGUOI.*;
-import KHACHHANG.*;
-import NHANVIEN.DanhSachNhanVien;
+
+import CONNGUOI.Date;
+import KHACHHANG.KhachHang;
 import NHANVIEN.NhanVien;
+import MONAN.MonAn;
 
 public abstract class Phieu {
     protected String id;
@@ -80,12 +79,11 @@ public abstract class Phieu {
 
     public abstract void inPhieu();
 
-    public abstract void TachTT(String data, DanhSachNhanVien a, DanhSachMonAn b, DanhSachKhachHang c);
-
     public abstract String toString();
 
     public abstract void xuat();
+
+
+
 }
-
-
 

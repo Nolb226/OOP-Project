@@ -1,18 +1,19 @@
 package DOANHTHU;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.PrintWriter;
-import java.nio.file.Files;
 
-import INTERFACE.DocGhiFile;
+import INTERFACE.*;
+import java.io.*;
+import java.util.Arrays;
+import CONNGUOI.*;
 
 public class DoanhThuThang implements DocGhiFile {
-    private DoanhThu DTList[];
+    private DoanhThu DTList[] = new DoanhThu[0];
     private int n;
-    private String tenFILE = "DOANHTHU/DT.txt";
+    private static int length;
+    private String fileName = "DOANHTHU/DT.txt";
 
     public DoanhThuThang() {
+        DocFile();
         DTList = new DoanhThu[30];
         n = 0;
     }
@@ -35,37 +36,43 @@ public class DoanhThuThang implements DocGhiFile {
         return DTList;
     }
 
+    @Override
     public void DocFile() {
-        File fdt = new File(tenFILE);
         try {
-            BufferedReader brdt = Files.newBufferedReader(fdt.toPath());
-            while (true) {
-                String s = brdt.readLine();
-                if (s == null) {
-                    break;
-                } else {
-                    String[] word = s.split(",");
-                    DoanhThu a = new DoanhThu();
-                    a.tachTT(word);
-                    addDT(a);
-                }
+            String s;
+            FileReader fr = new FileReader(fileName);
+            BufferedReader br = new BufferedReader(fr);
+            while ((s = br.readLine()) != null) {
+                String temp[] = s.split(";");
+                Date date = new Date();
+                date.xulyngay(temp[0]);
+                Double cash_in = Double.parseDouble(temp[1]);
+                Double cash_out = Double.parseDouble(temp[2]);
+                DTList = Arrays.copyOf(DTList, length + 1);
+                DTList[length] = new DoanhThu(date, cash_in, cash_out);
+                System.out.println(DTList[length]);
+                length++;
             }
-            brdt.close();
-        } catch (Exception e) {
-            System.out.println("Loi doc file doanh thu.");
-            System.out.println(e.toString());
+            br.close();
+            fr.close();
+        } 
+        catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Loi doc du lieu tu file!");
         }
     }
 
     public void GhiFile() {
         try {
-            PrintWriter pw = new PrintWriter(tenFILE);
+            FileWriter fw = new FileWriter(fileName);
+            BufferedWriter bw = new BufferedWriter(fw);
             for (int i = 0; i < n; i++) {
-                pw.println(DTList[i].toString());
+                bw.write(DTList[i].toString());
             }
-            pw.flush();
-            pw.close();
-        } catch (Exception e) {
+            bw.flush();
+            fw.close();
+        } 
+        catch (Exception e) {
             System.out.println("Loi ghi file doanh thu.");
             System.out.println(e.toString());
         }
@@ -103,7 +110,7 @@ public class DoanhThuThang implements DocGhiFile {
         System.out.println("|                                 THONG KE                                  |");
         System.out.println("+------------+--------------------+--------------------+--------------------+");
         System.out.print("|");
-        System.out.printf("%-12s", "Ngay");
+        System.out.printf("%-12s", "Ngay thang");
         System.out.print("|");
         System.out.printf("%-20s", "Tien nhap");
         System.out.print("|");
