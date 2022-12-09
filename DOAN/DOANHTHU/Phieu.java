@@ -2,8 +2,11 @@ package DOANHTHU;
 
 
 import CONNGUOI.Date;
+import KHACHHANG.DanhSachKhachHang;
 import KHACHHANG.KhachHang;
+import NHANVIEN.DanhSachNhanVien;
 import NHANVIEN.NhanVien;
+import MONAN.DanhSachMonAn;
 import MONAN.MonAn;
 
 public abstract class Phieu {
@@ -72,6 +75,8 @@ public abstract class Phieu {
     }
 
     public abstract void taoPhieu(NhanVien a, KhachHang b);
+
+    public abstract void TachTT(String data, DanhSachNhanVien a, DanhSachMonAn b, DanhSachKhachHang c);
 
     public abstract void addSP(MonAn a, int sl);
 

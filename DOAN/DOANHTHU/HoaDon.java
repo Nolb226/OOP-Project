@@ -160,6 +160,45 @@ public class HoaDon extends Phieu {
     }
 
     @Override
+    public void TachTT(String pn, DanhSachNhanVien a, DanhSachMonAn b, DanhSachKhachHang c) {
+        String[] word = pn.split(",");
+        Date.xulyngay(word[0]);
+        setId(word[1]);
+        if (a.TimKiemNhanVienReturnNV(word[2]) != null) {
+            if (word[2].indexOf("NVM") == 0) {
+                nv = new Manager((Manager) a.TimKiemNhanVienReturnNV(word[2]));
+            } else if (word[2].indexOf("NVF") == 0) {
+                nv = new FullTime((FullTime) a.TimKiemNhanVienReturnNV(word[2]));
+            } else if (word[2].indexOf("NVP") == 0) {
+                nv = new PartTime((PartTime) a.TimKiemNhanVienReturnNV(word[2]));
+            }
+        } else {
+            nv = null;
+        }
+        if (c.SearchKH(word[3])== null) {
+            kh = null;
+        } else {
+            kh = new KhachHang(c.SearchKH(word[3]));
+        }
+        setN(word.length - 4);
+        sp = new MonAn[n];
+        soLuong = new int[n];
+        int j = 4;
+        int i = 0;
+        while (j < word.length) {
+            String[] k = word[j].split("#");
+            MonAn temp_MonAn;
+            if ((temp_MonAn=(b.timKiemMaMon(k[0]).clone())) != null) {
+                    sp[i] = temp_MonAn.clone();
+                    soLuong[i] = Integer.parseInt(k[1]);
+                    i++;
+                }
+                j++;
+            }
+            setN(i);
+        }
+
+    @Override
     public String toString() {
         String s;
         if (nv != null) {

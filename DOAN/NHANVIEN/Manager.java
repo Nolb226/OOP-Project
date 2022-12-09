@@ -103,6 +103,7 @@ public class Manager extends NhanVien{
             System.out.print("\n\t5. Xoa nhan vien");
             System.out.print("\n\t6. Quan ly khach hang");
             System.out.print("\n\t7. Xem doanh thu");
+            System.out.print("\n\t8. Quan ly tai khoan ca nhan");
             System.out.print("\n\t0. Exit.");
             System.out.print("\n\n\t\t========== END ==========");
 
@@ -160,6 +161,11 @@ public class Manager extends NhanVien{
             else if(selection == 7)
             {
                 // Xem doanh thu
+            }
+
+            else if(selection == 8)
+            {
+                taiKhoan.doi_pass();
             }
 
             else

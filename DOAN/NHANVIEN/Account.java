@@ -26,6 +26,14 @@ public class Account {
         this.password = password;
     }
 
+    public String getPassword() {
+        return password;
+    }
+    
+    public String getUserName() {
+        return userName;
+    }
+
     public int Kt_account(DanhSachNhanVien a)
     {   
         do{
