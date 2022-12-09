@@ -14,8 +14,7 @@ import DOANHTHU.HoaDon;
 public class DanhSachMonAn implements DocGhiFile {
 
     private MonAn[] foodList = new MonAn[0];
-    private MonAn[] maOrder;
-    private static int length;
+    private int length=0;
     private static Scanner sc = new Scanner(System.in);
     public static String fileName = "DOAN/MONAN/MonAn";
 
@@ -53,6 +52,7 @@ public class DanhSachMonAn implements DocGhiFile {
     }
 
     public DanhSachMonAn() {
+        length=0;
         DocFile();
     }
 
@@ -228,7 +228,6 @@ public class DanhSachMonAn implements DocGhiFile {
     // Xoá
     public void xoaMotMonAn(MonAn a) {
         for (MonAn i : foodList) {
-            System.out.println(i.getMaMon() == a.getMaMon());
             if (i.getMaMon() == a.getMaMon()) {
                 System.out.println(a.getMaMon());
                 Integer vitri = Integer.parseInt(a.getMaMon().split("MH")[1]) - 1;
@@ -299,11 +298,11 @@ public class DanhSachMonAn implements DocGhiFile {
     public MonAn timKiemMaMon(String input) {
         MonAn a = new MonAn();
         for (int i = 0; i < length; i++) {
-            if (foodList[i].getMaMon().equals(input.trim())) {
-                a = foodList[i].clone();
-                System.out.println(a);
+                        if (foodList[i].getMaMon().equals(input.trim())) {
+                        a = foodList[i].clone();
             }
         }
+        
         return a;
     }
 
@@ -749,7 +748,7 @@ public class DanhSachMonAn implements DocGhiFile {
 
     public static void main(String[] args) {
         DanhSachMonAn testdrive = new DanhSachMonAn();
-        testdrive.menu();
+        // testdrive.menu();
         // testdrive.DocFile();
         // testdrive.order();
         // testdrive.xuatDanhSach();
@@ -760,5 +759,6 @@ public class DanhSachMonAn implements DocGhiFile {
         // testdrive.themMonAnOViTriK(6);
         // testdrive.xuatMotMonAn(testdrive.tiemKiemTenMonAn());
         // testdrive.themMonAn();
-    }
+testdrive.timKiemMaMon("MH08")  ;
+}
 }

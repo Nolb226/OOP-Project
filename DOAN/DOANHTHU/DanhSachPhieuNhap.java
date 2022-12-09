@@ -1,6 +1,5 @@
 package DOANHTHU;
 
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.PrintWriter;
@@ -27,6 +26,7 @@ public class DanhSachPhieuNhap implements DocGhiFile {
         PNlist = new PhieuNhap[100];
         n = 0;
     }
+
     public DanhSachPhieuNhap(DanhSachMonAn b, DanhSachNhanVien c) {
         DSSP = new DanhSachMonAn(b.getSpList());
         DSNV = new DanhSachNhanVien(c.getNVList());
@@ -82,7 +82,7 @@ public class DanhSachPhieuNhap implements DocGhiFile {
     public void GhiFile() {
         try {
             PrintWriter pw = new PrintWriter(tenFile);
-            for (int i=0;i<n;i++) {
+            for (int i = 0; i < n; i++) {
                 pw.println(PNlist[i].toString());
             }
             pw.flush();
@@ -122,11 +122,11 @@ public class DanhSachPhieuNhap implements DocGhiFile {
             }
         }
         pn = new PhieuNhap(mpn);
-        pn.taoPhieu(a,null);
+        pn.taoPhieu(a, null);
         do {
             System.out.print("Ma san pham muon nhap them: ");
             String m = input.nextLine();
-            if(dssp.timKiemMaMon(m)==null) {
+            if (dssp.timKiemMaMon(m) == null) {
                 System.out.println("Khong tim thay san pham.");
             } else {
                 dssp.timKiemMaMon(m).Xuat();
@@ -147,7 +147,7 @@ public class DanhSachPhieuNhap implements DocGhiFile {
         pn.inPhieu();
         System.out.print("Nhan bat ki de luu, 'h' de huy phieu nhap: ");
         if (checkLoi.continueString(input.nextLine()) != 'h') {
-            for(int i=0;i<pn.sp.length;i++) {
+            for (int i = 0; i < pn.sp.length; i++) {
                 dssp.timKiemMaMon(pn.getSp()[i].getMaMon()).setSoLuong(pn.getSoLuong()[i]);
             }
             DT.moreOut(pn.price());
@@ -242,16 +242,16 @@ public class DanhSachPhieuNhap implements DocGhiFile {
         boolean k = false;
         if (checkLoi.checkNgay(dk)) {
             title();
-            for (int i=0;i<n;i++) {
+            for (int i = 0; i < n; i++) {
                 if (PNlist[i].getDate().toString().equals(dk)) {
                     PNlist[i].xuat();
                     k = true;
                 }
             }
             System.out.println("+------------+------------+-------------------------+--------------------+");
-        } else if (dk.indexOf("NV") == 0) {
+        } else if (dk.indexOf("MN") == 0) {
             title();
-            for (int i=0;i<n;i++) {
+            for (int i = 0; i < n; i++) {
                 if (PNlist[i].getNv().getMaNV().equalsIgnoreCase(dk)) {
                     PNlist[i].xuat();
                     k = true;
