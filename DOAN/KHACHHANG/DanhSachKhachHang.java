@@ -30,6 +30,7 @@ public class DanhSachKhachHang implements DocGhiFile {
                 "KH9077,Nguyen Thanh dat,20/5/2003,0365412897,46 Hoc Mon"};
     public DanhSachKhachHang() {
         List = new ArrayList<KhachHang>();
+        DocFile();
     }
 
     public DanhSachKhachHang(ArrayList<KhachHang> a) {
