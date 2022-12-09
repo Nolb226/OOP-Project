@@ -162,6 +162,19 @@ public class DanhSachKhachHang implements DocGhiFile {
         return List.get(index);
     }
 
+    public KhachHang SearchKH(String mkh)
+    {
+        int index=-1;
+        for(int i=0;i<List.size();i++)
+        {
+            if(List.get(i).getMSKH().equalsIgnoreCase(mkh))
+            {
+                index=i;
+            }
+        }
+        return List.get(index);
+    }
+
     public void themKH(KhachHang temp)
     {
         List.add(temp);
