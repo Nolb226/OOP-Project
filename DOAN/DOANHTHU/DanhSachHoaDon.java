@@ -1,8 +1,8 @@
 package DOANHTHU;
 
-
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.util.Random;
@@ -17,9 +17,9 @@ import MONAN.DanhSachMonAn;
 public class DanhSachHoaDon implements DocGhiFile {
     private HoaDon[] HDlist;
     private int n;
-    private DanhSachMonAn DSSP;
-    private DanhSachNhanVien DSNV;
-    private DanhSachKhachHang DSKH;
+    private DanhSachMonAn DSSP = new DanhSachMonAn();
+    private DanhSachNhanVien DSNV = new DanhSachNhanVien();
+    private DanhSachKhachHang DSKH = new DanhSachKhachHang();
     static Scanner input = new Scanner(System.in);
     private String tenFile = "DOAN/DOANHTHU/DSHD.txt";
 
@@ -64,8 +64,8 @@ public class DanhSachHoaDon implements DocGhiFile {
     }
 
     public void DocFile() {
+
         File fhd = new File(tenFile);
-        System.out.println(fhd.toPath());
         try {
             BufferedReader brhd = Files.newBufferedReader(fhd.toPath());
             String s = null;
@@ -73,25 +73,26 @@ public class DanhSachHoaDon implements DocGhiFile {
                 s = brhd.readLine();
                 if (s == null) {
                     break;
-                } 
-                else {
+                } else {
                     HoaDon a = new HoaDon();
                     a.TachTT(s, DSNV, DSSP, DSKH);
                     add(a);
                 }
             }
             brhd.close();
-        } 
-        catch (Exception e) {
-            System.out.println("Loi doc file hoa don");
+        } catch (IOException e) {
+
             System.out.println(e.toString());
+            System.out.println("Loi doc file hoa don");
+
         }
+        System.out.println(n);
     }
 
     public void GhiFile() {
         try {
             PrintWriter pw = new PrintWriter(tenFile);
-            for (int i=0;i<n;i++) {
+            for (int i = 0; i < n; i++) {
                 pw.println(HDlist[i].toString());
             }
             pw.flush();
@@ -131,7 +132,7 @@ public class DanhSachHoaDon implements DocGhiFile {
             }
         }
         hd = new HoaDon(mhd);
-        if(mkh == null) {
+        if (mkh == null) {
             hd.taoPhieu(a, null);
         } else {
             hd.taoPhieu(a, dskh.SearchKH(mkh));
@@ -139,7 +140,7 @@ public class DanhSachHoaDon implements DocGhiFile {
         do {
             System.out.print("Ma san pham: ");
             String m = input.nextLine();
-            if(dssp.timKiemMaMon(m)==null) {
+            if (dssp.timKiemMaMon(m) == null) {
                 System.out.println("Khong tim thay san pham.");
             } else {
                 dssp.timKiemMaMon(m).Xuat();
@@ -164,7 +165,7 @@ public class DanhSachHoaDon implements DocGhiFile {
         hd.inPhieu();
         System.out.print("Nhan bat ki de luu, 'h' de huy hoa don: ");
         if (checkLoi.continueString(input.nextLine()) != 'h') {
-            for(int i=0;i<hd.sp.length;i++) {
+            for (int i = 0; i < hd.sp.length; i++) {
                 dssp.timKiemMaMon(hd.getSp()[i].getMaMon()).setSoLuong(0 - hd.getSoLuong()[i]);
             }
             DT.moreIN(hd.price());
@@ -226,7 +227,7 @@ public class DanhSachHoaDon implements DocGhiFile {
             System.out.println("Danh sach trong!");
         } else {
             title();
-            for (int i=0;i<n;i++) {
+            for (int i = 0; i < n; i++) {
                 HDlist[i].xuat();
             }
             System.out.println("+------------+------------+---------------+---------------+--------------------+");
@@ -237,10 +238,11 @@ public class DanhSachHoaDon implements DocGhiFile {
         xuatHD();
         String mhd;
         do {
-            System.out.print("Nhap ma hoa don de xem chi tiet, ma nhan vien, ma khach hang, ngay de loc, 't' de thoat: ");
+            System.out
+                    .print("Nhap ma hoa don de xem chi tiet, ma nhan vien, ma khach hang, ngay de loc, 't' de thoat: ");
             mhd = input.nextLine();
             if (checkLoi.continueString(mhd) != 't') {
-                if(mhd.contains("HD")) {
+                if (mhd.contains("HD")) {
                     if (searchHoaDon(mhd) != null) {
                         System.out.println("Ket qua: ");
                         searchHoaDon(mhd).inPhieu();
@@ -261,7 +263,7 @@ public class DanhSachHoaDon implements DocGhiFile {
         boolean k = false;
         if (checkLoi.checkNgay(dk)) {
             title();
-            for (int i=0;i<n;i++) {
+            for (int i = 0; i < n; i++) {
                 if (HDlist[i].getDate().toString().equals(dk)) {
                     HDlist[i].xuat();
                     k = true;
@@ -270,17 +272,17 @@ public class DanhSachHoaDon implements DocGhiFile {
             System.out.println("+------------+------------+---------------+---------------+--------------------+");
         } else if (dk.indexOf("NV") == 0) {
             title();
-            for (int i=0;i<n;i++) {
+            for (int i = 0; i < n; i++) {
                 if (HDlist[i].getNv().getMaNV().equalsIgnoreCase(dk)) {
                     HDlist[i].xuat();
                     k = true;
                 }
             }
             System.out.println("+------------+------------+---------------+---------------+--------------------+");
-        } else if(dk.indexOf("KH")==0) {
+        } else if (dk.indexOf("KH") == 0) {
             title();
-            for (int i=0;i<n;i++) {
-                if(HDlist[i].getKh() != null) {
+            for (int i = 0; i < n; i++) {
+                if (HDlist[i].getKh() != null) {
                     if (HDlist[i].getKh().getMSKH().equalsIgnoreCase(dk)) {
                         HDlist[i].xuat();
                         k = true;

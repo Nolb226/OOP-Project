@@ -94,6 +94,16 @@ public class checkLoi {
         }
     }
 
+    public static Double checkSoThuc(String s) {
+        try {
+            double k=Double.parseDouble(s);
+            return k;
+
+        } catch (Exception e) {
+            return -1.0;
+        }
+    }
+    
     public static Boolean checkAddress(String s) {
         if (s == "") {
             return false;

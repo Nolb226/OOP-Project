@@ -42,7 +42,6 @@ public class DoanhThuThang implements DocGhiFile {
             FileReader fr = new FileReader(fileName);
             BufferedReader br = new BufferedReader(fr);
             while ((s = br.readLine()) != null) {
-                System.out.println(s);
                 String temp[] = s.split(",");
                 Date date = new Date();
                 date.xulyngay(temp[0]);
@@ -52,11 +51,10 @@ public class DoanhThuThang implements DocGhiFile {
                 DTList[n] = new DoanhThu(date, cash_in, cash_out);
                 n++;
             }
-            
+
             br.close();
             fr.close();
-        } 
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Loi doc file doanh thu!");
         }
@@ -71,8 +69,7 @@ public class DoanhThuThang implements DocGhiFile {
             }
             bw.flush();
             fw.close();
-        } 
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Loi ghi file doanh thu.");
             System.out.println(e.toString());
         }
@@ -119,15 +116,15 @@ public class DoanhThuThang implements DocGhiFile {
         System.out.printf("%-20s", "Lai suat");
         System.out.println("|");
         System.out.println("+------------+--------------------+--------------------+--------------------+");
-        for(int i=0;i<n;i++) {
+        for (int i = 0; i < n; i++) {
             DTList[i].xuatDT();
         }
         System.out.println("+---------------------------------------------------------------------------+");
-        
+
     }
 
     public void updateDT(DoanhThu DT) {
-        DTList[n-1].moreIN(DT.getIn());
-        DTList[n-1].moreOut(DT.getOut());
+        DTList[n - 1].moreIN(DT.getIn());
+        DTList[n - 1].moreOut(DT.getOut());
     }
 }

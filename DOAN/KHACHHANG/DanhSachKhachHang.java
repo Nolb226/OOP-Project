@@ -19,9 +19,18 @@ public class DanhSachKhachHang implements DocGhiFile {
     String[] data={"KH1234,Nguyen Ngoc Son,20/5/2003,0898504720,49/1Q NHC MyHue TrungChanh HocMon.",
                 "KH2345,Nguyen Ngoc Son,20/5/2003,0898504720,49/1Q NHC MyHue TrungChanh HocMon.",
                 "KH3456,Nguyen Truong Khanh Hoang,20/5/2003,0898504720,49/1Q NHC MyHue TrungChanh HocMon.",
-                "KH4567,Nguyen Thanh Dat,20/5/2003,0898504720,49/1Q NHC MyHue TrungChanh HocMon."};
+                "KH4567,Nguyen Thanh Dat,20/5/2003,0898504720,49/1Q NHC MyHue TrungChanh HocMon.",
+                "KH4445,Nguyen Ngoc Sang,20/4/2003,0895544253,Q8.",
+                "KH6010,Vo Hoang Tu,29/4/2003,0954822362,Hoc Mon",
+                "KH4240,Nguyen Thanh Dat,16/5/2003,0956115809,24/10 Dang Thuc Vinh Dong Thanh Hoc MonHCM.",
+                "KH1715,son ,20/5/2003,0987456321,amhbvdjhasd",
+                "KH1329,dat,16/5/2003,0985632145,sajdnaslkndlkas",
+                "KH8641,thai dui,6/7/2001,0985564753,ljbsdljasl d",
+                "KH8268,hoang map,6/2/2002,0956783214,lajsbdlasd",
+                "KH9077,Nguyen Thanh dat,20/5/2003,0365412897,46 Hoc Mon"};
     public DanhSachKhachHang() {
         List = new ArrayList<KhachHang>();
+        DocFile();
     }
 
     public DanhSachKhachHang(ArrayList<KhachHang> a) {
@@ -173,7 +182,11 @@ public class DanhSachKhachHang implements DocGhiFile {
                 index=i;
             }
         }
-        return List.get(index);
+        if(index == -1) {
+            return null;
+        }  else {
+            return List.get(index);
+        }
     }
 
     public void themKH(KhachHang temp)
