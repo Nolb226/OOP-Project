@@ -46,17 +46,21 @@ public class DanhSachHoaDon implements DocGhiFile {
         this.HDlist = orther.HDlist;
         this.n = orther.n;
     }
-    
-    public void add(HoaDon a) {
-        if (n == 100) {
-            remotePN();
-            HDlist[n - 1] = new HoaDon();
-            HDlist[n - 1].copyHD(a);
-        } else {
-            n++;
-            HDlist[n - 1] = new HoaDon();
-            HDlist[n - 1].copyHD(a);
-        }
+
+    public void setHDlist(HoaDon[] hdlist) {
+        this.HDlist = hdlist;
+    }
+
+    public void setN(int n) {
+        this.n = n;
+    }
+
+    public HoaDon[] getHDlist() {
+        return HDlist;
+    }
+
+    public int getN() {
+        return n;
     }
 
     public void DocFile() {
@@ -98,7 +102,17 @@ public class DanhSachHoaDon implements DocGhiFile {
         }
     }
 
-
+    public void add(HoaDon a) {
+        if (n == 100) {
+            remotePN();
+            HDlist[n - 1] = new HoaDon();
+            HDlist[n - 1].copyHD(a);
+        } else {
+            n++;
+            HDlist[n - 1] = new HoaDon();
+            HDlist[n - 1].copyHD(a);
+        }
+    }
 
     public void remotePN() {
         for (int i = 0; i < 99; i++) {

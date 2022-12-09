@@ -249,7 +249,7 @@ public class DanhSachPhieuNhap implements DocGhiFile {
                 }
             }
             System.out.println("+------------+------------+-------------------------+--------------------+");
-        } else if (dk.indexOf("NV") == 0) {
+        } else if (dk.indexOf("MN") == 0) {
             title();
             for (int i=0;i<n;i++) {
                 if (PNlist[i].getNv().getMaNV().equalsIgnoreCase(dk)) {

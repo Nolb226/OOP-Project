@@ -35,16 +35,19 @@ public class QuanLyDoanhThu {
 
             switch (choice) {
                 case 1: {
+                    
                     DSPN.xemPhieuNhap();
                     break;
                 }
 
                 case 2: {
+                    
                     DSHD.xemHoaDon();
                     break;
                 }
 
                 case 3: {
+                    
                     DTT.thongKe();
                     System.out.print("Nhan phim bat ki de tiep tuc.");
                     input.nextLine();
