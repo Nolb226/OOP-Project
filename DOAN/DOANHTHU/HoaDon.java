@@ -48,13 +48,13 @@ public class HoaDon extends Phieu {
 
     @Override
     public void taoPhieu(NhanVien a, KhachHang b) {
-        // if (a instanceof Manager) {
-        // nv = new Manager((Manager) a);
-        // } else if (a instanceof FullTime) {
-        // nv = new FullTime((FullTime) a);
-        // } else if (a instanceof PartTime) {
-        // nv = new PartTime((PartTime) a);
-        // }
+        if (a instanceof Manager) {
+        nv = new Manager((Manager) a);
+        } else if (a instanceof FullTime) {
+        nv = new FullTime((FullTime) a);
+        } else if (a instanceof PartTime) {
+        nv = new PartTime((PartTime) a);
+        }
         Date.Today();
         if (b != null) {
             kh = new KhachHang(b);

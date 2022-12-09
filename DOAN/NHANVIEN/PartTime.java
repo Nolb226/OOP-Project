@@ -14,6 +14,12 @@ public class PartTime extends NhanVien{
     public  PartTime(){
     }
 
+    public PartTime(PartTime a){
+        super(a.getMaNV(),a.getHoten(),a.getdiachi(),a.getNgaySinh(),a.getSdt());
+        this.giocong=a.giocong;
+        this.congviec=a.congviec;
+    }
+
     public  PartTime(String maNV, String hoten, String diachi, Date namsinh, String sdt, String congviec, int giocong){
         super(maNV, hoten, diachi, namsinh, sdt);
         this.giocong=giocong;
