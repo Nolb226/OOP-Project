@@ -513,7 +513,20 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
         return -1;
     }
 
-    
+    public NhanVien TimKiemNhanVienReturnNV(String input){
+        int count = 0;
+
+        for(int i = 0; i < stt; i++){
+            if(dsnv[i].getMaNV().equalsIgnoreCase(input)){
+                return dsnv[i];
+            }
+        }
+
+        if(count == 0) {
+            System.out.println("Khong tim thay nhan vien.");
+        }
+        return null;
+    }
 
     public static void main(String[] args) {
         DanhSachNhanVien ds = new DanhSachNhanVien();
