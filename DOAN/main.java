@@ -20,6 +20,7 @@ public class main {
                                 "|1.Dang nhap                               |\n"+
                                 "|2.Thoat                                   |\n"+
                                 "|------------------------------------------|\n");
+            System.out.println("Nhap lua chon: ");
             choose=checkLoi.checkSo(scanner.nextLine());
             switch (choose) {
                 case 1:
