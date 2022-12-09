@@ -10,11 +10,23 @@ import CONNGUOI.*;
 import INTERFACE.*;
 import EXCEPTION.*;;
 
-public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
+public class DanhSachNhanVien implements DocGhiFile{
     public NhanVien[] dsnv; 
     public int stt;
 
-    public static String fileNameNV = "DOAN/NHANVIEN/NhanVien.txt";
+    public static String fileNameNV = "DOAN/NHANVIEN/NhaNVien.txt";
+
+    String[] data = { "PT01;Nguyen Nhat Khang;61 Pham Hung Q.Binh Chanh;12/5/2002;0907568784;Sale ;30",
+                    "PT02;Truong Tri Tai;2190 Pham The Hien Q.8;11/6/2002;0982315522;Sale ;35",
+                    "PT05;Pham Nhat Duy;40 Bong Sao Q.8;1/1/2002;0963156452;Pha che;35",
+                    "PT06;Vu Minh Khang;73 Nguyen Trai Q.5;20/10/2000;0943651203;Server;35",
+                    "FT01;Ngoc Son;1200 Pham The Hien Q.8;13/11/1999;0976121233;Sale;5",
+                    "FT02;Tran Ha Tuan Kiet;332A Tran Binh Trong Q.5;8/7/2001;0908155687;Sale;20",
+                    "FT03;Nguyen Thi Thuy Tien;4 Nguyen Trai Q.5;12/6/1998;0913456745;Barista;27",
+                    "FT04;Dang Thi Tuyet;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Server;30",
+                    "MN10;Nguyen Thanh Dat;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Quan ly chi nhanh A;3",
+                    "MN15;Nguyen Ngoc Son;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Quan ly chi nhanh B;1"
+                    };
 
     public DanhSachNhanVien(){
         stt = 0 ;
@@ -36,7 +48,6 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
 
     public Scanner sc = new Scanner(System.in);
 
-    @Override
     // TINH LUONG TAT CA NHAN VIEN 
     public double calSalary() {     
         double sumSalary = 0;       
@@ -48,7 +59,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
     
     // SUA NHAN VIEN
     public void suaNhanVien(Integer k) {
-        int chose;  
+        int choose;  
         if(dsnv[k] instanceof Manager) {
             Manager temp = (Manager)dsnv[k];
             do{  
@@ -63,28 +74,29 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                 System.out.println("|------------------------------------------------------------------|");
                 System.out.println("Nhap lua chon: ");
                 
-                chose = checkLoi.checkSo(sc.next());
-                switch (chose) {
+                choose = checkLoi.checkSo(sc.next());
+                switch (choose) {
                     case 1:{
-                        temp.sethoten(hoTen);
+                        temp.sethoten("");
                         GhiFile();
                     }
                     break;
                         
                     case 2:{
-                        temp.setdiachi(diaChi);
+                        temp.setdiachi("");
                         GhiFile();
                     }
                     break;
                     
                     case 3:{
-                        temp.setNgaySinh(ngaySinh);
+                        Date date = new Date();
+                        temp.setNgaySinh(date);
                         GhiFile();
                     }
                     break;
     
                     case 4: {
-                        temp.setSdt(sdt);
+                        temp.setSdt("");
                         GhiFile();
                     };
                     break;
@@ -104,7 +116,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                     default:System.out.println("Nhap sai moi nhap lai!");   
                     break;          
                 }
-            } while(chose != 0);
+            } while(choose != 0);
         }
 
         if(dsnv[k] instanceof PartTime) {
@@ -121,28 +133,29 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                 System.out.println("|------------------------------------------------------------------|");
                 System.out.println("Nhap lua chon: ");
                 
-                chose = checkLoi.checkSo(sc.next());
-                switch (chose) {
+                choose = checkLoi.checkSo(sc.next());
+                switch (choose) {
                     case 1:{
-                        temp.sethoten(hoTen);
+                        temp.sethoten("");
                         GhiFile();
                     }
                     break;
                         
                     case 2:{
-                        temp.setdiachi(diaChi);
+                        temp.setdiachi("");
                         GhiFile();
                     }
                     break;
                     
                     case 3:{
-                        temp.setNgaySinh(ngaySinh);
+                        Date date = new Date();
+                        temp.setNgaySinh(date);
                         GhiFile();
                     }
                     break;
     
                     case 4: {
-                        temp.setSdt(sdt);
+                        temp.setSdt("");
                         GhiFile();
                     };
 
@@ -159,7 +172,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                     default:System.out.println("Nhap sai moi nhap lai!");   
                     break;          
                 }
-            } while(chose != 0);
+            } while(choose != 0);
 
         }
 
@@ -177,30 +190,31 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                 System.out.println("|------------------------------------------------------------------|");
                 System.out.println("Nhap lua chon: ");
                 
-                chose = checkLoi.checkSo(sc.next());
-                switch (chose) {
+                choose = checkLoi.checkSo(sc.next());
+                switch (choose) {
                     case 0: break;
 
                     case 1:{
-                        temp.sethoten(hoTen);
+                        temp.sethoten("");
                         GhiFile();
                     }
                     break;
                         
                     case 2:{
-                        temp.setdiachi(diaChi);
+                        temp.setdiachi("");
                         GhiFile();
                     }
                     break;
                     
                     case 3:{
-                        temp.setNgaySinh(ngaySinh);
+                        Date date = new Date();
+                        temp.setNgaySinh(date);
                         GhiFile();
                     }
                     break;
     
                     case 4: {
-                        temp.setSdt(sdt);
+                        temp.setSdt("");
                         GhiFile();
                     };
                     break;
@@ -220,7 +234,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                     default:System.out.println("Nhap sai moi nhap lai!");   
                     break;          
                 }
-            } while(chose != 0);
+            } while(choose != 0);
         }
     }
 
@@ -289,11 +303,11 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                 Date birthDate = new Date();
 
                 maNV = temp[0]; 
-                // System.out.println(temp.length);
-                ten = temp[1]; 
-                diaChi = temp[2]; 
-                birthDate.xulyngay(temp[3]); 
-                sdt = temp[4];
+                String password = temp[1];
+                ten = temp[2]; 
+                diaChi = temp[3]; 
+                birthDate.xulyngay(temp[4]); 
+                sdt = temp[5];
                 
                 
                 // Check loai nhan vien
@@ -303,35 +317,36 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                 if(maNV.contains("PT")){
                     String congviec;
                     int giocong;
-                    congviec = temp[5];
-                    giocong = Integer.parseInt(temp[6]);
+                    congviec = temp[6];
+                    giocong = Integer.parseInt(temp[7]);
                     dsnv[stt] = new PartTime(maNV, ten, diaChi, birthDate, sdt, congviec, giocong);
                     dsnv[stt].set_Username(maNV);
+                    dsnv[stt].taiKhoan.setPassword(password);
                     stt++;
                 }
 
                 else if(maNV.contains("FT")){
                     String congviec;
                     int ngaycong;
-                    congviec = temp[5];
-                    ngaycong = Integer.parseInt(temp[6]);
+                    congviec = temp[6];
+                    ngaycong = Integer.parseInt(temp[7]);
                     dsnv[stt] = new FullTime(maNV, ten, diaChi, birthDate, sdt, congviec, ngaycong);
                     dsnv[stt].set_Username(maNV);
+                    dsnv[stt].taiKhoan.setPassword(password);
                     stt++;
                 }
 
                 else if(maNV.contains("MN")) {
                     int capbac;
                     String congviec;
-                    capbac = Integer.parseInt(temp[6]);
-                    congviec = temp[5];
+                    capbac = Integer.parseInt(temp[7]);
+                    congviec = temp[6];
                     dsnv[stt] = new Manager(maNV, ten, diaChi, birthDate, sdt, congviec, capbac);
                     dsnv[stt].set_Username(maNV);
+                    dsnv[stt].taiKhoan.setPassword(password);
                     stt++;
                 }
             }
-
-            
 
             dsnv = Arrays.copyOf(dsnv, stt);
 
@@ -340,9 +355,57 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
         }
 
         catch(IOException ex) {
-            System.out.println("Loi doc du lieu len file");
+            System.out.println("Loi doc du lieu len file !");
+            System.out.println(data.length);
+            for(int i = 0; i < data.length; i++) {
+                XuLyData(data[i]);
+            }
         }
     }
+
+    public void XuLyData(String data) {
+        String temp[] = data.split(";");
+        String maNV, ten, diaChi, sdt; 
+        Date birthDate = new Date();
+
+        maNV = temp[0]; 
+        ten = temp[1]; 
+        diaChi = temp[2]; 
+        birthDate.xulyngay(temp[3]); 
+        sdt = temp[4];
+        
+        // Check loai nhan vien            
+        if(maNV.contains("PT")){
+            String congviec;
+            int giocong;
+            congviec = temp[5];
+            giocong = Integer.parseInt(temp[6]);
+            dsnv[stt] = new PartTime(maNV, ten, diaChi, birthDate, sdt, congviec, giocong);
+            dsnv[stt].set_Username(maNV);
+            stt++;
+        }
+
+        else if(maNV.contains("FT")){
+            String congviec;
+            int ngaycong;
+            congviec = temp[5];
+            ngaycong = Integer.parseInt(temp[6]);
+            dsnv[stt] = new FullTime(maNV, ten, diaChi, birthDate, sdt, congviec, ngaycong);
+            dsnv[stt].set_Username(maNV);
+            stt++;
+        }
+
+        else if(maNV.contains("MN")) {
+            int capbac;
+            String congviec;
+            capbac = Integer.parseInt(temp[6]);
+            congviec = temp[5];
+            dsnv[stt] = new Manager(maNV, ten, diaChi, birthDate, sdt, congviec, capbac);
+            dsnv[stt].set_Username(maNV);
+            stt++;
+        }
+    }
+
 
     // public void GhiFile(String input){
     //     try{
@@ -376,7 +439,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
     }
 
     public void ThemNhanVien(){    
-        int chose;  
+        int choose;  
         do{  
             System.out.println("|------------------------------MENU--------------------------------|");
             System.out.println("|\t1.Them vao he thong nhan vien Parttime                     |");
@@ -387,8 +450,8 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
             System.out.println("|------------------------------------------------------------------|");
             System.out.println("Nhap lua chon: ");
             
-            chose = checkLoi.checkSo(sc.next());
-            switch (chose) {
+            choose = checkLoi.checkSo(sc.next());
+            switch (choose) {
                 case 1:{
                     int n;
                     System.out.println("Nhap vao so luong nhan vien Part-time can them: ");
@@ -458,7 +521,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
                 default:System.out.println("Nhap sai moi nhap lai!");   
                 break;          
             }
-        } while(chose != 4);
+        } while(choose != 4);
     }
 
     public void XoaNhanVien(int k){    
@@ -482,7 +545,7 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
         if(dsnv[0] == null){
             System.out.println("Khong co du lieu tren he thong!");
         }
-        for(int i = 0; i < dsnv.length; i++){
+        for(int i = 0; i < stt; i++){
             System.out.printf("\n---------Nhan vien thu %d----------\n", i + 1);
             dsnv[i].Xuat();
         }
@@ -530,7 +593,6 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
 
     public static void main(String[] args) {
         DanhSachNhanVien ds = new DanhSachNhanVien();
-        // ds.DocFile();
-        // ds.QuanLyNhanVien();
+        ds.XuatDanhSach();
     }
 }
