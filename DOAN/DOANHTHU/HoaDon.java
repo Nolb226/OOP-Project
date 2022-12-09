@@ -216,7 +216,7 @@ public class HoaDon extends Phieu {
         for (int i = 0; i < n; i++) {
             s = s + "," + sp[i].getMaMon() + "#" + soLuong[i];
         }
-        return s;
+        return s+"\n";
     }
 
     @Override

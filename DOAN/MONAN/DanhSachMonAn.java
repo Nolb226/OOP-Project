@@ -1,13 +1,17 @@
 package MONAN;
 
-
 import java.util.*;
 import EXCEPTION.*;
 import INTERFACE.*;
+import KHACHHANG.KhachHang;
+import NHANVIEN.NhanVien;
+
 import java.io.*;
 import java.util.Arrays;
 
-public class DanhSachMonAn  implements DocGhiFile {
+import DOANHTHU.HoaDon;
+
+public class DanhSachMonAn implements DocGhiFile {
 
     private MonAn[] foodList = new MonAn[0];
     private MonAn[] maOrder;
@@ -178,21 +182,22 @@ public class DanhSachMonAn  implements DocGhiFile {
     }
 
     public void themMonAn() {
+        Integer c;
         do {
             System.out.println("\n1.Thêm n Món Ăn\n\n2.Thêm Món ăn ở vị trí k\n\n0.Quay lại");
             System.out.println("Nhập lựa chọn :");
 
-            Integer c = checkLoi.checkSo(sc.next());
+            c = checkLoi.checkSo(sc.next());
             while (c == -1) {
                 System.out.println("Sai định dạng, vui lòng nhập SỐ");
                 c = checkLoi.checkSo(sc.next());
             }
             while (c < 1 || c > 2) {
-                System.out.println("\r\rVui lòng nhập lại");
-                c = checkLoi.checkSo(sc.next());
                 if (c == 0) {
                     break;
                 }
+                System.out.println("\r\rVui lòng nhập lại");
+                c = checkLoi.checkSo(sc.next());
             }
             if (c == 0) {
                 break;
@@ -209,41 +214,84 @@ public class DanhSachMonAn  implements DocGhiFile {
                 case 2: {
                     System.out.println("2.Thêm Món ăn ở một vị trí\n\n0.Quay lại");
                     Integer input = checkLoi.checkSo(sc.next());
-
                     break;
                 }
-
                 ///
 
-                default: {
-                    break;
-                }
             }
-            System.out.println("Nhập T hoặc t để dừng chương trình hoặc nhấn bất kỳ để tiếp tục");
+            System.out.println("Nhập 0 để dừng chương trình hoặc nhấn bất kỳ để tiếp tục");
 
-        } while (!sc.next().equalsIgnoreCase("T"));
+        } while ((c = checkLoi.checkSo(sc.next())) != 0);
     }
 
     //
     // Xoá
-    public void xoaMonAn() { // Xoa n mon an tren he thong
-        int n;
-        System.out.println("Moi nhap vao so luong mon an can xoa tren he thong: ");
-        n = Integer.parseInt(sc.nextLine());
-        for (int i = 0; i < n; i++) {
-            System.out.printf("-----------------------------------------\n");
-            String input;
-            input = sc.nextLine();
-            for (int j = 0; j < length; j++) {
-                if (foodList[j].getMaMon().equalsIgnoreCase(input)) {
-                    for (int u = j; u < length - 1; u++) {
-                        foodList[u] = foodList[u + 1];
-                    }
+    public void xoaMotMonAn(MonAn a) {
+        for (MonAn i : foodList) {
+            System.out.println(i.getMaMon() == a.getMaMon());
+            if (i.getMaMon() == a.getMaMon()) {
+                System.out.println(a.getMaMon());
+                Integer vitri = Integer.parseInt(a.getMaMon().split("MH")[1]) - 1;
+                for (int j = vitri; j < length; j++) {
+                    foodList[j] = foodList[j + 1];
                     length--;
                 }
             }
         }
+
+        foodList = Arrays.copyOf(foodList, length);
         GhiFile();
+        xuatDanhSach();
+    }
+
+    public void xoaMonAn() {
+        do {
+            System.out.println(" ___________Xoá___________");
+            System.out.println(
+                    "|  1.Xoá món ăn theo mã       |" +
+                            "\n|                             |" +
+                            "\n|  2.Xoá món ăn theo tên      |" +
+                            "\n|                             |" +
+                            "\n|  0.Quay lại                 |");
+            System.out.println(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+            System.out.println("Nhập lựa chọn :");
+
+            Integer c = checkLoi.checkSo(sc.next());
+            while (c == -1) {
+                System.out.println("Sai định dạng, vui lòng nhập SỐ");
+                c = checkLoi.checkSo(sc.next());
+            }
+            while (c < 1 || c > 2) {
+                if (c == 0) {
+                    break;
+                }
+                System.out.println("\r\rVui lòng nhập lại");
+                c = checkLoi.checkSo(sc.next());
+            }
+            if (c == 0) {
+                break;
+            }
+            switch (c) {
+                case 1: {
+
+                    System.out.println("Nhập mã món cần xoá");
+                    xoaMotMonAn(timKiemMaMon(sc.next()));
+                    break;
+                }
+
+                ///
+                case 2: {
+                    System.out.println("Nhập tên món cần xoá ");
+                    xoaMotMonAn(tiemKiemTenMonAn());
+                    break;
+                }
+                ///
+
+            }
+            System.out.println("Nhập T hoặc t để dừng chương trình hoặc nhấn bất kỳ để tiếp tục");
+
+        } while (!sc.next().equalsIgnoreCase("T"));
+        // GhiFile();
     }
 
     //
@@ -328,7 +376,7 @@ public class DanhSachMonAn  implements DocGhiFile {
     public void timKiemMonAn() {
         MonAn a = new MonAn();
         do {
-            System.out.println(" ___________Tìm kiếm________________");
+            System.out.println(" __________Tìm kiếm__________________");
             System.out.println(
                     "|  1.Sửa & Tìm kiếm theo mã Món Ăn  |" +
                             "\n|                                   |" +
@@ -402,7 +450,7 @@ public class DanhSachMonAn  implements DocGhiFile {
     /// *Sửa
     public void suaMonAn(MonAn a) {
         do {
-            System.out.println(" ___________Sửa___________");
+            System.out.println(" _____________Sửa___________");
             System.out.println(
                     "|  1.Sửa Tên                  |" +
                             "\n|                             |" +
@@ -410,8 +458,10 @@ public class DanhSachMonAn  implements DocGhiFile {
                             "\n|                             |" +
                             "\n|  3.Sửa Giá Bán              |" +
                             "\n|                             |" +
+                            "\n|  4.Sửa Giá Nhập             |" +
+                            "\n|                             |" +
                             "\n|  0.Quay lại                 |");
-            System.out.println(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+            System.out.println(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
             System.out.println("Nhập lựa chọn :");
 
             Integer c = checkLoi.checkSo(sc.next());
@@ -453,12 +503,20 @@ public class DanhSachMonAn  implements DocGhiFile {
                 ///
                 case 3: {
                     System.out.println("Sửa giá bán");
-                    Integer temp = a.getSoLuong();
-                    a.setSoLuong(temp);
+                    Double temp = a.getGiaBan();
+                    a.setGiaBan(temp);
+                    break;
+                }
+                case 4: {
+                    System.out.println("Sửa giá bán");
+                    Double temp = a.getGiaNhap();
+                    a.setGiaNhap(temp);
                     break;
                 }
             }
             xuatMotMonAn(a);
+            foodList[Integer.parseInt(a.getMaMon().split("MH")[1]) - 1] = a.clone();
+            GhiFile();
             break;
 
         } while (true);
@@ -536,67 +594,166 @@ public class DanhSachMonAn  implements DocGhiFile {
         System.out.print("\n");
     }
 
-    public double Order() {
-        maOrder = new MonAn[10];
-        int[] sl = new int[10];
-        double tongTien = 0;
-        int u = 0;
+    public void order(NhanVien nv, KhachHang kh) {
+        int sl;
         int number;
+        boolean check = false;
+        Integer rd = (int) (Math.random() * 10000);
+        HoaDon temp = new HoaDon("HD" + rd.toString());
+        temp.setKh(kh);
+        temp.setNv(nv);
         do {
-            System.out.println("-------------------------");
-            System.out.println("1.Chon mon\n2.Thanh toan"); // Chon thanh toan se tu dong xuat ra danh sach mon kem tong
-                                                            // tien
-            System.out.println("-------------------------");
-            System.out.println("Moi nhap lua chon: ");
-            String input;
-            number = Integer.parseInt(sc.nextLine());
-            switch (number) {
-                case 1: {
-                    int count = 0;
-                    do {
-                        System.out.println("Moi nhap vao ma mon an: ");
-                        input = sc.nextLine();
-                        for (int i = 0; i < length; i++) {
-                            if (foodList[i].getMaMon().equalsIgnoreCase(input)) {
-                                maOrder[u] = foodList[i];
-                                System.out.println("Moi nhap vao so luong"); // Nhap so luong cua mon an khi duoc tim
-                                // thay tren he thong
-                                sl[u] = Integer.parseInt(sc.nextLine());
-                                u++;
-                                count++;
-                            }
-                        }
-                        if (count == 0) {
-                            System.out.println("Khong tim thay mon an tren he thong, moi nhap lai !");
-                        }
-                    } while (count == 0);
-                }
-                    break;
+            do {
 
-                case 2: {
-                    System.out.println(
-                            "=================================Hoa Don Thanh Toan=====================================");
-                    for (int i = 0; i < u; i++) {
-                        System.out.println("Ten mon: " + maOrder[i].getTenMon() + "------Don gia: "
-                                + maOrder[i].getGiaBan() + "------So luong: " + sl[i] + "------");
-                        tongTien += maOrder[i].getGiaBan() * sl[i];
+                System.out.println(" ___________Đặt hàng___________");
+                System.out.println(
+                        "|  1.Chọn món                 |" +
+                                "\n|                             |" +
+                                "\n|  2.Thanh Toán               |" +
+                                "\n|                             |" +
+                                "\n|  0.Quay lại                 |");
+                System.out.println(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+                System.out.println("Nhập lựa chọn :");
+                number = checkLoi.checkSo(sc.next());
+                while (number == -1) {
+                    System.out.println("Sai định dạng, vui lòng nhập SỐ");
+                    number = checkLoi.checkSo(sc.next());
+
+                }
+                while (number < 1 || number > 2) {
+                    if (number == 0) {
+                        break;
                     }
-                    return tongTien;
+                    System.out.println("\r\rVui lòng nhập lại");
+                    number = checkLoi.checkSo(sc.next());
+                }
+                if (number == 0) {
+                    break;
                 }
 
-                default:
-                    System.out.println("Nhap sai lua chon, moi nhap lai");
-                    break;
+                switch (number) {
+                    case 1: {
+                        check = true;
+                        do {
+                            System.out.println("Nhập mã món ăn thêm vào");
+                            MonAn b = timKiemMaMon(sc.next());
+                            System.out.println("Nhập số lượng muốn mua");
+                            sl = checkLoi.checkSo(sc.next());
+                            while (sl > b.getSoLuong()) {
+                                System.out.println("Trong kho chỉ còn " + b.getSoLuong());
+                                sl = checkLoi.checkSo(sc.next());
+                            }
+                            while (sl == -1) {
+                                System.out.println("Sai lỗi định dạng");
+                                sl = checkLoi.checkSo(sc.next());
+
+                            }
+                            temp.addSP(b, sl);
+                            System.out.println("Nhập 0 để thoát hoặc bấm bất kỳ để tiếp tục thêm món");
+                        } while ((number = checkLoi.checkSo(sc.next())) != 0);
+                        break;
+                    }
+
+                    case 2: {
+                        if (!check) {
+                            System.out.println("Bạn chưa  thêm món");
+                            break;
+                        }
+                        try {
+                            FileWriter fw = new FileWriter("DOAN/DOANHTHU/DSHD.txt", true);
+                            BufferedWriter bw = new BufferedWriter(fw);
+                            System.out.println(temp.toString());
+                            bw.write(temp.toString());
+                            bw.close();
+                            fw.close();
+                            System.out.println("done");
+                        } catch (Exception e) {
+                            System.out.println("Lỗi");
+                        }
+                        break;
+                    }
+
+                }
+            } while (number != 2);
+            if (number == 0) {
+                break;
             }
-        } while (number != 2);
-        return -1; // Tra ve gia tri bao loi neu he thong thanh toan loi
+            System.out.println("Nhập 0 để dừng hoặc bất kỳ để tiếp tục");
+        } while (checkLoi.checkSo(sc.next()) != 0);
+        // Tra ve gia tri bao loi neu he thong thanh toan loi
+    }
+
+    public void menu() {
+        Integer c;
+        do {
+            do {
+
+                System.out.println(" ____________= Menu Món Ăn =_______________");
+                System.out.println(
+                        "|  1.Thêm Món ăn                    |" +
+                                "\n|                                   |" +
+                                "\n|  2.Xoá Món Ăn                     |" +
+                                "\n|                                   |" +
+                                "\n|  3.Sửa & Tìm kiếm                 |" +
+                                "\n|                                   |" +
+                                "\n|  4.Xuất danh sách                 |" +
+                                "\n|                                   |" +
+                                "\n|  0.Quay lại                       |");
+                System.out.println(" ‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾");
+                System.out.println("Nhập lựa chọn :");
+
+                c = checkLoi.checkSo(sc.next());
+                while (c == -1) {
+                    System.out.println("Sai định dạng, vui lòng nhập SỐ");
+                    c = checkLoi.checkSo(sc.next());
+
+                }
+                while (c < 1 || c > 4) {
+                    if (c == 0) {
+                        break;
+                    }
+                    System.out.println("\r\rVui lòng nhập lại");
+                    c = checkLoi.checkSo(sc.next());
+                }
+                if (c == 0) {
+                    break;
+                }
+
+                switch (c) {
+                    case 1: {
+                        themMonAn();
+                        break;
+                    }
+
+                    ///
+                    case 2: {
+                        xoaMonAn();
+                        break;
+                    }
+
+                    ///
+                    case 3: {
+                        timKiemMonAn();
+                        break;
+                    }
+                    case 4: {
+                        xuatDanhSach();
+                        break;
+                    }
+                }
+            } while ((c != 0));
+            System.out.println("Nhập T hoặc t để dừng tìm kiếm hoặc nhấn bất kỳ để tiếp tục");
+
+        } while (!sc.next().equalsIgnoreCase("T"));
     }
 
     public static void main(String[] args) {
         DanhSachMonAn testdrive = new DanhSachMonAn();
+        testdrive.menu();
         // testdrive.DocFile();
+        // testdrive.order();
         // testdrive.xuatDanhSach();
-        testdrive.timKiemMonAn();
+        // testdrive.timKiemMonAn();
         // testdrive.xuatDanhSach();
         // testdrive.sortDanhSach();
         // testdrive.themMonAnCuoiDanhSach();
