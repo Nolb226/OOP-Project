@@ -83,7 +83,7 @@ public class DanhSachKhachHang implements DocGhiFile {
     }
 
     public void NhapThemKh() {
-        System.out.println("nhap danh sach khach hang");
+        System.out.println("Nhap danh sach khach hang");
         do {
             KhachHang a = new KhachHang();
             a.Nhap(taoMKH());
@@ -138,14 +138,14 @@ public class DanhSachKhachHang implements DocGhiFile {
         pw.flush();
         pw.close();
         } catch (Exception e) {
-            System.out.println("Loi ghhi File");
+            System.out.println("Loi ghi File  !");
         }
         System.out.println("Success...");
     }
 
     public void timxuatMskhKhachHang()
     {
-        System.out.println("Nhap ma so khach hang can tim");
+        System.out.println("Nhap ma so khach hang can tim: ");
         String temp=scanner.nextLine();
         for(int i=0;i<List.size();i++)
         {
@@ -198,7 +198,7 @@ public class DanhSachKhachHang implements DocGhiFile {
 
     public KhachHang TimHotenKhachHang()
     {
-        System.out.println("Nhap Ho ten can tim");
+        System.out.println("Nhap ho ten can tim: ");
         String temp=scanner.nextLine();
         int index=-1;
         for(int i=0;i<List.size();i++)
@@ -228,7 +228,7 @@ public class DanhSachKhachHang implements DocGhiFile {
 
     public void timHotenKhachHang()
     {
-        System.out.println("Nhap Ho ten can tim");
+        System.out.println("Nhap Ho ten can tim: ");
         String temp = scanner.nextLine();
         for(int i = 0; i < List.size(); i++)
         {
@@ -241,7 +241,7 @@ public class DanhSachKhachHang implements DocGhiFile {
 
     public void timSDTKhachHang()
     {
-        System.out.println("Nhap So dien thoai can tim");
+        System.out.println("Nhap So dien thoai can tim: ");
         String temp=scanner.nextLine();
         for(int i = 0; i < List.size(); i++)
         {
@@ -254,7 +254,7 @@ public class DanhSachKhachHang implements DocGhiFile {
 
     public void xoaKH()
     {
-        System.out.println("Nhap ma so khach hang can xoa");
+        System.out.println("Nhap ma so khach hang can xoa: ");
         String temp=scanner.nextLine();
         for(int i = 0; i < List.size(); i++)
         {
@@ -269,7 +269,7 @@ public class DanhSachKhachHang implements DocGhiFile {
     public void suaKH()
     {
         int n=0;
-        System.out.print("Nhap ma so khach hang can sua:");
+        System.out.print("Nhap ma so khach hang can sua: ");
         String temp=scanner.nextLine();
         for(int i = 0; i < List.size(); i++)
         {
@@ -281,7 +281,7 @@ public class DanhSachKhachHang implements DocGhiFile {
         }
         if(n==0)
         {
-            System.out.println("Khong tim thay");
+            System.out.println("Khong tim thay!");
         }
         else{GhiFile();}
     }
@@ -336,7 +336,7 @@ public class DanhSachKhachHang implements DocGhiFile {
                 case 4:
                     break;
                 default:
-                    System.out.println("Lua chon khong dung moi nhap lai");
+                    System.out.println("Lua chon khong dung moi nhap lai !");
                     break;
             }
         }while(choose!=4);
@@ -354,7 +354,7 @@ public class DanhSachKhachHang implements DocGhiFile {
                             +"|5.Sua thong tin khach hang                                  |\n"
                             +"|6.Quay ve menu chinh                                        |\n"
                             +"+------------------------------------------------------------+\n");
-            System.out.print("Nhap lua chon");
+            System.out.print("Nhap lua chon: ");
             choose=checkLoi.checkSo(string.nextLine());
             switch (choose) {
                 case 1:
@@ -376,7 +376,7 @@ public class DanhSachKhachHang implements DocGhiFile {
                 case 6:
                     break;
                 default:
-                    System.out.println("Lua chon khong dung moi nhap lai");
+                    System.out.println("Lua chon khong dung moi nhap lai !");
                     break;
             }
         }while(choose != 6);

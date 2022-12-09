@@ -61,9 +61,10 @@ public class Account {
         }while(true);
     }
 
-    public void doi_pass()
+    public void doi_pass(DanhSachNhanVien dsnv)
     {  
         int choose;
+        // DanhSachNhanVien dsnv = new DanhSachNhanVien();
         do{
             System.out.print(   "|---------------Doi mat khau---------------|\n"+
                                 "|1.Doi mat khau                            |\n"+
@@ -83,6 +84,7 @@ public class Account {
                             if(newPass.equals(rePass))
                             {
                                 setPassword(newPass);
+                                dsnv.GhiFile();
                                 return ;
                             }else
                             {

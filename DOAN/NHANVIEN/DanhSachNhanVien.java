@@ -13,7 +13,7 @@ public class DanhSachNhanVien implements DocGhiFile {
     public NhanVien[] dsnv;
     public int stt;
 
-    public static String fileNameNV = "DOAN/NHANVIEN/NhaNVien.txt";
+    public static String fileNameNV = "DOAN/NHANVIEN/NhanVien.txt";
 
     String[] data = { "PT01;Nguyen Nhat Khang;61 Pham Hung Q.Binh Chanh;12/5/2002;0907568784;Sale ;30",
             "PT02;Truong Tri Tai;2190 Pham The Hien Q.8;11/6/2002;0982315522;Sale ;35",
@@ -381,40 +381,48 @@ public class DanhSachNhanVien implements DocGhiFile {
         String maNV, ten, diaChi, sdt;
         Date birthDate = new Date();
 
-        maNV = temp[0];
-        ten = temp[1];
-        diaChi = temp[2];
-        birthDate.xulyngay(temp[3]);
-        sdt = temp[4];
-
+        maNV = temp[0]; 
+        String password = temp[1];
+        ten = temp[2]; 
+        diaChi = temp[3]; 
+        birthDate.xulyngay(temp[4]); 
+        sdt = temp[5];
+        
+        
         // Check loai nhan vien
-        if (maNV.contains("PT")) {
+        
+        // System.out.println(stt);
+        
+        if(maNV.contains("PT")){
             String congviec;
             int giocong;
-            congviec = temp[5];
-            giocong = Integer.parseInt(temp[6]);
+            congviec = temp[6];
+            giocong = Integer.parseInt(temp[7]);
             dsnv[stt] = new PartTime(maNV, ten, diaChi, birthDate, sdt, congviec, giocong);
             dsnv[stt].set_Username(maNV);
+            dsnv[stt].taiKhoan.setPassword(password);
             stt++;
         }
 
         else if (maNV.contains("FT")) {
             String congviec;
             int ngaycong;
-            congviec = temp[5];
-            ngaycong = Integer.parseInt(temp[6]);
+            congviec = temp[6];
+            ngaycong = Integer.parseInt(temp[7]);
             dsnv[stt] = new FullTime(maNV, ten, diaChi, birthDate, sdt, congviec, ngaycong);
             dsnv[stt].set_Username(maNV);
+            dsnv[stt].taiKhoan.setPassword(password);
             stt++;
         }
 
         else if (maNV.contains("MN")) {
             int capbac;
             String congviec;
-            capbac = Integer.parseInt(temp[6]);
-            congviec = temp[5];
+            capbac = Integer.parseInt(temp[7]);
+            congviec = temp[6];
             dsnv[stt] = new Manager(maNV, ten, diaChi, birthDate, sdt, congviec, capbac);
             dsnv[stt].set_Username(maNV);
+            dsnv[stt].taiKhoan.setPassword(password);
             stt++;
         }
     }
@@ -589,14 +597,14 @@ public class DanhSachNhanVien implements DocGhiFile {
         return -1;
     }
 
-    public NhanVien TimKiemNhanVienReturnNV(String input) {
+    public NhanVien TimKiemNhanVienReturnNV(String input){
 
         for (int i = 0; i < stt; i++) {
             if (dsnv[i].getMaNV().equalsIgnoreCase(input)) {
                 return dsnv[i];
             }
         }
-        System.out.println("Khong tim thay nhan vien.");
+        
         return null;
     }
 
