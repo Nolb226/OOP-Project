@@ -13,6 +13,12 @@ public class FullTime extends NhanVien{
     public  FullTime(){
     }
 
+    public FullTime(FullTime a){
+        super(a.getMaNV(),a.getHoten(),a.getdiachi(),a.getNgaySinh(),a.getSdt());
+        this.ngaycong=a.ngaycong;
+        this.congviec=a.congviec;
+    }
+
     public FullTime(String maNV, String hoten, String diachi, Date namsinh, String sdt, String congviec,int ngaycong){
         super(maNV, hoten, diachi, namsinh, sdt);
         this.ngaycong=ngaycong;

@@ -16,6 +16,12 @@ public class Manager extends NhanVien{
         this.congviec = null;
     }
 
+    public Manager(Manager a){
+        super(a.getMaNV(),a.getHoten(),a.getdiachi(),a.getNgaySinh(),a.getSdt());
+        this.capbac=a.capbac;
+        this.congviec=a.congviec;
+    }
+
     public Manager(String maNV, String hoten, String diachi, Date ngaySinh, String sdt, String congviec,  int capbac){
         super(maNV, hoten, diachi, ngaySinh, sdt);
         this.capbac=capbac;

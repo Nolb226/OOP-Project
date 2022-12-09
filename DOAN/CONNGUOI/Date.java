@@ -186,7 +186,5 @@ public class Date {
         ngay = t.get(Calendar.DAY_OF_MONTH);
     }
 
-    public static void main(String[] args) {
-        Date Date = new Date(16, 05, 2003);
-    }
+   
 }
