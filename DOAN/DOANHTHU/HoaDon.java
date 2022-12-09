@@ -187,8 +187,7 @@ public class HoaDon extends Phieu {
         while (j < word.length) {
             String[] k = word[j].split("#");
             MonAn temp_MonAn = new MonAn();
-            if ((temp_MonAn = (b.timKiemMaMon(k[0])).clone()).getMaMon().equals("null")) {
-                System.out.println(temp_MonAn);
+            if (!(temp_MonAn = (b.timKiemMaMon(k[0])).clone()).getMaMon().equals("null")) {
                 sp[i] = temp_MonAn.clone();
                 soLuong[i] = Integer.parseInt(k[1]);
                 i++;
