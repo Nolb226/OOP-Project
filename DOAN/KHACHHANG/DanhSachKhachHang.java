@@ -163,8 +163,6 @@ public class DanhSachKhachHang implements DocGhiFile {
         for(int i=0;i<List.size();i++)
         {
             if(List.get(i).getMSKH().equalsIgnoreCase(mskh))
-<<<<<<< HEAD
-=======
             {
                 index=i;
             }
@@ -179,7 +177,6 @@ public class DanhSachKhachHang implements DocGhiFile {
         {
 
             if(List.get(i).getMSKH().equalsIgnoreCase(mkh))
->>>>>>> fbb0aa91954766d7b181d86b58aba917efee0bd0
             {
                 index=i;
             }

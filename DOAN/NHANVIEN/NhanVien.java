@@ -6,7 +6,7 @@ import KHACHHANG.DanhSachKhachHang;
 
 public abstract class NhanVien extends ConNguoi {
     private String maNV;
-    private Account taiKhoan=new Account(); 
+    protected Account taiKhoan=new Account(); 
 
     private static double luongCoBanTheoGio = 24000;
     private static double luongCoBan = 5000000;        //Muc luong cua Full-time va Manager
@@ -104,14 +104,15 @@ public abstract class NhanVien extends ConNguoi {
         {
             System.out.print("\n\n\t\t========== MENU ==========");
             System.out.print("\n\t1. Quan ly khach hang");
-            System.out.print("\n\t2. Xem doanh thu");
+            System.out.print("\n\t2. Quan ly tai khoan ca nhan");
+            System.out.print("\n\t3. Xem doanh thu");
             System.out.print("\n\t0. Exit.");
             System.out.print("\n\n\t\t========== END ==========");
 
             System.out.print("\nNhap lua chon: ");
             selection = scanner.nextInt() ;
 
-            if(selection < 0 || selection > 2)
+            if(selection < 0 || selection > 3)
             {
                 System.out.print("\nLua chon khong hop le !");
             }
@@ -120,6 +121,11 @@ public abstract class NhanVien extends ConNguoi {
                 dskh.QuanlyKH();
             }
                 
+            else if(selection == 2)
+            {
+                taiKhoan.doi_pass();
+            }
+
             else if(selection == 2)
             {
                 // Xem doanh thu
@@ -137,11 +143,11 @@ public abstract class NhanVien extends ConNguoi {
 
     @Override
     public String toString() {
-        return getMaNV() + ";" + getHoten() + ";"+getDiaChi()+";" + getNgaySinh() + ";" + getSdt();
+        return getMaNV() + ";" + getpassword() + ";" + getHoten() + ";"+getDiaChi()+";" + getNgaySinh() + ";" + getSdt();
     }
 
     
     public void Xuat(){
-        System.out.print("Ma nhan vien: " + getMaNV() + " || " + "Ho ten : " + getHoten() + " || " + "Dia chi : " + getDiaChi() + " || " + "Nam sinh: " + getNgaySinh() + " || " + "So dien thoai: " + getSdt());
+        System.out.print("Ma nhan vien: " + getMaNV() + " || " + "MaT khau: " + getpassword() + " || " + "Ho ten : " + getHoten() + " || " + "Dia chi : " + getDiaChi() + " || " + "Nam sinh: " + getNgaySinh() + " || " + "So dien thoai: " + getSdt());
     }
 }
