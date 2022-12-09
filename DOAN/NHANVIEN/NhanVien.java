@@ -3,6 +3,7 @@ package NHANVIEN;
 import java.util.Scanner;
 import CONNGUOI.*;
 import KHACHHANG.DanhSachKhachHang;
+import EXCEPTION.*;
 
 public abstract class NhanVien extends ConNguoi {
     private String maNV;
@@ -97,7 +98,7 @@ public abstract class NhanVien extends ConNguoi {
     public abstract double calSalary();
 
 
-    public void QuanLy() {
+    public void QuanLy(DanhSachNhanVien dsnv) {
         DanhSachKhachHang dskh = new DanhSachKhachHang();
         int selection;
         while(true)
@@ -110,7 +111,8 @@ public abstract class NhanVien extends ConNguoi {
             System.out.print("\n\n\t\t========== END ==========");
 
             System.out.print("\nNhap lua chon: ");
-            selection = scanner.nextInt() ;
+            selection=checkLoi.checkSo(scanner.nextLine());
+            
 
             if(selection < 0 || selection > 3)
             {
@@ -123,7 +125,9 @@ public abstract class NhanVien extends ConNguoi {
                 
             else if(selection == 2)
             {
-                taiKhoan.doi_pass();
+                taiKhoan.doi_pass(dsnv);
+                System.out.println(this.getpassword());
+                dsnv.GhiFile();
             }
 
             else if(selection == 2)
@@ -148,6 +152,6 @@ public abstract class NhanVien extends ConNguoi {
 
     
     public void Xuat(){
-        System.out.print("Ma nhan vien: " + getMaNV() + " || " + "MaT khau: " + getpassword() + " || " + "Ho ten : " + getHoten() + " || " + "Dia chi : " + getDiaChi() + " || " + "Nam sinh: " + getNgaySinh() + " || " + "So dien thoai: " + getSdt());
+        System.out.print("Ma nhan vien: " + getMaNV() + " || " + "Mat khau: " + getpassword() + " || " + "Ho ten : " + getHoten() + " || " + "Dia chi : " + getDiaChi() + " || " + "Nam sinh: " + getNgaySinh() + " || " + "So dien thoai: " + getSdt());
     }
 }

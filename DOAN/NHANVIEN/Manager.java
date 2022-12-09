@@ -89,10 +89,10 @@ public class Manager extends NhanVien{
         System.out.print(" || " + "Cap bac quan ly: " + getCapbac() + " || " + "Cong viec: " + getCongviec() + "\n");
     }
 
-    public void QuanLy() {
-        DanhSachNhanVien dsnv = new DanhSachNhanVien();
+    public void QuanLy(DanhSachNhanVien dsnv) {
         DanhSachKhachHang dskh = new DanhSachKhachHang();
         int selection;
+
         while(true)
         {
             System.out.print("\n\n\t\t========== MENU ==========");
@@ -108,7 +108,8 @@ public class Manager extends NhanVien{
             System.out.print("\n\n\t\t========== END ==========");
 
             System.out.print("\nNhap lua chon: ");
-            selection = sc.nextInt() ;
+            selection=checkLoi.checkSo(scanner.nextLine());
+            
 
             if(selection < 0 || selection > 8)
             {
@@ -116,7 +117,7 @@ public class Manager extends NhanVien{
             }
 
             else if(selection == 1) {
-                dsnv.DocFile();
+                // dsnv.DocFile();
                 dsnv.XuatDanhSach();
             }
                 
@@ -165,7 +166,8 @@ public class Manager extends NhanVien{
 
             else if(selection == 8)
             {
-                taiKhoan.doi_pass();
+                taiKhoan.doi_pass(dsnv);
+                // dsnv.GhiFile();
             }
 
             else
@@ -173,11 +175,10 @@ public class Manager extends NhanVien{
         }
     }
 
-    public static void main(String[] args) {
-        // ds.DocFile();
-        Manager mn1 = new Manager();
-        mn1.QuanLy();
+    // public static void main(String[] args) {
+    //     // ds.DocFile();
+    //     DanhSachNhanVien dsnv = new DanhSachNhanVien();
         
-    }
+    // }
 }
 
