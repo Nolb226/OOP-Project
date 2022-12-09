@@ -59,9 +59,4 @@ public class QuanLyDoanhThu {
             }
         } while (choice != 0);
     }
-
-    public static void main(String[] args) {
-        QuanLyDoanhThu a = new QuanLyDoanhThu();
-        a.QuanLyDT();
-    }
 }

@@ -596,7 +596,7 @@ public class DanhSachNhanVien implements DocGhiFile {
                 return dsnv[i];
             }
         }
-        System.out.println("Khong tim thay nhan vien.");
+        // System.out.println("Khong tim thay nhan vien.");
         return null;
     }
 

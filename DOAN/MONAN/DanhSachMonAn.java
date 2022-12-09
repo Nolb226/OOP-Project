@@ -20,7 +20,7 @@ public class DanhSachMonAn implements DocGhiFile {
 
     private String[] backupData = { "MH01;Banh bao;3;15000.0;14000.0", "MH02;Banh Mi Thit;1;20000.0;15000.0",
             "MH03;Com ga;4;45000.0;30000.0",
-            " MH04;Burger;5;35000.0;25000.0",
+            "MH04;Burger;5;35000.0;25000.0",
             "MH05;Khoai tay chien;12;13000.0;5000.0",
             "MH06;Coca Cola;12;12000.0;8000.0",
             "MH07;Tra dao;5;25000.0;15000.0",

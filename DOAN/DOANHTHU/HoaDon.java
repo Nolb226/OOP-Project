@@ -95,7 +95,7 @@ public class HoaDon extends Phieu {
         System.out.print("|");
         System.out.printf("%-73s", "Ma phieu: " + id);
         System.out.println("|");
-        System.out.println("|Nhan vien thuc hien:                                           |");
+        System.out.println("|Nhan vien thuc hien:                                                    |");
         if (nv == null) {
             System.out.print("|");
             System.out.printf("%-73s", "Ma nhan vien: ");

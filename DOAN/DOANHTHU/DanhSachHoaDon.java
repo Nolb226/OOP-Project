@@ -86,7 +86,7 @@ public class DanhSachHoaDon implements DocGhiFile {
             System.out.println("Loi doc file hoa don");
 
         }
-        System.out.println(n);
+        // System.out.println(n);
     }
 
     public void GhiFile() {
@@ -270,12 +270,14 @@ public class DanhSachHoaDon implements DocGhiFile {
                 }
             }
             System.out.println("+------------+------------+---------------+---------------+--------------------+");
-        } else if (dk.indexOf("NV") == 0) {
+        } else if (dk.indexOf("MN") == 0 || dk.indexOf("PT") == 0 || dk.indexOf("FT") == 0) {
             title();
             for (int i = 0; i < n; i++) {
-                if (HDlist[i].getNv().getMaNV().equalsIgnoreCase(dk)) {
-                    HDlist[i].xuat();
-                    k = true;
+                if (HDlist[i].getNv() != null) {
+                    if (HDlist[i].getNv().getMaNV().equalsIgnoreCase(dk)) {
+                        HDlist[i].xuat();
+                        k = true;
+                    }
                 }
             }
             System.out.println("+------------+------------+---------------+---------------+--------------------+");
