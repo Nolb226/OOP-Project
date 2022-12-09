@@ -6,7 +6,7 @@ import KHACHHANG.DanhSachKhachHang;
 
 public abstract class NhanVien extends ConNguoi {
     private String maNV;
-    private Account taiKhoan=new Account();; 
+    private Account taiKhoan=new Account(); 
 
     private static double luongCoBanTheoGio = 24000;
     private static double luongCoBan = 5000000;        //Muc luong cua Full-time va Manager
