@@ -381,19 +381,18 @@ public class DanhSachNhanVien implements DocGhiFile {
         String maNV, ten, diaChi, sdt;
         Date birthDate = new Date();
 
-        maNV = temp[0]; 
+        maNV = temp[0];
         String password = temp[1];
-        ten = temp[2]; 
-        diaChi = temp[3]; 
-        birthDate.xulyngay(temp[4]); 
+        ten = temp[2];
+        diaChi = temp[3];
+        birthDate.xulyngay(temp[4]);
         sdt = temp[5];
-        
-        
+
         // Check loai nhan vien
-        
+
         // System.out.println(stt);
-        
-        if(maNV.contains("PT")){
+
+        if (maNV.contains("PT")) {
             String congviec;
             int giocong;
             congviec = temp[6];
@@ -597,14 +596,14 @@ public class DanhSachNhanVien implements DocGhiFile {
         return -1;
     }
 
-    public NhanVien TimKiemNhanVienReturnNV(String input){
+    public NhanVien TimKiemNhanVienReturnNV(String input) {
 
         for (int i = 0; i < stt; i++) {
             if (dsnv[i].getMaNV().equalsIgnoreCase(input)) {
                 return dsnv[i];
             }
         }
-        
+
         return null;
     }
 

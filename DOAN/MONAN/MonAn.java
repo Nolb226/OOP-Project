@@ -59,12 +59,12 @@ public class MonAn {
     }
 
     public void setGiaBan(Double giaBan) {
-        System.out.println("Nhập giá bán của " + this.getTenMon());
-        System.out.print("                      VNĐ\r");
+        System.out.println("Nhap gia ban cua " + this.getTenMon());
+        System.out.print("                      VND\r");
         giaBan = checkLoi.checkSoThuc(sc.next());
         while (giaBan == -1) {
-            System.out.println("Sai định dạng, vui lòng nhập lại");
-            System.out.print("                      VNĐ\r");
+            System.out.println("Khong hop le, vui long nhap lai");
+            System.out.print("                      VND\r");
             giaBan = checkLoi.checkSoThuc(sc.next());
         }
         this.giaBan = giaBan;
@@ -76,12 +76,12 @@ public class MonAn {
     }
 
     public void setGiaNhap(Double giaNhap) {
-        System.out.println("Nhập giá nhập hàng của " + this.getTenMon());
-        System.out.print("                      VNĐ\r");
+        System.out.println("Nhap gia hang cua " + this.getTenMon());
+        System.out.print("                      VND\r");
         giaNhap = checkLoi.checkSoThuc(sc.next());
         while (giaNhap == -1) {
-            System.out.println("Sai định dạng, vui lòng nhập lại");
-            System.out.print("                      VNĐ\r");
+            System.out.println("Khong hop le, vui long nhap lai");
+            System.out.print("                     VND\r");
             giaNhap = checkLoi.checkSoThuc(sc.next());
 
         }
@@ -93,12 +93,12 @@ public class MonAn {
     }
 
     public void setSoLuong(Integer soLuong) {
-        System.out.println("Nhập số lượng " + this.getTenMon());
-        System.out.print("                        Cái/Ly/Lon\r");
+        System.out.println("Nhap so luong: " + this.getTenMon());
+        System.out.print("                        Cai/Ly/Lon\r");
         soLuong = checkLoi.checkSo(sc.next());
         while (soLuong == -1) {
-            System.out.println("Sai định dạng, vui lòng nhập lại");
-            System.out.print("                      VNĐ\r");
+            System.out.println("Khong hop le, vui long nhap lai");
+            System.out.print("                      Cai/Ly/Lon\r");
             soLuong = checkLoi.checkSo(sc.next());
 
         }
