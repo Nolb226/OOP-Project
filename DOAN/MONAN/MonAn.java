@@ -51,6 +51,7 @@ public class MonAn {
     public void setTenMon(String tenMon) {
         System.out.println("Mời nhập vào tên món: ");
         tenMon = sc.next();
+        tenMon = tenMon + sc.nextLine();
         this.tenMon = tenMon;
     }
 
@@ -83,7 +84,11 @@ public class MonAn {
             System.out.println("Khong hop le, vui long nhap lai");
             System.out.print("                     VND\r");
             giaNhap = checkLoi.checkSoThuc(sc.next());
-
+        }
+        while (giaNhap > getGiaBan()) {
+            System.out.println("Gia nhap khong duoc lon hon gia ban");
+            System.out.print("                     VND\r");
+            giaNhap = checkLoi.checkSoThuc(sc.next());
         }
         this.giaNhap = giaNhap;
     }
