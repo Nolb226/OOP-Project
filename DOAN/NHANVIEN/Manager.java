@@ -2,9 +2,11 @@ package NHANVIEN;
 
 import java.util.Scanner;
 import CONNGUOI.*;
+import DOANHTHU.QuanLyDoanhThu;
 import EXCEPTION.*;
 import KHACHHANG.DanhSachKhachHang;
 import MONAN.DanhSachMonAn;
+import DOANHTHU.*;
 
 public class Manager extends NhanVien{
     private int capbac;
@@ -93,6 +95,7 @@ public class Manager extends NhanVien{
     public void QuanLy(DanhSachNhanVien dsnv) {
         DanhSachKhachHang dskh = new DanhSachKhachHang();
         DanhSachMonAn dsma = new DanhSachMonAn();
+        DoanhThu doanhThu = new DoanhThu();
         int selection;
 
         while(true)
@@ -164,7 +167,7 @@ public class Manager extends NhanVien{
             
             else if(selection == 7)
             {
-                // Xem doanh thu
+                doanhThu.QuanLyDT();
             }
 
             else if(selection == 8)

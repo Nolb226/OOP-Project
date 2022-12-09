@@ -187,15 +187,15 @@ public class DanhSachNhanVien implements DocGhiFile {
         if (dsnv[k] instanceof FullTime) {
             FullTime temp = (FullTime) dsnv[k];
             do {
-                System.out.println("|------------------------SUA THONG TIN FULL-TIME---------------------|");
-                System.out.println("|\t1.Sua ho ten                     |");
-                System.out.println("|\t2.Sua dia chi                     |");
-                System.out.println("|\t3.Ngay thang nam sinh                      |");
-                System.out.println("|\t4.So dien thoai                                                   |");
-                System.out.println("|\t5.Sua cong viec                                                  |");
-                System.out.println("|\t6.Sua ngay cong                                                    |");
-                System.out.println("|\t0.Thoat                                                  |");
-                System.out.println("|------------------------------------------------------------------|");
+                System.out.println("|---------SUA THONG TIN FULL-TIME-------|");
+                System.out.println("|\t1.Sua ho ten                    |");
+                System.out.println("|\t2.Sua dia chi                   |");
+                System.out.println("|\t3.Ngay thang nam sinh           |");
+                System.out.println("|\t4.So dien thoai                 |");
+                System.out.println("|\t5.Sua cong viec                 |");
+                System.out.println("|\t6.Sua ngay cong                 |");
+                System.out.println("|\t0.Thoat                         |");
+                System.out.println("|---------------------------------------|");
                 System.out.println("Nhap lua chon: ");
 
                 choose = checkLoi.checkSo(sc.next());
