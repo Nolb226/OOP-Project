@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.util.Random;
 import java.util.Scanner;
-
+import EXCEPTION.*;
 import INTERFACE.*;
 import NHANVIEN.DanhSachNhanVien;
 import NHANVIEN.NhanVien;
@@ -111,7 +111,7 @@ public class DanhSachPhieuNhap implements DocGhiFile {
         }
     }
 
-    public void nhapHang(NhanVien a, DanhSachMonAn dssp_Main, DoanhThu DT) {
+    public void nhapHang(NhanVien a, DanhSachMonAn dssp, DoanhThu DT) {
         PhieuNhap pn = new PhieuNhap();
         Random rd = new Random();
         String mpn;
@@ -126,69 +126,29 @@ public class DanhSachPhieuNhap implements DocGhiFile {
         do {
             System.out.print("Ma san pham muon nhap them: ");
             String m = input.nextLine();
-            if(dssp_Main.SearchByMaSP(m)==null) {
+            if(dssp.timKiemMaMon(m)==null) {
                 System.out.println("Khong tim thay san pham.");
             } else {
-                dssp_Main.SearchByMaSP(m).toTable();
+                dssp.timKiemMaMon(m).Xuat();
                 int sl;
                 while (true) {
                     System.out.print("So luong muon nhap them la: ");
-                    sl = error.inputIntNumberError(input.nextLine());
+                    sl = checkLoi.inputIntNumberError(input.nextLine());
                     if (sl < 0) {
                         System.out.println("Khong hop le, moi nhap lai.");
                     } else {
                         break;
                     }
                 }
-                pn.addSP(dssp_Main.SearchByMaSP(m), sl);
+                pn.addSP(dssp.timKiemMaMon(m), sl);
             }
             System.out.print("Nhan bat ki de tiep tuc, nhan 't' de thoat: ");
-        } while (error.continueString(input.nextLine()) != 't');
+        } while (checkLoi.continueString(input.nextLine()) != 't');
         pn.inPhieu();
         System.out.print("Nhan bat ki de luu, 'h' de huy phieu nhap: ");
-        if (error.continueString(input.nextLine()) != 'h') {
+        if (checkLoi.continueString(input.nextLine()) != 'h') {
             for(int i=0;i<pn.sp.length;i++) {
-                dssp_Main.SearchByMaSP(pn.getSp()[i].getMaSP()).setSoLuong2(pn.getSoLuong()[i]);
-            }
-            DT.moreOut(pn.price());
-            add(pn);
-            GhiFile();
-            System.out.println("Da luu");
-        }
-        System.out.print("Nhan phim bat ki de tiep tuc.");
-        input.nextLine();
-    }
-
-    public void NhapToanBo(NhanVien a, DanhSachMonAn dssp_Main, DoanhThu DT) {
-        PhieuNhap pn = new PhieuNhap();
-        Random rd = new Random();
-        String mpn;
-        while (true) {
-            mpn = "PN" + rd.nextInt(10000);
-            if (checkMaPN(mpn)) {
-                break;
-            }
-        }
-        pn = new PhieuNhap(mpn);
-        pn.taoPhieu(a,null);
-        int sl;
-        while (true) {
-            System.out.print("So luong muon nhap them cho toan bo san pham la: ");
-            sl = error.inputIntNumberError(input.nextLine());
-            if (sl < 0) {
-                System.out.println("Khong hop le, moi nhap lai.");
-            } else {
-                break;
-            }
-        }
-        for (int i = 0; i < dssp_Main.getSp().size(); i++) {
-            pn.addSP(dssp_Main.getSp().get(i), sl);
-        }
-        pn.inPhieu();
-        System.out.print("Nhan bat ki de luu, 'h' de huy phieu nhap: ");
-        if (error.continueString(input.nextLine()) != 'h') {
-            for(int i = 0; i<dssp_Main.getSp().size();i++) {
-                dssp_Main.getSp().get(i).setSoLuong2(sl);
+                dssp.timKiemMaMon(pn.getSp()[i].getMaMon()).setSoLuong(pn.getSoLuong()[i]);
             }
             DT.moreOut(pn.price());
             add(pn);
@@ -260,7 +220,7 @@ public class DanhSachPhieuNhap implements DocGhiFile {
         do {
             System.out.print("Nhap ma phieu de xem chi tiet, ma nhan vien, ngay de loc, 't' de thoat: ");
             mpn = input.nextLine();
-            if (error.continueString(mpn) != 't') {
+            if (checkLoi.continueString(mpn) != 't') {
                 if (mpn.contains("PN")) {
                     if (searchPhieuNhap(mpn) != null) {
                         System.out.println("Ket qua: ");
@@ -275,12 +235,12 @@ public class DanhSachPhieuNhap implements DocGhiFile {
                 break;
             }
             System.out.print("Nhan phim bat ki de tiep tuc, 't' de thoat: ");
-        } while (error.continueString(input.nextLine()) != 't');
+        } while (checkLoi.continueString(input.nextLine()) != 't');
     }
 
     public void locPN(String dk) {
         boolean k = false;
-        if (error.checkNgay(dk)) {
+        if (checkLoi.checkNgay(dk)) {
             title();
             for (int i=0;i<n;i++) {
                 if (PNlist[i].getDate().toString().equals(dk)) {

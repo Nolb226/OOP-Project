@@ -163,6 +163,23 @@ public class DanhSachKhachHang implements DocGhiFile {
         for(int i=0;i<List.size();i++)
         {
             if(List.get(i).getMSKH().equalsIgnoreCase(mskh))
+<<<<<<< HEAD
+=======
+            {
+                index=i;
+            }
+        }
+        return List.get(index);
+    }
+
+    public KhachHang SearchKH(String mkh)
+    {
+        int index=-1;
+        for(int i=0;i<List.size();i++)
+        {
+
+            if(List.get(i).getMSKH().equalsIgnoreCase(mkh))
+>>>>>>> fbb0aa91954766d7b181d86b58aba917efee0bd0
             {
                 index=i;
             }
@@ -204,7 +221,7 @@ public class DanhSachKhachHang implements DocGhiFile {
     //             temp2.themKH(List.get(i));
     //         }
     //     }
-    //     return temp2;
+    //     rturn temp2;
     // }
 
     public void timHotenKhachHang()
