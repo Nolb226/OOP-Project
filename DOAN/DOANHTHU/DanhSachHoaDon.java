@@ -21,7 +21,7 @@ public class DanhSachHoaDon implements DocGhiFile {
     private DanhSachNhanVien DSNV;
     private DanhSachKhachHang DSKH;
     static Scanner input = new Scanner(System.in);
-    private String tenFile = "DOANHTHU/DSHD.txt";
+    private String tenFile = "DOAN/DOANHTHU/DSHD.txt";
 
     public DanhSachHoaDon() {
         DSKH = new DanhSachKhachHang();
@@ -46,9 +46,22 @@ public class DanhSachHoaDon implements DocGhiFile {
         this.HDlist = orther.HDlist;
         this.n = orther.n;
     }
+    
+    public void add(HoaDon a) {
+        if (n == 100) {
+            remotePN();
+            HDlist[n - 1] = new HoaDon();
+            HDlist[n - 1].copyHD(a);
+        } else {
+            n++;
+            HDlist[n - 1] = new HoaDon();
+            HDlist[n - 1].copyHD(a);
+        }
+    }
 
     public void DocFile() {
         File fhd = new File(tenFile);
+        System.out.println(fhd.toPath());
         try {
             BufferedReader brhd = Files.newBufferedReader(fhd.toPath());
             String s = null;
@@ -85,17 +98,7 @@ public class DanhSachHoaDon implements DocGhiFile {
         }
     }
 
-    public void add(HoaDon a) {
-        if (n == 100) {
-            remotePN();
-            HDlist[n - 1] = new HoaDon();
-            HDlist[n - 1].copyHD(a);
-        } else {
-            n++;
-            HDlist[n - 1] = new HoaDon();
-            HDlist[n - 1].copyHD(a);
-        }
-    }
+
 
     public void remotePN() {
         for (int i = 0; i < 99; i++) {

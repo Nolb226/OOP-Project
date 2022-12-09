@@ -165,11 +165,11 @@ public class HoaDon extends Phieu {
         Date.xulyngay(word[0]);
         setId(word[1]);
         if (a.TimKiemNhanVienReturnNV(word[2]) != null) {
-            if (word[2].indexOf("NVM") == 0) {
+            if (word[2].indexOf("MN") == 0) {
                 nv = new Manager((Manager) a.TimKiemNhanVienReturnNV(word[2]));
-            } else if (word[2].indexOf("NVF") == 0) {
+            } else if (word[2].indexOf("FT") == 0) {
                 nv = new FullTime((FullTime) a.TimKiemNhanVienReturnNV(word[2]));
-            } else if (word[2].indexOf("NVP") == 0) {
+            } else if (word[2].indexOf("PT") == 0) {
                 nv = new PartTime((PartTime) a.TimKiemNhanVienReturnNV(word[2]));
             }
         } else {
