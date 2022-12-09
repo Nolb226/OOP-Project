@@ -110,9 +110,7 @@ public class DanhSachKhachHang implements DocGhiFile {
             e.printStackTrace();
             for ( String s : data ) {
                 xulytt(s);
-                
             }
-        
         }
     }
 
@@ -204,8 +202,8 @@ public class DanhSachKhachHang implements DocGhiFile {
     public void timHotenKhachHang()
     {
         System.out.println("Nhap Ho ten can tim");
-        String temp=scanner.nextLine();
-        for(int i=0;i<List.size();i++)
+        String temp = scanner.nextLine();
+        for(int i = 0; i < List.size(); i++)
         {
             if(List.get(i).getHoten().equalsIgnoreCase(temp))
             {
@@ -218,7 +216,7 @@ public class DanhSachKhachHang implements DocGhiFile {
     {
         System.out.println("Nhap So dien thoai can tim");
         String temp=scanner.nextLine();
-        for(int i=0;i<List.size();i++)
+        for(int i = 0; i < List.size(); i++)
         {
             if(List.get(i).getSdt().equalsIgnoreCase(temp))
             {
@@ -231,7 +229,7 @@ public class DanhSachKhachHang implements DocGhiFile {
     {
         System.out.println("Nhap ma so khach hang can xoa");
         String temp=scanner.nextLine();
-        for(int i=0;i<List.size();i++)
+        for(int i = 0; i < List.size(); i++)
         {
             if(List.get(i).getMSKH().equalsIgnoreCase(temp))
             {
@@ -246,7 +244,7 @@ public class DanhSachKhachHang implements DocGhiFile {
         int n=0;
         System.out.print("Nhap ma so khach hang can sua:");
         String temp=scanner.nextLine();
-        for(int i=0;i<List.size();i++)
+        for(int i = 0; i < List.size(); i++)
         {
             if(List.get(i).getMSKH().equalsIgnoreCase(temp))
             {
