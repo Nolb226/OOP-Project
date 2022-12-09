@@ -147,14 +147,14 @@ public class DanhSachKhachHang implements DocGhiFile {
         }
     }
     
-    public KhachHang timMskhKhachHang()
+    public KhachHang timMskhKhachHang(String mskh)
     {
-        System.out.println("Nhap ma so khach hang can tim");
-        String temp=scanner.nextLine();
+        // System.out.println("Nhap ma so khach hang can tim");
+        // String temp=scanner.nextLine();
         int index=-1;
         for(int i=0;i<List.size();i++)
         {
-            if(List.get(i).getMSKH().equalsIgnoreCase(temp))
+            if(List.get(i).getMSKH().equalsIgnoreCase(mskh))
             {
                 index=i;
             }
@@ -167,6 +167,7 @@ public class DanhSachKhachHang implements DocGhiFile {
         int index=-1;
         for(int i=0;i<List.size();i++)
         {
+
             if(List.get(i).getMSKH().equalsIgnoreCase(mkh))
             {
                 index=i;
@@ -209,7 +210,7 @@ public class DanhSachKhachHang implements DocGhiFile {
     //             temp2.themKH(List.get(i));
     //         }
     //     }
-    //     return temp2;
+    //     rturn temp2;
     // }
 
     public void timHotenKhachHang()
