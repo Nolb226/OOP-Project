@@ -3,6 +3,7 @@ package NHANVIEN;
 import java.util.Scanner;
 import CONNGUOI.*;
 import KHACHHANG.DanhSachKhachHang;
+import MONAN.DanhSachMonAn;
 import EXCEPTION.*;
 
 public abstract class NhanVien extends ConNguoi {
@@ -100,6 +101,7 @@ public abstract class NhanVien extends ConNguoi {
 
     public void QuanLy(DanhSachNhanVien dsnv) {
         DanhSachKhachHang dskh = new DanhSachKhachHang();
+        DanhSachMonAn dsma = new DanhSachMonAn();
         int selection;
         while(true)
         {
@@ -107,6 +109,7 @@ public abstract class NhanVien extends ConNguoi {
             System.out.print("\n\t1. Quan ly khach hang");
             System.out.print("\n\t2. Quan ly tai khoan ca nhan");
             System.out.print("\n\t3. Xem doanh thu");
+            System.out.print("\n\t4. Quan ly san pham");
             System.out.print("\n\t0. Exit.");
             System.out.print("\n\n\t\t========== END ==========");
 
@@ -114,7 +117,7 @@ public abstract class NhanVien extends ConNguoi {
             selection=checkLoi.checkSo(scanner.nextLine());
             
 
-            if(selection < 0 || selection > 3)
+            if(selection < 0 || selection > 4)
             {
                 System.out.print("\nLua chon khong hop le !");
             }
@@ -130,9 +133,14 @@ public abstract class NhanVien extends ConNguoi {
                 dsnv.GhiFile();
             }
 
-            else if(selection == 2)
+            else if(selection == 3)
             {
                 // Xem doanh thu
+            }
+
+            else if(selection == 4)
+            {
+                dsma.menu();
             }
 
             else

@@ -4,6 +4,7 @@ import java.util.Scanner;
 import CONNGUOI.*;
 import EXCEPTION.*;
 import KHACHHANG.DanhSachKhachHang;
+import MONAN.DanhSachMonAn;
 
 public class Manager extends NhanVien{
     private int capbac;
@@ -91,6 +92,7 @@ public class Manager extends NhanVien{
 
     public void QuanLy(DanhSachNhanVien dsnv) {
         DanhSachKhachHang dskh = new DanhSachKhachHang();
+        DanhSachMonAn dsma = new DanhSachMonAn();
         int selection;
 
         while(true)
@@ -102,8 +104,9 @@ public class Manager extends NhanVien{
             System.out.print("\n\t4. Sua nhan vien");
             System.out.print("\n\t5. Xoa nhan vien");
             System.out.print("\n\t6. Quan ly khach hang");
-            System.out.print("\n\t7. Xem doanh thu");
+            System.out.print("\n\t7. Quan ly doanh thu");
             System.out.print("\n\t8. Quan ly tai khoan ca nhan");
+            System.out.print("\n\t9. Quan ly san pham");
             System.out.print("\n\t0. Exit.");
             System.out.print("\n\n\t\t========== END ==========");
 
@@ -111,7 +114,7 @@ public class Manager extends NhanVien{
             selection=checkLoi.checkSo(scanner.nextLine());
             
 
-            if(selection < 0 || selection > 8)
+            if(selection < 0 || selection > 9)
             {
                 System.out.print("\nLua chon khong hop le !");
             }
@@ -168,6 +171,11 @@ public class Manager extends NhanVien{
             {
                 taiKhoan.doi_pass(dsnv);
                 // dsnv.GhiFile();
+            }
+
+            else if(selection == 9)
+            {
+                dsma.menu();
             }
 
             else

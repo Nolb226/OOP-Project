@@ -17,7 +17,7 @@ public class main {
         // DanhSachNhanVien dsnv = new DanhSachNhanVien();
         do{
             System.out.print(   "|---------------    MENU    ---------------|\n"+
-                                "|1.Dang nhap                            |\n"+
+                                "|1.Dang nhap                               |\n"+
                                 "|2.Thoat                                   |\n"+
                                 "|------------------------------------------|\n");
             choose=checkLoi.checkSo(scanner.nextLine());
