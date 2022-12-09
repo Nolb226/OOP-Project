@@ -1,5 +1,6 @@
 package KHACHHANG;
 
+
 import INTERFACE.*;
 import java.util.ArrayList;
 // import java.util.Random;
@@ -23,6 +24,17 @@ public class DanhSachKhachHang implements DocGhiFile {
         List = new ArrayList<KhachHang>();
     }
 
+    public DanhSachKhachHang(ArrayList<KhachHang> a) {
+        this.List = a;
+    }
+
+    public DanhSachKhachHang(DanhSachKhachHang orther) {
+        this.List = orther.List;
+    }
+
+    public ArrayList<KhachHang> getKHList() {
+        return List;
+    }
     public void xulytt(String s) {
         String word[] = s.split(",");
         KhachHang temp = new KhachHang();

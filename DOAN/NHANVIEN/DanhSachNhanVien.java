@@ -1,5 +1,6 @@
 package NHANVIEN;
 
+
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -19,6 +20,18 @@ public class DanhSachNhanVien extends NhanVien implements DocGhiFile{
         stt = 0 ;
         dsnv = new NhanVien[100];
         DocFile();
+    }
+    
+    public DanhSachNhanVien(NhanVien[] dsnv) {
+        this.dsnv = dsnv;
+    }
+
+    public DanhSachNhanVien(DanhSachNhanVien orther) {
+        this.dsnv = orther.dsnv;
+    }
+
+    public NhanVien[] getNVList() {
+        return dsnv;
     }
 
     public Scanner sc = new Scanner(System.in);
