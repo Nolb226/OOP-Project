@@ -2,10 +2,11 @@ package NHANVIEN;
 
 import java.util.Scanner;
 import CONNGUOI.*;
+import KHACHHANG.DanhSachKhachHang;
 
 public abstract class NhanVien extends ConNguoi {
     private String maNV;
-    private Account taiKhoan; 
+    private Account taiKhoan=new Account();; 
 
     private static double luongCoBanTheoGio = 24000;
     private static double luongCoBan = 5000000;        //Muc luong cua Full-time va Manager
@@ -15,7 +16,12 @@ public abstract class NhanVien extends ConNguoi {
     public NhanVien() {
         super();
         this.maNV = null;
-        taiKhoan=new Account();
+        // this.taiKhoan=new Account();
+    }
+
+    public void set_Username(String username)
+    {
+        taiKhoan.setUserName(username);;
     }
 
     public NhanVien(String tk ) {
@@ -89,6 +95,40 @@ public abstract class NhanVien extends ConNguoi {
     }
 
     public abstract double calSalary();
+
+
+    public void QuanLy() {
+        DanhSachKhachHang dskh = new DanhSachKhachHang();
+        int selection;
+        while(true)
+        {
+            System.out.print("\n\n\t\t========== MENU ==========");
+            System.out.print("\n\t1. Quan ly khach hang");
+            System.out.print("\n\t2. Xem doanh thu");
+            System.out.print("\n\t0. Exit.");
+            System.out.print("\n\n\t\t========== END ==========");
+
+            System.out.print("\nNhap lua chon: ");
+            selection = scanner.nextInt() ;
+
+            if(selection < 0 || selection > 2)
+            {
+                System.out.print("\nLua chon khong hop le !");
+            }
+
+            else if(selection == 1) {
+                dskh.QuanlyKH();
+            }
+                
+            else if(selection == 2)
+            {
+                // Xem doanh thu
+            }
+
+            else
+                break;
+        }
+    }
 
     @Override
     public void Nhap(){

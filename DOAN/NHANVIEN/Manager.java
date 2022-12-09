@@ -83,7 +83,7 @@ public class Manager extends NhanVien{
         System.out.print(" || " + "Cap bac quan ly: " + getCapbac() + " || " + "Cong viec: " + getCongviec() + "\n");
     }
 
-    public void QuanLyNhanVien() {
+    public void QuanLy() {
         DanhSachNhanVien dsnv = new DanhSachNhanVien();
         DanhSachKhachHang dskh = new DanhSachKhachHang();
         int selection;
@@ -164,7 +164,7 @@ public class Manager extends NhanVien{
     public static void main(String[] args) {
         // ds.DocFile();
         Manager mn1 = new Manager();
-        mn1.QuanLyNhanVien();
+        mn1.QuanLy();
         
     }
 }

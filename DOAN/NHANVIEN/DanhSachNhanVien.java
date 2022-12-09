@@ -10,8 +10,8 @@ import INTERFACE.*;
 import EXCEPTION.*;;
 
 public class DanhSachNhanVien implements DocGhiFile{
-    NhanVien[] dsnv; 
-    int stt;
+    public NhanVien[] dsnv; 
+    public int stt;
 
     public static String fileNameNV = "DOAN/NHANVIEN/NhanVien.txt";
 
@@ -283,17 +283,19 @@ public class DanhSachNhanVien implements DocGhiFile{
                 diaChi = temp[2]; 
                 birthDate.xulyngay(temp[3]); 
                 sdt = temp[4];
-
+                
+                
                 // Check loai nhan vien
-
+                
                 // System.out.println(stt);
-
+                
                 if(maNV.contains("PT")){
                     String congviec;
                     int giocong;
                     congviec = temp[5];
                     giocong = Integer.parseInt(temp[6]);
                     dsnv[stt] = new PartTime(maNV, ten, diaChi, birthDate, sdt, congviec, giocong);
+                    dsnv[stt].set_Username(maNV);
                     stt++;
                 }
 
@@ -303,6 +305,7 @@ public class DanhSachNhanVien implements DocGhiFile{
                     congviec = temp[5];
                     ngaycong = Integer.parseInt(temp[6]);
                     dsnv[stt] = new FullTime(maNV, ten, diaChi, birthDate, sdt, congviec, ngaycong);
+                    dsnv[stt].set_Username(maNV);
                     stt++;
                 }
 
@@ -312,6 +315,7 @@ public class DanhSachNhanVien implements DocGhiFile{
                     capbac = Integer.parseInt(temp[6]);
                     congviec = temp[5];
                     dsnv[stt] = new Manager(maNV, ten, diaChi, birthDate, sdt, congviec, capbac);
+                    dsnv[stt].set_Username(maNV);
                     stt++;
                 }
             }
@@ -498,73 +502,7 @@ public class DanhSachNhanVien implements DocGhiFile{
         return -1;
     }
 
-    // public void QuanLyNhanVien() {
-    //     int selection;
-    //     while(true)
-    //     {
-    //         System.out.print("\n\n\t\t========== MENU ==========");
-    //         System.out.print("\n\t1. Xuat danh sach nhan vien.");
-    //         System.out.print("\n\t2. Them nhan vien vao danh sach.");
-    //         System.out.print("\n\t3. Tim kiem nhan vien.");
-    //         System.out.print("\n\t4. Sua nhan vien");
-    //         System.out.print("\n\t4. Xoa nhan vien");
-    //         System.out.print("\n\t4. Xem danh sach khach hang");
-    //         System.out.print("\n\t4. Xem doanh thu");
-    //         System.out.print("\n\t0. Exit.");
-    //         System.out.print("\n\n\t\t========== END ==========");
-
-    //         System.out.print("\nNhap lua chon: ");
-    //         selection = sc.nextInt() ;
-
-    //         if(selection < 0 || selection > 8)
-    //         {
-    //             System.out.print("\nLua chon khong hop le !");
-    //         }
-
-    //         else if(selection == 1) {
-    //             DocFile();
-    //             XuatDanhSach();
-    //         }
-                
-    //         else if(selection == 2)
-    //         {
-    //             ThemNhanVien();
-    //         }
-    //         else if(selection == 3)
-    //         {
-    //             DocFile();
-    //             System.out.print("\nNhap ma nhan vien can tim: ");
-    //             String maNV = sc.next();
-    //             System.out.println(maNV);
-    //             TimKiemNhanVien(maNV);
-    //         }
-    //         else if(selection == 4)
-    //         {
-                
-    //         }
-    //         else if(selection == 5)
-    //         {
-                
-    //         }
-    //         else if(selection == 6)
-    //         {
-               
-    //         }
-            
-    //         else if(selection == 7)
-    //         {
-                
-    //         }
-
-    //         else if(selection == 8)
-    //         {
-                
-    //         }
-
-    //         else
-    //             break;
-    //     }
-    // }
+    
 
     public static void main(String[] args) {
         DanhSachNhanVien ds = new DanhSachNhanVien();

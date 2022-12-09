@@ -69,11 +69,12 @@ public class DanhSachKhachHang implements DocGhiFile {
             this.themKH(a);
             System.out.println("Nhap 't' de dung");
         } while (scanner.nextLine().charAt(0) != 't');
-        GhiFile();
+        // GhiFile();
     }
 
     public void DocFile() {
         File fin = new File("DOAN/KHACHHANG/text.txt");
+        List.clear();
         try {
             BufferedReader brsp = Files.newBufferedReader(fin.toPath());
             if(brsp==null)
@@ -230,15 +231,22 @@ public class DanhSachKhachHang implements DocGhiFile {
 
     public void suaKH()
     {
-        System.out.println("Nhap ma so khach hang can sua");
+        int n=0;
+        System.out.print("Nhap ma so khach hang can sua:");
         String temp=scanner.nextLine();
         for(int i=0;i<List.size();i++)
         {
             if(List.get(i).getMSKH().equalsIgnoreCase(temp))
             {
                 List.get(i).suattKH();
+                n=1;
             }
         }
+        if(n==0)
+        {
+            System.out.println("Khong tim thay");
+        }
+        else{GhiFile();}
     }
 
     public void Xuat() {
@@ -271,12 +279,12 @@ public class DanhSachKhachHang implements DocGhiFile {
     {
         int choose;
         do{
-            System.out.print("|---------------------Quan ly khach hang---------------------|\n"
+            System.out.print("+---------------------Quan ly khach hang---------------------+\n"
                             +"|1.Tim theo ma so khach hang                                 |\n"
                             +"|2.Tim theo ho ten khach hang                                |\n"
                             +"|3.Tim theo so dien thoai khach hang                         |\n"
                             +"|4.Quay ve menu chinh                                        |\n"
-                            +"|------------------------------------------------------------|\n");
+                            +"+------------------------------------------------------------+\n");
             choose=checkLoi.checkSo(string.nextLine());
             switch (choose) {
                 case 1:
@@ -301,18 +309,19 @@ public class DanhSachKhachHang implements DocGhiFile {
     {
         int choose;
         do{
-            System.out.print("|---------------------Quan ly khach hang---------------------|\n"
+            System.out.print("+---------------------Quan ly khach hang---------------------+\n"
                             +"|1.Xuat danh sach khach hang                                 |\n"
                             +"|2.Them khach hang                                           |\n"
                             +"|3.Xoa khach hang                                            |\n"
                             +"|4.Tim khach hang                                            |\n"
                             +"|5.Sua thong tin khach hang                                  |\n"
                             +"|6.Quay ve menu chinh                                        |\n"
-                            +"|------------------------------------------------------------|\n");
+                            +"+------------------------------------------------------------+\n");
             System.out.print("Nhap lua chon");
             choose=checkLoi.checkSo(string.nextLine());
             switch (choose) {
                 case 1:
+                    System.out.println(List.size());
                     Xuat();
                     break;
                 case 2:

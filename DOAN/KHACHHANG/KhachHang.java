@@ -2,6 +2,7 @@ package KHACHHANG;
 
 import java.util.Scanner;
 import CONNGUOI.*;
+import EXCEPTION.checkLoi;
 
 public class KhachHang extends ConNguoi {
     private String MSKH;
@@ -27,43 +28,45 @@ public class KhachHang extends ConNguoi {
 
     public void suattKH()
     {
+        int n;
         do {
-            System.out.println("Nhap 1 de sua ten\n"+
-                               "Nhap 2 de sua Dia chi\n"+
-                               "Nhap 3 de sua So dien thoai\n"+
-                               "Nhap 4 de sua ngay sinh");
-            int n = inp.nextInt();
-
-            while(n<1 || n>4)
-            {
-                System.out.println("Moi nhap lai");
-                n = inp.nextInt();
-            }
-
+            System.out.println("+---------------------Chuc nang---------------------+\n"+
+                               "| Nhap 1 de sua ten                                 |\n"+
+                               "| Nhap 2 de sua Dia chi                             |\n"+
+                               "| Nhap 3 de sua So dien thoai                       |\n"+
+                               "| Nhap 4 de sua ngay sinh                           |\n"+
+                               "| Nhap 5 de thoat                                   |\n"+
+                               "+---------------------------------------------------+\n");
+            System.out.print("Nhap lua chon");  n = checkLoi.checkSo(scanner.nextLine());
             switch (n) {
                 case 1:
                     super.setHoten();
-                    System.out.print("Da chinh sua, nhan phim bat ki de tiep tuc.");
+                    System.out.println("Da chinh sua, nhan phim bat ki de tiep tuc.");
                     scanner.nextLine();
                     break;
                 case 2:
                     super.setDiaChi();
-                    System.out.print("Da chinh sua, nhan phim bat ki de tiep tuc.");
+                    System.out.println("Da chinh sua, nhan phim bat ki de tiep tuc.");
                     scanner.nextLine();
                     break;
                 case 3:
                     super.setSdt();
-                    System.out.print("Da chinh sua, nhan phim bat ki de tiep tuc.");
+                    System.out.println("Da chinh sua, nhan phim bat ki de tiep tuc.");
                     scanner.nextLine();
                     break;
                 case 4:
                     super.setNgaySinh();
-                    System.out.print("Da chinh sua, nhan phim bat ki de tiep tuc.");
+                    System.out.println("Da chinh sua, nhan phim bat ki de tiep tuc.");
                     scanner.nextLine();
                     break;
+                case 5:
+                    break;
+                default:
+                    System.out.println("Nhap lua chon sai moi nhap lai:");
+                    break;
             }
-            System.out.println("nhap t de tiep tuc sua");
-        } while (inp.nextLine().charAt(0) == 't');
+            // System.out.println("nhap t de tiep tuc sua");
+        } while(n!=5);
     }
 
     // public KhachHang(String Hoten,String diachi,int ngay,int thang,int nam,String Sdt)

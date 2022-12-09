@@ -2,6 +2,7 @@ package CONNGUOI;
 
 import java.util.Calendar;
 import java.util.Scanner;
+import EXCEPTION.*;
 
 public class Date {
     protected int ngay;
@@ -78,8 +79,17 @@ public class Date {
     {
         boolean check = true;
         do {
-            System.out.print("Nhap ngay thang nam (dd/mm/yy): ");
-            String s = input.nextLine();
+            String s;
+            while(true){
+                System.out.print("Nhap ngay thang nam (dd/mm/yy): ");
+                s = input.nextLine();
+                if(checkLoi.checkNgay(s))
+                {
+                    break;
+                }else{
+                    System.out.println("Khong hop le, moi nhap lai.");
+                }
+            }
             String a[] = s.split("/");
             setNam(Integer.parseInt(a[2]));
             if (checkMonth(Integer.parseInt(a[1]))) {
