@@ -19,7 +19,7 @@ public class DanhSachPhieuNhap implements DocGhiFile {
     private DanhSachMonAn DSSP;
     private DanhSachNhanVien DSNV;
     static Scanner input = new Scanner(System.in);
-    private String tenFile = "DOANHTHU/DSPN.txt";
+    private String tenFile = "DOAN/DOANHTHU/DSPN.txt";
 
     public DanhSachPhieuNhap() {
         DSSP = new DanhSachMonAn();
