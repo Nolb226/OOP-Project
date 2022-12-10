@@ -92,6 +92,10 @@ public class MonAn {
         return giaNhap;
     }
 
+    public void setSoLuong2(int sl) {
+        soLuong = sl;
+    }
+
     public void setSoLuong(Integer soLuong) {
         System.out.println("Nhập số lượng " + this.getTenMon());
         System.out.print("                        Cái/Ly/Lon\r");

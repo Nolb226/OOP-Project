@@ -358,7 +358,7 @@ public class DanhSachKhachHang implements DocGhiFile {
             choose=checkLoi.checkSo(string.nextLine());
             switch (choose) {
                 case 1:
-                    // System.out.println(List.size());
+                    System.out.println(List.size());
                     Xuat();
                     break;
                 case 2:
