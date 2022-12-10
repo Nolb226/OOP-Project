@@ -1,6 +1,5 @@
 package DOANHTHU;
 
-
 import KHACHHANG.*;
 import NHANVIEN.*;
 import MONAN.*;
@@ -49,11 +48,11 @@ public class HoaDon extends Phieu {
     @Override
     public void taoPhieu(NhanVien a, KhachHang b) {
         if (a instanceof Manager) {
-        nv = new Manager((Manager) a);
+            nv = new Manager((Manager) a);
         } else if (a instanceof FullTime) {
-        nv = new FullTime((FullTime) a);
+            nv = new FullTime((FullTime) a);
         } else if (a instanceof PartTime) {
-        nv = new PartTime((PartTime) a);
+            nv = new PartTime((PartTime) a);
         }
         Date.Today();
         if (b != null) {
@@ -81,8 +80,8 @@ public class HoaDon extends Phieu {
         // Neu co thong tin khach hang se duoc giam gia 5% - Thai
         if (kh == null) {
             return price;
-        } 
-        else return price - price * 0.05;
+        } else
+            return price - price * 0.05;
     }
 
     @Override
@@ -104,8 +103,7 @@ public class HoaDon extends Phieu {
             System.out.print("|");
             System.out.printf("%-73s", "Ten nhan vien: ");
             System.out.println("|");
-        } 
-         else {
+        } else {
             System.out.print("|");
             System.out.printf("%-73s", "Ma nhan vien: " + nv.getMaNV());
             System.out.println("|");
@@ -161,21 +159,22 @@ public class HoaDon extends Phieu {
 
     @Override
     public void TachTT(String pn, DanhSachNhanVien a, DanhSachMonAn b, DanhSachKhachHang c) {
+
         String[] word = pn.split(",");
         Date.xulyngay(word[0]);
         setId(word[1]);
         if (a.TimKiemNhanVienReturnNV(word[2]) != null) {
-            if (word[2].indexOf("NVM") == 0) {
+            if (word[2].indexOf("MN") == 0) {
                 nv = new Manager((Manager) a.TimKiemNhanVienReturnNV(word[2]));
-            } else if (word[2].indexOf("NVF") == 0) {
+            } else if (word[2].indexOf("FT") == 0) {
                 nv = new FullTime((FullTime) a.TimKiemNhanVienReturnNV(word[2]));
-            } else if (word[2].indexOf("NVP") == 0) {
+            } else if (word[2].indexOf("PT") == 0) {
                 nv = new PartTime((PartTime) a.TimKiemNhanVienReturnNV(word[2]));
             }
         } else {
             nv = null;
         }
-        if (c.SearchKH(word[3])== null) {
+        if (c.SearchKH(word[3]) == null) {
             kh = null;
         } else {
             kh = new KhachHang(c.SearchKH(word[3]));
@@ -187,36 +186,35 @@ public class HoaDon extends Phieu {
         int i = 0;
         while (j < word.length) {
             String[] k = word[j].split("#");
-            MonAn temp_MonAn;
-            if ((temp_MonAn=(b.timKiemMaMon(k[0]).clone())) != null) {
-                    sp[i] = temp_MonAn.clone();
-                    soLuong[i] = Integer.parseInt(k[1]);
-                    i++;
-                }
-                j++;
+            MonAn temp_MonAn = new MonAn();
+            if ((temp_MonAn = (b.timKiemMaMon(k[0])).clone()).getMaMon().equals("null")) {
+                System.out.println(temp_MonAn);
+                sp[i] = temp_MonAn.clone();
+                soLuong[i] = Integer.parseInt(k[1]);
+                i++;
             }
-            setN(i);
+            j++;
         }
+        setN(i);
+    }
 
     @Override
     public String toString() {
         String s;
         if (nv != null) {
             s = Date.toString() + "," + id + "," + nv.getMaNV();
-        } 
-        else {
+        } else {
             s = Date.toString() + "," + id + "," + "null";
         }
         if (kh != null) {
             s = s + "," + kh.getMSKH();
-        } 
-        else {
+        } else {
             s = s + "," + "null";
         }
         for (int i = 0; i < n; i++) {
             s = s + "," + sp[i].getMaMon() + "#" + soLuong[i];
         }
-        return s;
+        return s + "\n";
     }
 
     @Override

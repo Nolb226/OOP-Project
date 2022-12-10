@@ -2,6 +2,8 @@ package MONAN;
 
 import java.util.Scanner;
 
+import EXCEPTION.checkLoi;
+
 public class MonAn {
     protected String maMon;
     protected String tenMon;
@@ -13,8 +15,9 @@ public class MonAn {
     public Scanner sc = new Scanner(System.in);
 
     public MonAn() {
-        maMon = "";
-        tenMon = "";
+        maMon = null;
+        tenMon = null;
+        soLuong = 0;
         giaBan = 0.0;
         giaNhap = 0.0;
     }
@@ -56,7 +59,16 @@ public class MonAn {
     }
 
     public void setGiaBan(Double giaBan) {
+        System.out.println("Nhập giá bán của " + this.getTenMon());
+        System.out.print("                      VNĐ\r");
+        giaBan = checkLoi.checkSoThuc(sc.next());
+        while (giaBan == -1) {
+            System.out.println("Sai định dạng, vui lòng nhập lại");
+            System.out.print("                      VNĐ\r");
+            giaBan = checkLoi.checkSoThuc(sc.next());
+        }
         this.giaBan = giaBan;
+
     }
 
     public Double getGiaBan() {
@@ -64,6 +76,15 @@ public class MonAn {
     }
 
     public void setGiaNhap(Double giaNhap) {
+        System.out.println("Nhập giá nhập hàng của " + this.getTenMon());
+        System.out.print("                      VNĐ\r");
+        giaNhap = checkLoi.checkSoThuc(sc.next());
+        while (giaNhap == -1) {
+            System.out.println("Sai định dạng, vui lòng nhập lại");
+            System.out.print("                      VNĐ\r");
+            giaNhap = checkLoi.checkSoThuc(sc.next());
+
+        }
         this.giaNhap = giaNhap;
     }
 
@@ -72,6 +93,15 @@ public class MonAn {
     }
 
     public void setSoLuong(Integer soLuong) {
+        System.out.println("Nhập số lượng " + this.getTenMon());
+        System.out.print("                        Cái/Ly/Lon\r");
+        soLuong = checkLoi.checkSo(sc.next());
+        while (soLuong == -1) {
+            System.out.println("Sai định dạng, vui lòng nhập lại");
+            System.out.print("                      VNĐ\r");
+            soLuong = checkLoi.checkSo(sc.next());
+
+        }
         this.soLuong = soLuong;
     }
 
@@ -82,6 +112,9 @@ public class MonAn {
     public void Nhap() {
         // setMaMon(maMon);
         setTenMon(tenMon);
+        setSoLuong(soLuong);
+        setGiaBan(giaBan);
+        setGiaNhap(giaNhap);
 
     }
 
@@ -91,7 +124,8 @@ public class MonAn {
 
     @Override
     public String toString() {
-        return getMaMon() + ";" + getTenMon() + ";" + getSoLuong() + ";" + getGiaBan() + ";" + getGiaNhap() + ";"+ "\n";
+        return getMaMon() + ";" + getTenMon() + ";" + getSoLuong() + ";" + getGiaBan() + ";" + getGiaNhap() + ";"
+                + "\n";
     }
 
     public void Xuat() {

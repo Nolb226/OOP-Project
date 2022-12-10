@@ -1,16 +1,16 @@
 package DOANHTHU;
 
-
 import INTERFACE.*;
 import java.io.*;
-import java.util.Arrays;
-import CONNGUOI.*;
+import java.util.*;
+import java.nio.file.Files;
+import CONNGUOI.Date;
 
 public class DoanhThuThang implements DocGhiFile {
     private DoanhThu DTList[] = new DoanhThu[0];
     private int n;
-    private static int length;
-    private String fileName = "DOANHTHU/DT.txt";
+    public static Scanner input = new Scanner(System.in);
+    private String fileName = "DOAN/DOANHTHU/DT.txt";
 
     public DoanhThuThang() {
         DocFile();
@@ -36,29 +36,27 @@ public class DoanhThuThang implements DocGhiFile {
         return DTList;
     }
 
-    @Override
     public void DocFile() {
         try {
             String s;
             FileReader fr = new FileReader(fileName);
             BufferedReader br = new BufferedReader(fr);
             while ((s = br.readLine()) != null) {
-                String temp[] = s.split(";");
+                String temp[] = s.split(",");
                 Date date = new Date();
                 date.xulyngay(temp[0]);
                 Double cash_in = Double.parseDouble(temp[1]);
                 Double cash_out = Double.parseDouble(temp[2]);
-                DTList = Arrays.copyOf(DTList, length + 1);
-                DTList[length] = new DoanhThu(date, cash_in, cash_out);
-                System.out.println(DTList[length]);
-                length++;
+                DTList = Arrays.copyOf(DTList, n + 1);
+                DTList[n] = new DoanhThu(date, cash_in, cash_out);
+                n++;
             }
+
             br.close();
             fr.close();
-        } 
-        catch (Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
-            System.out.println("Loi doc du lieu tu file!");
+            System.out.println("Loi doc file doanh thu!");
         }
     }
 
@@ -71,8 +69,7 @@ public class DoanhThuThang implements DocGhiFile {
             }
             bw.flush();
             fw.close();
-        } 
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Loi ghi file doanh thu.");
             System.out.println(e.toString());
         }
@@ -119,15 +116,15 @@ public class DoanhThuThang implements DocGhiFile {
         System.out.printf("%-20s", "Lai suat");
         System.out.println("|");
         System.out.println("+------------+--------------------+--------------------+--------------------+");
-        for(int i=0;i<n;i++) {
+        for (int i = 0; i < n; i++) {
             DTList[i].xuatDT();
         }
         System.out.println("+---------------------------------------------------------------------------+");
-        
+
     }
 
     public void updateDT(DoanhThu DT) {
-        DTList[n-1].moreIN(DT.getIn());
-        DTList[n-1].moreOut(DT.getOut());
+        DTList[n - 1].moreIN(DT.getIn());
+        DTList[n - 1].moreOut(DT.getOut());
     }
 }

@@ -182,7 +182,11 @@ public class DanhSachKhachHang implements DocGhiFile {
                 index=i;
             }
         }
-        return List.get(index);
+        if(index == -1) {
+            return null;
+        }  else {
+            return List.get(index);
+        }
     }
 
     public void themKH(KhachHang temp)
@@ -354,7 +358,7 @@ public class DanhSachKhachHang implements DocGhiFile {
             choose=checkLoi.checkSo(string.nextLine());
             switch (choose) {
                 case 1:
-                    System.out.println(List.size());
+                    // System.out.println(List.size());
                     Xuat();
                     break;
                 case 2:
