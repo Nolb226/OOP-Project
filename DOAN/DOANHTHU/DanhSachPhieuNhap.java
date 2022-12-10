@@ -148,11 +148,15 @@ public class DanhSachPhieuNhap implements DocGhiFile {
         System.out.print("Nhan bat ki de luu, 'h' de huy phieu nhap: ");
         if (checkLoi.continueString(input.nextLine()) != 'h') {
             for (int i = 0; i < pn.sp.length; i++) {
-                dssp.timKiemMaMon(pn.getSp()[i].getMaMon()).setSoLuong(pn.getSoLuong()[i]);
+                // dssp.timKiemMaMon(pn.getSp()[i].getMaMon()).setSoLuong(pn.getSoLuong()[i]);
+                int food_number = Integer.parseInt(pn.sp[i].getMaMon().split("MH")[1])-1;
+
+                dssp.foodList[food_number].setSoLuong(pn.getSoLuong()[i]);
             }
             DT.moreOut(pn.price());
             add(pn);
             GhiFile();
+            dssp.GhiFile();
             System.out.println("Da luu");
         }
         System.out.print("Nhan phim bat ki de tiep tuc.");

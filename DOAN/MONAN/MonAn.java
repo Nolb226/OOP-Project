@@ -98,7 +98,8 @@ public class MonAn {
     }
 
     public void setSoLuong(int sl) {
-        soLuong = sl;
+        this.soLuong = sl;
+        System.out.println(soLuong);
     }
 
     public void setSoLuong() {
