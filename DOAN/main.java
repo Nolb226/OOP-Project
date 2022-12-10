@@ -1,14 +1,28 @@
 
 import KHACHHANG.*;
+import MONAN.DanhSachMonAn;
 import NHANVIEN.*;
 
 import java.util.Scanner;
 
+import DOANHTHU.DanhSachHoaDon;
+import DOANHTHU.DanhSachPhieuNhap;
+import DOANHTHU.DoanhThu;
+import DOANHTHU.DoanhThuThang;
 import EXCEPTION.*;
 public class main {
     public static void main(String[] args) {
         DanhSachKhachHang dskh = new DanhSachKhachHang();
         DanhSachNhanVien dsNV = new DanhSachNhanVien();
+        DanhSachMonAn dsma = new DanhSachMonAn();
+        DanhSachHoaDon dshd = new DanhSachHoaDon();
+        dshd.DocFile();
+        DoanhThuThang DTT = new DoanhThuThang();
+        DTT.DocFile();
+        DanhSachPhieuNhap dspn = new DanhSachPhieuNhap();
+        dspn.DocFile();
+        DoanhThu DT = new DoanhThu();
+        DTT.addDT(DT);
         Account a = new Account();
 
         Scanner scanner = new Scanner(System.in);
@@ -28,12 +42,12 @@ public class main {
                     NhanVien user = dsNV.dsnv[userName];
                     if(user instanceof Manager) {
                         user = ((Manager)user);
-                        user.QuanLy(dsNV);
+                        user.QuanLy(dsNV, dskh, dsma, dshd, DT, user, dspn, DTT);
                     }
                     else {
-                        user.QuanLy(dsNV);
+                        user.QuanLy(dsNV, dskh, dsma, dshd, DT, user, dspn, DTT);
                     }
-                    dskh.QuanlyKH();
+                    
                     
                     break;
                 case 2:

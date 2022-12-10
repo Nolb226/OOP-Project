@@ -92,10 +92,9 @@ public class Manager extends NhanVien{
         System.out.print(" || " + "Cap bac quan ly: " + getCapbac() + " || " + "Cong viec: " + getCongviec() + "\n");
     }
 
-    public void QuanLy(DanhSachNhanVien dsnv) {
-        DanhSachKhachHang dskh = new DanhSachKhachHang();
-        DanhSachMonAn dsma = new DanhSachMonAn();
-        DoanhThu doanhThu = new DoanhThu();
+    @Override
+    public void QuanLy(DanhSachNhanVien dsnv, DanhSachKhachHang dskh, DanhSachMonAn dsma, DanhSachHoaDon dshd, DoanhThu DT, NhanVien user, DanhSachPhieuNhap dspn, DoanhThuThang DTT) {
+        
         int selection;
 
         while(true)
@@ -110,6 +109,8 @@ public class Manager extends NhanVien{
             System.out.print("\n\t7. Quan ly doanh thu");
             System.out.print("\n\t8. Quan ly tai khoan ca nhan");
             System.out.print("\n\t9. Quan ly san pham");
+            System.out.print("\n\t10. Ban hang");
+            System.out.print("\n\t11. Nhap hang");
             System.out.print("\n\t0. Exit.");
             System.out.print("\n\n\t\t========== END ==========");
 
@@ -117,7 +118,7 @@ public class Manager extends NhanVien{
             selection=checkLoi.checkSo(scanner.nextLine());
             
 
-            if(selection < 0 || selection > 9)
+            if(selection < 0 || selection > 11)
             {
                 System.out.print("\nLua chon khong hop le !");
             }
@@ -167,7 +168,7 @@ public class Manager extends NhanVien{
             
             else if(selection == 7)
             {
-                doanhThu.QuanLyDT();
+                DT.QuanLyDT(dspn, dshd, DTT);
             }
 
             else if(selection == 8)
@@ -181,8 +182,23 @@ public class Manager extends NhanVien{
                 dsma.menu();
             }
 
-            else
+            else if(selection == 10)
+            {
+                System.out.println("Nhap ma khach hang: ");
+                String mkh = scanner.next();
+                dsma.banHang(dsma, dshd, mkh, dskh, user, DT);
+                DTT.updateDT(DT);
+            }
+
+            else if(selection == 11) {
+                dsma.nhapHang(dsma, dspn, user, DT);
+                DTT.updateDT(DT);
+            }
+
+            else if(selection == 0) {
+                System.out.println("exit");
                 break;
+            }
         }
     }
 

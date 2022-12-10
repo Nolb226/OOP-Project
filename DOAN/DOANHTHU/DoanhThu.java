@@ -92,13 +92,8 @@ public class DoanhThu{
         System.out.println("|");
     }
 
-    public void QuanLyDT() {
-        DanhSachPhieuNhap DSPN = new DanhSachPhieuNhap();
-        DSPN.DocFile();
-        DanhSachHoaDon DSHD = new DanhSachHoaDon();
-        DSHD.DocFile();
-        DoanhThuThang DTT = new DoanhThuThang();
-        DTT.DocFile();
+    public void QuanLyDT(DanhSachPhieuNhap DSPN, DanhSachHoaDon DSHD, DoanhThuThang DTT ) {
+        
         int choice;
         do {
             System.out.println("");

@@ -61,6 +61,7 @@ public abstract class ConNguoi {
     }
 
     public void setNgaySinh(Date ngaySinh) {
+        
         this.ngaySinh = ngaySinh;
     }
 

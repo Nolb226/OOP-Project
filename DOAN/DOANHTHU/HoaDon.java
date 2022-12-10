@@ -161,7 +161,9 @@ public class HoaDon extends Phieu {
     public void TachTT(String pn, DanhSachNhanVien a, DanhSachMonAn b, DanhSachKhachHang c) {
 
         String[] word = pn.split(",");
+        System.out.println(pn);
         Date.xulyngay(word[0]);
+        System.out.println(word[0]);
         setId(word[1]);
         if (a.TimKiemNhanVienReturnNV(word[2]) != null) {
             if (word[2].indexOf("MN") == 0) {
@@ -213,7 +215,7 @@ public class HoaDon extends Phieu {
         for (int i = 0; i < n; i++) {
             s = s + "," + sp[i].getMaMon() + "#" + soLuong[i];
         }
-        return s + "\n";
+        return s;
     }
 
     @Override

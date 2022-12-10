@@ -140,7 +140,7 @@ public class DanhSachHoaDon implements DocGhiFile {
         do {
             System.out.print("Ma san pham: ");
             String m = input.nextLine();
-            if (dssp.timKiemMaMon(m) == null) {
+            if (dssp.timKiemMaMon(m).getMaMon() == null) {
                 System.out.println("Khong tim thay san pham.");
             } else {
                 dssp.timKiemMaMon(m).Xuat();

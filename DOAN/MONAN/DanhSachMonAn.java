@@ -12,6 +12,10 @@ import NHANVIEN.NhanVien;
 import java.io.*;
 import java.util.Arrays;
 
+import DOANHTHU.DanhSachHoaDon;
+import DOANHTHU.DanhSachPhieuNhap;
+import DOANHTHU.DoanhThu;
+import DOANHTHU.DoanhThuThang;
 import DOANHTHU.HoaDon;
 
 public class DanhSachMonAn implements DocGhiFile {
@@ -144,21 +148,21 @@ public class DanhSachMonAn implements DocGhiFile {
     // Thêm
     public void themMonAnCuoiDanhSach() {
         int n;
-        System.out.println("Vui lòng nhập số Món Ăn muốn thêm vào cùng một lúc :");
-        System.out.print("                      Món\r");
+        System.out.println("So mon an them vao cung mot luc:");
+        System.out.print("                      Mon\r");
 
         n = checkLoi.checkSo(sc.next());
         while (n == -1) {
-            System.out.println("Lỗi định dạng, vui lòng nhập lại");
+            System.out.println("Vui long nhap so");
             n = checkLoi.checkSo(sc.next());
 
         }
         n += length;
         for (int i = length; i < n; i++) {
             foodList = Arrays.copyOf(foodList, i + 1);
-            System.out.printf("-----------Mời nhập thông tin món ăn thứ %d trong danh sách------------\n", i + 1);
+            System.out.printf("-----------Mon an thu %d trong danh sach------------\n", i + 1);
             foodList[i] = new MonAn();
-            foodList[i].setMaMon("MH" + (i + 1));
+            foodList[i].setMaMon(String.format("MH%02d", i + 1));
             foodList[i].Nhap();
         }
         length = n;
@@ -187,26 +191,26 @@ public class DanhSachMonAn implements DocGhiFile {
     public void themMonAn() {
         Integer c;
         do {
-            System.out.println(" ___________Them______________");
+         System.out.println(" ________________Them________________");
             System.out.println(
-                    "|  1.Them n Mon An            |" +
-                            "\n|                             |" +
-                            "\n|  2.Them Mon an o vi tri k   |" +
-                            "\n|                             |" +
-                            "\n|  0.Quay lai                 |");
-            System.out.println(" -----------------------------");
-            System.out.println("Nhap lua chon: ");
+                              "|  1.Them n mon an                  |" +
+                            "\n|                                   |" +
+                            "\n|  2.Them mon an o vi tri k         |" +
+                            "\n|                                   |" +
+                            "\n|  0.Quay lai                       |");
+         System.out.println(" -----------------------------------");
+            System.out.println("Nhap lua chon:");
 
             c = checkLoi.checkSo(sc.next());
             while (c == -1) {
-                System.out.println("Khong hop le, vui long nhap lai");
+                System.out.println("Vui long nhap so");
                 c = checkLoi.checkSo(sc.next());
             }
             while (c < 1 || c > 2) {
                 if (c == 0) {
                     break;
                 }
-                System.out.println("Vui long nhap: ");
+                System.out.println("\r\rVui lòng nhập lại");
                 c = checkLoi.checkSo(sc.next());
             }
             if (c == 0) {
@@ -221,18 +225,14 @@ public class DanhSachMonAn implements DocGhiFile {
 
                 ///
                 case 2: {
-                    System.out.println("Nhap vi tri muon them");
+                    System.out.println("2.Thêm Món ăn ở một vị trí\n\n0.Quay lại");
                     Integer input = checkLoi.checkSo(sc.next());
-                    while (input == -1) {
-                        input = checkLoi.checkSo(sc.next());
-                    }
-                    themMonAnOViTriK(input);
                     break;
                 }
                 ///
 
             }
-            System.out.println("Nhập 0 de dung them Mon An hoac bat ky de tiep tuc");
+            System.out.println("Nhập 0 để dừng chương trình hoặc nhấn bất kỳ để tiếp tục");
 
         } while ((c = checkLoi.checkSo(sc.next())) != 0);
     }
@@ -263,15 +263,15 @@ public class DanhSachMonAn implements DocGhiFile {
 
     public void xoaMonAn() {
         do {
-            System.out.println(" ___________Xoa___________");
+         System.out.println("________________Xoa_________________");
             System.out.println(
-                    "|  1.Xoa mon an theo ma       |" +
+                    "|  1.Xoa mon an theo ma        |" +
                             "\n|                             |" +
                             "\n|  2.Xoa mon an theo ten      |" +
                             "\n|                             |" +
                             "\n|  0.Quay lai                 |");
             System.out.println(" -----------------------------------------");
-            System.out.println("Nhap lua chon:");
+                       System.out.println("Nhap lua chon:");
 
             Integer c = checkLoi.checkSo(sc.next());
             while (c == -1) {
@@ -315,8 +315,8 @@ public class DanhSachMonAn implements DocGhiFile {
     public MonAn timKiemMaMon(String input) {
         MonAn a = new MonAn();
         for (int i = 0; i < length; i++) {
-            if (foodList[i].getMaMon().equalsIgnoreCase(input.trim())) {
-                a = foodList[i].clone();
+                        if (foodList[i].getMaMon().equals(input.trim())) {
+                        a = foodList[i].clone();
             }
         }
 
@@ -470,7 +470,7 @@ public class DanhSachMonAn implements DocGhiFile {
         do {
             System.out.println(" _____________Sửa_____________");
             System.out.println(
-                    "|  1.Sửa Tên                  |" +
+                    "|  1.Sua Ten                  |" +
                             "\n|                             |" +
                             "\n|  2.Sua so luong             |" +
                             "\n|                             |" +
@@ -479,8 +479,9 @@ public class DanhSachMonAn implements DocGhiFile {
                             "\n|  4.Sua gia nhap             |" +
                             "\n|                             |" +
                             "\n|  0.Quay lai                 |");
-            System.out.println(" ------------------------------");
-            System.out.println("Nhap lua chon :");
+            System.out.println(" -----------------------------------");
+                      System.out.println("Nhap lua chon :");
+
             Integer c = checkLoi.checkSo(sc.next());
 
             while (c == -1) {
@@ -631,7 +632,7 @@ public class DanhSachMonAn implements DocGhiFile {
                                 "\n|                             |" +
                                 "\n|  0.Quay lai                 |");
                 System.out.println(" -----------------------------------------");
-                System.out.println("Nhap lua chon: ");
+                              System.out.println("Nhap lua chon: ");
                 number = checkLoi.checkSo(sc.next());
                 while (number == -1) {
                     System.out.println("Khong hop le, vui long nhap lai");
@@ -675,7 +676,7 @@ public class DanhSachMonAn implements DocGhiFile {
 
                     case 2: {
                         if (!check) {
-                            System.out.println("Ban chua them mon");
+                            System.out.println("Bạn chưa  thêm món");
                             break;
                         }
                         try {
@@ -685,10 +686,9 @@ public class DanhSachMonAn implements DocGhiFile {
                             bw.write(temp.toString());
                             bw.close();
                             fw.close();
-                            check = false;
                             System.out.println("done");
                         } catch (Exception e) {
-                            System.out.println("Lỗi");
+                            System.out.println("Loi");
                         }
                         break;
                     }
@@ -698,7 +698,7 @@ public class DanhSachMonAn implements DocGhiFile {
             if (number == 0) {
                 break;
             }
-            System.out.println("Nhập 0 để dừng hoặc bất kỳ để tiếp tục");
+            System.out.println("Nhap 0 de dung hoac bat ky de tiep tuc");
         } while (checkLoi.checkSo(sc.next()) != 0);
         // Tra ve gia tri bao loi neu he thong thanh toan loi
     }
@@ -770,11 +770,18 @@ public class DanhSachMonAn implements DocGhiFile {
         } while ((c = checkLoi.checkSo(sc.next()))!=0);
     }
 
+    public void nhapHang(DanhSachMonAn dsma, DanhSachPhieuNhap dspn, NhanVien a, DoanhThu DT) {
+        dspn.nhapHang(a, dsma, DT);
+    }
+
+    public void banHang(DanhSachMonAn dsma, DanhSachHoaDon dshd, String mkh, DanhSachKhachHang dskh, NhanVien a,
+            DoanhThu DT) {
+        dshd.themHoaDon(a, dskh, mkh, dsma, DT);
+    }
+
     public static void main(String[] args) {
         DanhSachMonAn testdrive = new DanhSachMonAn();
-        // NhanVien a = new Manager();
-        // KhachHang b = new KhachHang();
-        // testdrive.order(a, b);
+        // testdrive.menu();
         // testdrive.DocFile();
         testdrive.menu();
         // testdrive.order();
@@ -786,6 +793,6 @@ public class DanhSachMonAn implements DocGhiFile {
         // testdrive.themMonAnOViTriK(6);
         // testdrive.xuatMotMonAn(testdrive.tiemKiemTenMonAn());
         // testdrive.themMonAn();
-        // testdrive.timKiemMaMon("MH08");
-    }
+testdrive.timKiemMaMon("MH08")  ;
+}
 }

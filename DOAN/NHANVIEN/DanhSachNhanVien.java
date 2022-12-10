@@ -88,8 +88,7 @@ public class DanhSachNhanVien implements DocGhiFile {
                         break;
 
                     case 3: {
-                        Date date = new Date();
-                        temp.setNgaySinh(date);
+                        temp.setNgaySinh();
                         GhiFile();
                     }
                         break;
@@ -151,8 +150,7 @@ public class DanhSachNhanVien implements DocGhiFile {
                         break;
 
                     case 3: {
-                        Date date = new Date();
-                        temp.setNgaySinh(date);
+                        temp.setNgaySinh();
                         GhiFile();
                     }
                         break;
@@ -216,8 +214,7 @@ public class DanhSachNhanVien implements DocGhiFile {
                         break;
 
                     case 3: {
-                        Date date = new Date();
-                        temp.setNgaySinh(date);
+                        temp.setNgaySinh();
                         GhiFile();
                     }
                         break;
