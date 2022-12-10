@@ -7,15 +7,16 @@ import java.nio.file.Files;
 import CONNGUOI.Date;
 
 public class DoanhThuThang implements DocGhiFile {
-    private DoanhThu DTList[] = new DoanhThu[0];
+    // private DoanhThu DTList[] = new DoanhThu[0];
+    private DoanhThu DTList[];
     private int n;
     public static Scanner input = new Scanner(System.in);
     private String fileName = "DOAN/DOANHTHU/DT.txt";
 
     public DoanhThuThang() {
-        DocFile();
         DTList = new DoanhThu[30];
         n = 0;
+        DocFile();
     }
 
     public DoanhThuThang(DoanhThu[] dt, int n) {
@@ -47,9 +48,11 @@ public class DoanhThuThang implements DocGhiFile {
                 date.xulyngay(temp[0]);
                 Double cash_in = Double.parseDouble(temp[1]);
                 Double cash_out = Double.parseDouble(temp[2]);
-                DTList = Arrays.copyOf(DTList, n + 1);
-                DTList[n] = new DoanhThu(date, cash_in, cash_out);
-                n++;
+                // DTList = Arrays.copyOf(DTList, n + 1);
+                // DTList[n] = new DoanhThu(date, cash_in, cash_out);
+                // n++;
+                addDT(new DoanhThu(date, cash_in, cash_out));
+                
             }
 
             br.close();
@@ -124,7 +127,7 @@ public class DoanhThuThang implements DocGhiFile {
     }
 
     public void updateDT(DoanhThu DT) {
-        DTList[n - 1].moreIN(DT.getIn());
-        DTList[n - 1].moreOut(DT.getOut());
+        DTList[n - 1].setIn(DT.getIn());
+        DTList[n - 1].setOut(DT.getOut());
     }
 }

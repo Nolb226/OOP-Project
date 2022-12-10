@@ -3,12 +3,17 @@ package MONAN;
 import java.util.*;
 import EXCEPTION.*;
 import INTERFACE.*;
+import KHACHHANG.DanhSachKhachHang;
 import KHACHHANG.KhachHang;
 import NHANVIEN.NhanVien;
 
 import java.io.*;
 import java.util.Arrays;
 
+import DOANHTHU.DanhSachHoaDon;
+import DOANHTHU.DanhSachPhieuNhap;
+import DOANHTHU.DoanhThu;
+import DOANHTHU.DoanhThuThang;
 import DOANHTHU.HoaDon;
 
 public class DanhSachMonAn implements DocGhiFile {
@@ -745,6 +750,14 @@ public class DanhSachMonAn implements DocGhiFile {
             System.out.println("Nhap 't' de thoat");
 
         } while (!sc.next().equalsIgnoreCase("T"));
+    }
+
+    public void nhapHang(DanhSachMonAn dsma, DanhSachPhieuNhap dspn, NhanVien a, DoanhThu DT) {
+        dspn.nhapHang(a, dsma, DT);
+    }
+
+    public void banHang(DanhSachMonAn dsma, DanhSachHoaDon dshd, String mkh, DanhSachKhachHang dskh, NhanVien a, DoanhThu DT) {
+        dshd.themHoaDon(a, dskh ,mkh, dsma, DT);
     }
 
     public static void main(String[] args) {

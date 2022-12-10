@@ -82,7 +82,7 @@ public class Date {
             String s;
             while(true){
                 System.out.print("Nhap ngay thang nam (dd/mm/yy): ");
-                s = input.nextLine();
+                s = input.next();
                 if(checkLoi.checkNgay(s))
                 {
                     break;
