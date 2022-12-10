@@ -148,7 +148,7 @@ public class DanhSachPhieuNhap implements DocGhiFile {
         System.out.print("Nhan bat ki de luu, 'h' de huy phieu nhap: ");
         if (checkLoi.continueString(input.nextLine()) != 'h') {
             for (int i = 0; i < pn.sp.length; i++) {
-                dssp.timKiemMaMon(pn.getSp()[i].getMaMon()).setSoLuong2(pn.getSoLuong()[i]);
+                dssp.timKiemMaMon(pn.getSp()[i].getMaMon()).setSoLuong(pn.getSoLuong()[i]);
             }
             DT.moreOut(pn.price());
             add(pn);

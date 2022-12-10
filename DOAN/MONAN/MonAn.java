@@ -92,11 +92,11 @@ public class MonAn {
         return giaNhap;
     }
 
-    public void setSoLuong2(int sl) {
+    public void setSoLuong(int sl) {
         soLuong = sl;
     }
 
-    public void setSoLuong(Integer soLuong) {
+    public void setSoLuong() {
         System.out.println("Nhập số lượng " + this.getTenMon());
         System.out.print("                        Cái/Ly/Lon\r");
         soLuong = checkLoi.checkSo(sc.next());
@@ -116,7 +116,7 @@ public class MonAn {
     public void Nhap() {
         // setMaMon(maMon);
         setTenMon(tenMon);
-        setSoLuong(soLuong);
+        setSoLuong();
         setGiaBan(giaBan);
         setGiaNhap(giaNhap);
 

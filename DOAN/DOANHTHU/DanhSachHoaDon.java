@@ -166,7 +166,7 @@ public class DanhSachHoaDon implements DocGhiFile {
         System.out.print("Nhan bat ki de luu, 'h' de huy hoa don: ");
         if (checkLoi.continueString(input.nextLine()) != 'h') {
             for (int i = 0; i < hd.sp.length; i++) {
-                dssp.timKiemMaMon(hd.getSp()[i].getMaMon()).setSoLuong2(0 - hd.getSoLuong()[i]);
+                dssp.timKiemMaMon(hd.getSp()[i].getMaMon()).setSoLuong(0 - hd.getSoLuong()[i]);
             }
             DT.moreIN(hd.price());
             add(hd);
