@@ -119,6 +119,10 @@ public class MonAn {
         return soLuong;
     }
 
+    public void addSoLuong(Integer add) {
+        this.soLuong += add;
+    }
+
     public void Nhap() {
         // setMaMon(maMon);
         setTenMon(tenMon);

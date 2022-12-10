@@ -149,9 +149,9 @@ public class DanhSachPhieuNhap implements DocGhiFile {
         if (checkLoi.continueString(input.nextLine()) != 'h') {
             for (int i = 0; i < pn.sp.length; i++) {
                 // dssp.timKiemMaMon(pn.getSp()[i].getMaMon()).setSoLuong(pn.getSoLuong()[i]);
-                int food_number = Integer.parseInt(pn.sp[i].getMaMon().split("MH")[1])-1;
+                int food_number = Integer.parseInt(pn.sp[i].getMaMon().split("MH")[1]) - 1;
 
-                dssp.foodList[food_number].setSoLuong(pn.getSoLuong()[i]);
+                dssp.foodList[food_number].addSoLuong(pn.getSoLuong()[i]);
             }
             DT.moreOut(pn.price());
             add(pn);
