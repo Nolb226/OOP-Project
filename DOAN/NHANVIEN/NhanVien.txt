@@ -1,6 +1,6 @@
 PT02;123456;Truong Tri Tai;2190 Pham The Hien Q.8;11/6/2002;0982315522;Sale ;35
 PT05;123456;Pham Nhat Duy;40 Bong Sao Q.8;1/1/2002;0963156452;Pha che;35
-PT06;123456;Vu Minh Khang;73 Nguyen Trai Q.5;20/10/2000;0943651203;Server;35
+PT06;111;Vu Minh Khang;73 Nguyen Trai Q.5;20/10/2000;0943651203;Server;35
 FT02;123456;Tran Ha Tuan Kiet;332A Tran Binh Trong Q.5;8/7/2001;0908155687;Sale;20
 FT03;123456;Nguyen Thi Thuy Tien;4 Nguyen Trai Q.5;12/6/1998;0913456745;Barista;27
 FT04;123456;Nguyen Thanh Dat;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Server;30

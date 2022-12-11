@@ -693,7 +693,7 @@ public class DanhSachMonAn implements DocGhiFile {
         do {
             do {
 
-                System.out.println(" ____________= Menu Mon An =_______________");
+                System.out.println(" =========== Menu Mon An ============");
                 System.out.println(
                         "|  1.Them mon an                    |" +
                         "\n|                                   |" +
@@ -704,7 +704,7 @@ public class DanhSachMonAn implements DocGhiFile {
                         "\n|  4.Xuat danh sach                 |" +
                         "\n|                                   |" +
                         "\n|  0.Quay lai                       |");
-                System.out.println(" ----------------------------------- ");
+                System.out.println(" ==================================== ");
                 System.out.println("Nhap lua chon:");
 
                 c = checkLoi.checkSo(sc.next());

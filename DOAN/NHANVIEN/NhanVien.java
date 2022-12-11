@@ -104,56 +104,98 @@ public abstract class NhanVien extends ConNguoi {
         DoanhThu doanhThu = new DoanhThu();
 
         int selection;
-        while(true)
-        {
-            System.out.print("\n\n\t\t========== MENU ==========");
-            System.out.print("\n\t1. Quan ly khach hang");
-            System.out.print("\n\t2. Quan ly tai khoan ca nhan");
-            System.out.print("\n\t3. Xem doanh thu");
-            System.out.print("\n\t4. Quan ly san pham");
-            System.out.print("\n\t5. Ban hang");
-            System.out.print("\n\t0. Exit.");
-            System.out.print("\n\n\t\t========== END ==========");
+        if(user instanceof FullTime) {
 
-            System.out.print("\nNhap lua chon: ");
-            selection=checkLoi.checkSo(scanner.nextLine());
-            
-
-            if(selection < 0 || selection > 5)
+            while(true)
             {
-                System.out.print("\nLua chon khong hop le !");
-            }
-
-            else if(selection == 1) {
-                dskh.QuanlyKH();
-            }
+                System.out.print("\n\n\t\t\t========== MENU ==========");
+                System.out.print("\n\t\t1. Quan ly khach hang");
+                System.out.print("\n\t\t2. Quan ly tai khoan ca nhan");
+                System.out.print("\n\t\t3. Quan ly doanh thu");
+                System.out.print("\n\t\t4. Quan ly san pham");
+                System.out.print("\n\t\t5. Ban hang");
+                System.out.print("\n\t\t0. Exit.");
+                System.out.print("\n\n\t\t\t========== END ==========");
+    
+                System.out.print("\nNhap lua chon: ");
+                selection=checkLoi.checkSo(scanner.nextLine());
                 
-            else if(selection == 2)
-            {
-                taiKhoan.doi_pass(dsnv);
-                System.out.println(this.getpassword());
-                dsnv.GhiFile();
+    
+                if(selection < 0 || selection > 5)
+                {
+                    System.out.print("\nLua chon khong hop le !");
+                }
+    
+                else if(selection == 1) {
+                    dskh.QuanlyKH();
+                }
+                    
+                else if(selection == 2)
+                {
+                    taiKhoan.doi_pass(dsnv);
+                    System.out.println(this.getpassword());
+                    dsnv.GhiFile();
+                }
+    
+                else if(selection == 3)
+                {
+                    DT.QuanLyDT(dspn, dshd, DTT);
+                }
+    
+                else if(selection == 4)
+                {
+                    dsma.menu();
+                }
+    
+                else if(selection == 5)
+                {
+                    System.out.println("Nhap ma khach hang: ");
+                    String mkh = scanner.next();
+                    dsma.banHang(dsma, dshd, mkh, dskh, user, DT);
+                }
+    
+                else
+                    break;
             }
-
-            else if(selection == 3)
+        }
+        else {
+            while(true)
             {
-                // Xem doanh thu
+                System.out.print("\n\n\t\t\t========== MENU ==========");
+                System.out.print("\n\t\t1. Quan ly khach hang");
+                System.out.print("\n\t\t2. Quan ly tai khoan ca nhan");
+                System.out.print("\n\t\t3. Ban hang");
+                System.out.print("\n\t\t0. Exit.");
+                System.out.print("\n\n\t\t\t========== END ==========");
+    
+                System.out.print("\nNhap lua chon: ");
+                selection=checkLoi.checkSo(scanner.nextLine());
+                
+    
+                if(selection < 0 || selection > 3)
+                {
+                    System.out.print("\nLua chon khong hop le !");
+                }
+    
+                else if(selection == 1) {
+                    dskh.QuanlyKH();
+                }
+                    
+                else if(selection == 2)
+                {
+                    taiKhoan.doi_pass(dsnv);
+                    System.out.println(this.getpassword());
+                    dsnv.GhiFile();
+                }
+    
+                else if(selection == 3)
+                {
+                    dsma.banHang(dsma, dshd, diaChi, dskh, user, DT);
+                }
+    
+                else
+                    break;
             }
-
-            else if(selection == 4)
-            {
-                dsma.menu();
-            }
-
-            else if(selection == 5)
-            {
-                System.out.println("Nhap ma khach hang: ");
-                String mkh = scanner.next();
-                dsma.banHang(dsma, dshd, mkh, dskh, user, DT);
-            }
-
-            else
-                break;
         }
     }
 

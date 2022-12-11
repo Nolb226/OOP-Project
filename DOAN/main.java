@@ -30,11 +30,11 @@ public class main {
         int choose;
         // DanhSachNhanVien dsnv = new DanhSachNhanVien();
         do{
-            System.out.print(   "|---------------    MENU    ---------------|\n"+
-                                "|1.Dang nhap                               |\n"+
-                                "|2.Thoat                                   |\n"+
-                                "|------------------------------------------|\n");
-            System.out.println("Nhap lua chon: ");
+            System.out.print(   "\t\t=========    MENU    =========\n\n"+
+                                "\t\t\t1.Dang nhap                   \n"+
+                                "\t\t\t2.Thoat                       \n"+
+                                "\n\t\t==============================\n\n");
+            System.out.print("Nhap lua chon: ");
             choose=checkLoi.checkSo(scanner.nextLine());
             switch (choose) {
                 case 1:
