@@ -99,20 +99,20 @@ public class Manager extends NhanVien{
 
         while(true)
         {
-            System.out.print("\n\n\t\t========== MENU ==========");
-            System.out.print("\n\t1. Xuat danh sach nhan vien.");
-            System.out.print("\n\t2. Them nhan vien vao danh sach.");
-            System.out.print("\n\t3. Tim kiem nhan vien.");
-            System.out.print("\n\t4. Sua nhan vien");
-            System.out.print("\n\t5. Xoa nhan vien");
-            System.out.print("\n\t6. Quan ly khach hang");
-            System.out.print("\n\t7. Quan ly doanh thu");
-            System.out.print("\n\t8. Quan ly tai khoan ca nhan");
-            System.out.print("\n\t9. Quan ly san pham");
-            System.out.print("\n\t10. Ban hang");
-            System.out.print("\n\t11. Nhap hang");
-            System.out.print("\n\t0. Exit.");
-            System.out.print("\n\n\t\t========== END ==========");
+            System.out.print("\n\n\t\t=========== MENU MANAGER ===========\n");
+            System.out.print("\n\t\t1. Xuat danh sach nhan vien.");
+            System.out.print("\n\t\t2. Them nhan vien vao danh sach.");
+            System.out.print("\n\t\t3. Tim kiem nhan vien.");
+            System.out.print("\n\t\t4. Sua nhan vien");
+            System.out.print("\n\t\t5. Xoa nhan vien");
+            System.out.print("\n\t\t6. Quan ly khach hang");
+            System.out.print("\n\t\t7. Quan ly doanh thu");
+            System.out.print("\n\t\t8. Quan ly tai khoan ca nhan");
+            System.out.print("\n\t\t9. Quan ly san pham");
+            System.out.print("\n\t\t10. Ban hang");
+            System.out.print("\n\t\t11. Nhap hang");
+            System.out.print("\n\t\t0. Exit.");
+            System.out.print("\n\n\t\t================ END ================");
 
             System.out.print("\nNhap lua chon: ");
             selection=checkLoi.checkSo(scanner.nextLine());
@@ -124,7 +124,6 @@ public class Manager extends NhanVien{
             }
 
             else if(selection == 1) {
-                // dsnv.DocFile();
                 dsnv.XuatDanhSach();
             }
                 
@@ -174,7 +173,6 @@ public class Manager extends NhanVien{
             else if(selection == 8)
             {
                 taiKhoan.doi_pass(dsnv);
-                // dsnv.GhiFile();
             }
 
             else if(selection == 9)
@@ -188,11 +186,13 @@ public class Manager extends NhanVien{
                 String mkh = scanner.next();
                 dsma.banHang(dsma, dshd, mkh, dskh, user, DT);
                 DTT.updateDT(DT);
+                DTT.GhiFile();
             }
 
             else if(selection == 11) {
                 dsma.nhapHang(dsma, dspn, user, DT);
                 DTT.updateDT(DT);
+                DTT.GhiFile();
             }
 
             else if(selection == 0) {
@@ -201,11 +201,5 @@ public class Manager extends NhanVien{
             }
         }
     }
-
-    // public static void main(String[] args) {
-    //     // ds.DocFile();
-    //     DanhSachNhanVien dsnv = new DanhSachNhanVien();
-        
-    // }
 }
 

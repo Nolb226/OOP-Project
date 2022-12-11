@@ -62,15 +62,15 @@ public class DanhSachNhanVien implements DocGhiFile {
         if (dsnv[k] instanceof Manager) {
             Manager temp = (Manager) dsnv[k];
             do {
-                System.out.println("|------------------------SUA THONG TIN MANAGER---------------------|");
-                System.out.println("|\t1.Sua ho ten                     |");
-                System.out.println("|\t2.Sua dia chi                     |");
-                System.out.println("|\t3.Ngay thang nam sinh                      |");
-                System.out.println("|\t4.So dien thoai                                                   |");
-                System.out.println("|\t5.Sua cap bac quan ly                                                   |");
-                System.out.println("|\t6.Sua cong viec                                                   |");
-                System.out.println("|\t0.Thoat                                                  |");
-                System.out.println("|------------------------------------------------------------------|");
+                System.out.println("------------------- Sua Thong Tin Manager ----------------");
+                System.out.println("\n\t1.Sua ho ten                     ");
+                System.out.println("\t2.Sua dia chi                     ");
+                System.out.println("\t3.Ngay thang nam sinh                      ");
+                System.out.println("\t4.So dien thoai                                                   ");
+                System.out.println("\t5.Sua cap bac quan ly                                                   ");
+                System.out.println("\t6.Sua cong viec                                                   ");
+                System.out.println("\t0.Thoat                                                  ");
+                System.out.println("\n----------------------------------------------------------");
                 System.out.println("Nhap lua chon: ");
 
                 choose = checkLoi.checkSo(sc.next());
@@ -124,15 +124,15 @@ public class DanhSachNhanVien implements DocGhiFile {
         if (dsnv[k] instanceof PartTime) {
             PartTime temp = (PartTime) dsnv[k];
             do {
-                System.out.println("|-----------------------SUA THONG TIN PART-TIME--------------------|");
-                System.out.println("|\t1.Sua ho ten                     |");
-                System.out.println("|\t2.Sua dia chi                     |");
-                System.out.println("|\t3.Ngay thang nam sinh                      |");
-                System.out.println("|\t4.So dien thoai                                                   |");
-                System.out.println("|\t5.Sua cong viec                                                  |");
-                System.out.println("|\t6.Sua gio cong                                                   |");
-                System.out.println("|\t0.Thoat                                                  |");
-                System.out.println("|------------------------------------------------------------------|");
+                System.out.println("------------- Sua Thong Tin Part-time ----------");
+                System.out.println("\n\t1.Sua ho ten                     ");
+                System.out.println("\t2.Sua dia chi                     ");
+                System.out.println("\t3.Ngay thang nam sinh                      ");
+                System.out.println("\t4.So dien thoai                                                   ");
+                System.out.println("\t5.Sua cong viec                                                  ");
+                System.out.println("\t6.Sua gio cong                                                   ");
+                System.out.println("\t0.Thoat                                                  ");
+                System.out.println("\n------------------------------------------------");
                 System.out.println("Nhap lua chon: ");
 
                 choose = checkLoi.checkSo(sc.next());
@@ -185,15 +185,15 @@ public class DanhSachNhanVien implements DocGhiFile {
         if (dsnv[k] instanceof FullTime) {
             FullTime temp = (FullTime) dsnv[k];
             do {
-                System.out.println("|---------SUA THONG TIN FULL-TIME-------|");
-                System.out.println("|\t1.Sua ho ten                    |");
-                System.out.println("|\t2.Sua dia chi                   |");
-                System.out.println("|\t3.Ngay thang nam sinh           |");
-                System.out.println("|\t4.So dien thoai                 |");
-                System.out.println("|\t5.Sua cong viec                 |");
-                System.out.println("|\t6.Sua ngay cong                 |");
-                System.out.println("|\t0.Thoat                         |");
-                System.out.println("|---------------------------------------|");
+                System.out.println("--------- Sua Thong Tin Full-time -------");
+                System.out.println("\n\t1.Sua ho ten                    ");
+                System.out.println("\t2.Sua dia chi                   ");
+                System.out.println("\t3.Ngay thang nam sinh           ");
+                System.out.println("\t4.So dien thoai                 ");
+                System.out.println("\t5.Sua cong viec                 ");
+                System.out.println("\t6.Sua ngay cong                 ");
+                System.out.println("\t0.Thoat                         ");
+                System.out.println("\n---------------------------------------");
                 System.out.println("Nhap lua chon: ");
 
                 choose = checkLoi.checkSo(sc.next());
@@ -456,13 +456,13 @@ public class DanhSachNhanVien implements DocGhiFile {
     public void ThemNhanVien() {
         int choose;
         do {
-            System.out.println("|------------------------------MENU--------------------------------|");
-            System.out.println("|\t1.Them vao he thong nhan vien Parttime                     |");
-            System.out.println("|\t2.Them vao he thong nhan vien Fulltime                     |");
-            System.out.println("|\t3.Them vao he thong nhan vien Manager                      |");
-            System.out.println("|\t4.Thoat                                                    |");
-            System.out.println("|*Note: Ma nhan vien Parttime(PTxx), Fulltime(FTxx), Manager(MNxx) |");
-            System.out.println("|------------------------------------------------------------------|");
+            System.out.println("-------------------- Them Nhan Vien ----------------------");
+            System.out.println("\n\t1.Them vao he thong nhan vien Parttime                     ");
+            System.out.println("\t2.Them vao he thong nhan vien Fulltime                     ");
+            System.out.println("\t3.Them vao he thong nhan vien Manager                      ");
+            System.out.println("\t4.Thoat                                                    ");
+            System.out.println("*Note: Ma nhan vien Parttime(PTxx), Fulltime(FTxx), Manager(MNxx) \n");
+            System.out.println("----------------------------------------------------------");
             System.out.println("Nhap lua chon: ");
 
             choose = checkLoi.checkSo(sc.next());
@@ -474,7 +474,7 @@ public class DanhSachNhanVien implements DocGhiFile {
                     NhanVien[] newPT = new NhanVien[n];
                     for (int i = 0; i < n; i++) {
                         newPT[i] = new PartTime();
-                        System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n", i + 1);
+                        System.out.printf("\t----------- Nhap vao nhan vien thu %d ---------\n", i + 1);
                         newPT[i].Nhap();
                         newPT[i].setMaNV(taoMNVPT());
 
@@ -495,7 +495,7 @@ public class DanhSachNhanVien implements DocGhiFile {
                     NhanVien[] newFT = new NhanVien[n];
                     for (int i = 0; i < n; i++) {
                         newFT[i] = new FullTime();
-                        System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n", i + 1);
+                        System.out.printf("\t----------- Nhap vao nhan vien thu %d ---------\n", i + 1);
                         newFT[i].Nhap();
                         newFT[i].setMaNV(taoMNVFT());
                         System.out.println("hello");
@@ -517,7 +517,7 @@ public class DanhSachNhanVien implements DocGhiFile {
                     NhanVien[] newMN = new NhanVien[n];
                     for (int i = 0; i < n; i++) {
                         newMN[i] = new Manager();
-                        System.out.printf("----------------Nhap vao nhan vien thu %d--------------\n", i + 1);
+                        System.out.printf("\t----------- Nhap vao nhan vien thu %d ---------\n", i + 1);
                         newMN[i].Nhap();
                         newMN[i].setMaNV(taoMNVMN());
 
@@ -551,7 +551,7 @@ public class DanhSachNhanVien implements DocGhiFile {
 
     public void TinhLuong() { // Tinh luong cua tat ca nhan vien
         for (int i = 0; i < stt; i++) {
-            System.out.printf("-------------Nhan vien thu %d-------------\n", i + 1);
+            System.out.printf("\t----------- Nhan vien thu %d ---------\n", i + 1);
             dsnv[i].Xuat();
             System.out.println("\n" + dsnv[i].calSalary());
         }
@@ -563,7 +563,7 @@ public class DanhSachNhanVien implements DocGhiFile {
             System.out.println("Khong co du lieu tren he thong!");
         }
         for (int i = 0; i < stt; i++) {
-            System.out.printf("\n---------Nhan vien thu %d----------\n", i + 1);
+            System.out.printf("\t----------- Nhan vien thu %d ---------\n", i + 1);
             dsnv[i].Xuat();
         }
     }

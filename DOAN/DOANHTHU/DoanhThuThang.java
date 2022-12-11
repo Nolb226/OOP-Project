@@ -11,12 +11,13 @@ public class DoanhThuThang implements DocGhiFile {
     private DoanhThu DTList[];
     private int n;
     public static Scanner input = new Scanner(System.in);
-    private String fileName = "DOAN/DOANHTHU/DT.txt";
+    private String fileName = "DOAN/DOANHTHU/Doanhthu.txt";
 
     public DoanhThuThang() {
         DTList = new DoanhThu[30];
         n = 0;
         DocFile();
+        // System.out.println(n);
     }
 
     public DoanhThuThang(DoanhThu[] dt, int n) {
@@ -38,12 +39,14 @@ public class DoanhThuThang implements DocGhiFile {
     }
 
     public void DocFile() {
+        // System.out.println(n);
         try {
             String s;
             FileReader fr = new FileReader(fileName);
             BufferedReader br = new BufferedReader(fr);
             while ((s = br.readLine()) != null) {
                 String temp[] = s.split(",");
+                System.out.println(s);
                 Date date = new Date();
                 date.xulyngay(temp[0]);
                 Double cash_in = Double.parseDouble(temp[1]);
@@ -68,7 +71,7 @@ public class DoanhThuThang implements DocGhiFile {
             FileWriter fw = new FileWriter(fileName);
             BufferedWriter bw = new BufferedWriter(fw);
             for (int i = 0; i < n; i++) {
-                bw.write(DTList[i].toString());
+                bw.write(DTList[i].toString()+"\n");
             }
             bw.flush();
             fw.close();
@@ -81,7 +84,7 @@ public class DoanhThuThang implements DocGhiFile {
     public void addDT(DoanhThu a) {
         if (n == 0) {
             n++;
-            DTList[n - 1] = new DoanhThu(a);
+            DTList[n - 1] = a;
         } else {
             if (DTList[n - 1].getNgay().equals(a.getNgay())) {
                 DTList[n - 1].moreIN(a.getIn());
@@ -130,4 +133,5 @@ public class DoanhThuThang implements DocGhiFile {
         DTList[n - 1].setIn(DT.getIn());
         DTList[n - 1].setOut(DT.getOut());
     }
+
 }

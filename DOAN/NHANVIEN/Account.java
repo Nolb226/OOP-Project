@@ -66,10 +66,10 @@ public class Account {
         int choose;
         // DanhSachNhanVien dsnv = new DanhSachNhanVien();
         do{
-            System.out.print(   "|---------------Doi mat khau---------------|\n"+
-                                "|1.Doi mat khau                            |\n"+
-                                "|2.Thoat                                   |\n"+
-                                "|------------------------------------------|\n");
+            System.out.print(   "\n\t\t---------- -Doi mat khau -----------\n\n"+
+                                "\t\t1.Doi mat khau                            \n"+
+                                "\t\t2.Thoat                                   \n"+
+                                "\n\t\t------------------------------------\n");
             choose=checkLoi.checkSo(scanner.nextLine());
             switch (choose) {
                 case 1:
@@ -77,7 +77,7 @@ public class Account {
                     String oldPass=scanner.nextLine();
                     if(password.equals(oldPass)){
                         do{
-                            System.out.print("Nhap mat khau moi:");
+                            System.out.print("Nhap mat khau moi: ");
                             String newPass=scanner.nextLine();
                             System.out.print("Nhap lai mat khau moi: ");
                             String rePass=scanner.nextLine();

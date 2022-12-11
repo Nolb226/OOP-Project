@@ -346,14 +346,15 @@ public class DanhSachKhachHang implements DocGhiFile {
     {
         int choose;
         do{
-            System.out.print("+---------------------Quan ly khach hang---------------------+\n"
-                            +"|1.Xuat danh sach khach hang                                 |\n"
-                            +"|2.Them khach hang                                           |\n"
-                            +"|3.Xoa khach hang                                            |\n"
-                            +"|4.Tim khach hang                                            |\n"
-                            +"|5.Sua thong tin khach hang                                  |\n"
-                            +"|6.Quay ve menu chinh                                        |\n"
-                            +"+------------------------------------------------------------+\n");
+            System.out.print(
+                "\t--------------- Quan ly khach hang ---------------\n"
+                +"\n\t1. Xuat danh sach khach hang                                 \n"
+                +"\t2. Them khach hang                                           \n"
+                +"\t3. Xoa khach hang                                            \n"
+                +"\t4. Tim khach hang                                            \n"
+                +"\t5. Sua thong tin khach hang                                  \n"
+                +"\t0. Quay ve menu chinh                                        \n"
+                +"\n\t--------------------------------------------------\n");
             System.out.print("Nhap lua chon: ");
             choose=checkLoi.checkSo(string.nextLine());
             switch (choose) {
@@ -372,13 +373,13 @@ public class DanhSachKhachHang implements DocGhiFile {
                 case 5:
                     suaKH();
                     break;
-                case 6:
+                case 0:
                     break;
                 default:
                     System.out.println("Lua chon khong dung moi nhap lai !");
                     break;
             }
-        }while(choose != 6);
+        }while(choose != 0);
     }
 
 }

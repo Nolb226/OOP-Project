@@ -18,7 +18,7 @@ public class main {
         DanhSachHoaDon dshd = new DanhSachHoaDon();
         dshd.DocFile();
         DoanhThuThang DTT = new DoanhThuThang();
-        DTT.DocFile();
+        // DTT.DocFile();
         DanhSachPhieuNhap dspn = new DanhSachPhieuNhap();
         dspn.DocFile();
         DoanhThu DT = new DoanhThu();
@@ -28,7 +28,7 @@ public class main {
         Scanner scanner = new Scanner(System.in);
 
         int choose;
-        // DanhSachNhanVien dsnv = new DanhSachNhanVien();
+        DanhSachNhanVien dsnv = new DanhSachNhanVien();
         do{
             System.out.print(   "|---------------    MENU    ---------------|\n"+
                                 "|1.Dang nhap                               |\n"+

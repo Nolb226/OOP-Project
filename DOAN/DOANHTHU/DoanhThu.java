@@ -97,14 +97,12 @@ public class DoanhThu{
         int choice;
         do {
             System.out.println("");
-            System.out.println("+---------------------------------------+");
-            System.out.println("|            QUAN LY DOANH THU          |");
-            System.out.println("+---------------------------------------+");
-            System.out.println("|1. Lich su phieu nhap                  |");
-            System.out.println("|2. Lich su hoa don                     |");
-            System.out.println("|3. Thong ke doanh thu                  |");
-            System.out.println("|0. Tro ve menu chinh.                  |");
-            System.out.println("+---------------------------------------+");
+            System.out.println("\t---------- QUAN LY DOANH THU ----------\n");
+            System.out.println("\t1. Lich su phieu nhap                  ");
+            System.out.println("\t2. Lich su hoa don                     ");
+            System.out.println("\t3. Thong ke doanh thu                  ");
+            System.out.println("\t0. Tro ve menu chinh.                  ");
+            System.out.println("\n\t---------------------------------------");
             do {
                 System.out.print("Moi nhap lua chon: ");
                 choice = checkLoi.inputIntNumberError(input.nextLine());
