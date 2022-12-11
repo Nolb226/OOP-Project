@@ -123,6 +123,10 @@ public class MonAn {
         this.soLuong += add;
     }
 
+    public void removeSoLuong(Integer remove) {
+        this.soLuong -= remove;
+    }
+
     public void Nhap() {
         // setMaMon(maMon);
         setTenMon(tenMon);

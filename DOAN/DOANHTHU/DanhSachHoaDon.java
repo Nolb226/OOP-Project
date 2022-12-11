@@ -166,11 +166,21 @@ public class DanhSachHoaDon implements DocGhiFile {
         System.out.print("Nhan bat ki de luu, 'h' de huy hoa don: ");
         if (checkLoi.continueString(input.nextLine()) != 'h') {
             for (int i = 0; i < hd.sp.length; i++) {
-                dssp.timKiemMaMon(hd.getSp()[i].getMaMon()).setSoLuong(0 - hd.getSoLuong()[i]);
+
+                //Food Attr define
+                String food_id = dssp.timKiemMaMon(hd.getSp()[i].getMaMon()).getMaMon();
+                Integer food_number =Integer.parseInt( food_id.split("MH")[1])-1;
+
+                System.out.println(food_id);
+                System.out.println(food_number);
+                //Decrease the number of food in store
+                dssp.foodList[food_number].removeSoLuong(hd.getSoLuong()[i]);
+                
             }
             DT.moreIN(hd.price());
             add(hd);
             GhiFile();
+            dssp.GhiFile();
             System.out.println("Da luu");
         }
         System.out.print("Nhan phim bat ki de tiep tuc.");
