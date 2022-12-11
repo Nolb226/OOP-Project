@@ -99,7 +99,7 @@ public class MonAn {
 
     public void setSoLuong(int sl) {
         this.soLuong = sl;
-        System.out.println(soLuong);
+        // System.out.println(soLuong);
     }
 
     public void setSoLuong() {

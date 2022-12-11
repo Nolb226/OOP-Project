@@ -777,6 +777,7 @@ public class DanhSachMonAn implements DocGhiFile {
 
     public void banHang(DanhSachMonAn dsma, DanhSachHoaDon dshd, String mkh, DanhSachKhachHang dskh, NhanVien a,
             DoanhThu DT) {
+        dsma.xuatDanhSach();
         dshd.themHoaDon(a, dskh, mkh, dsma, DT);
     }
 
