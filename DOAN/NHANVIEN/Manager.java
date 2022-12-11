@@ -199,11 +199,5 @@ public class Manager extends NhanVien{
             }
         }
     }
-
-    // public static void main(String[] args) {
-    //     // ds.DocFile();
-    //     DanhSachNhanVien dsnv = new DanhSachNhanVien();
-        
-    // }
 }
 
