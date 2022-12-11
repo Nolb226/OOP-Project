@@ -171,8 +171,8 @@ public class DanhSachHoaDon implements DocGhiFile {
                 String food_id = dssp.timKiemMaMon(hd.getSp()[i].getMaMon()).getMaMon();
                 Integer food_number =Integer.parseInt( food_id.split("MH")[1])-1;
 
-                System.out.println(food_id);
-                System.out.println(food_number);
+                // System.out.println(food_id);
+                // System.out.println(food_number);
                 //Decrease the number of food in store
                 dssp.foodList[food_number].removeSoLuong(hd.getSoLuong()[i]);
                 
