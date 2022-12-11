@@ -51,6 +51,7 @@ public class MonAn {
     public void setTenMon(String tenMon) {
         System.out.println("Mời nhập vào tên món: ");
         tenMon = sc.next();
+        tenMon = tenMon + sc.nextLine();
         this.tenMon = tenMon;
     }
 
@@ -59,12 +60,12 @@ public class MonAn {
     }
 
     public void setGiaBan(Double giaBan) {
-        System.out.println("Nhập giá bán của " + this.getTenMon());
-        System.out.print("                      VNĐ\r");
+        System.out.println("Nhap gia ban cua " + this.getTenMon());
+        System.out.print("                      VND\r");
         giaBan = checkLoi.checkSoThuc(sc.next());
         while (giaBan == -1) {
-            System.out.println("Sai định dạng, vui lòng nhập lại");
-            System.out.print("                      VNĐ\r");
+            System.out.println("Khong hop le, vui long nhap lai");
+            System.out.print("                      VND\r");
             giaBan = checkLoi.checkSoThuc(sc.next());
         }
         this.giaBan = giaBan;
@@ -76,14 +77,18 @@ public class MonAn {
     }
 
     public void setGiaNhap(Double giaNhap) {
-        System.out.println("Nhập giá nhập hàng của " + this.getTenMon());
-        System.out.print("                      VNĐ\r");
+        System.out.println("Nhap gia hang cua " + this.getTenMon());
+        System.out.print("                      VND\r");
         giaNhap = checkLoi.checkSoThuc(sc.next());
         while (giaNhap == -1) {
-            System.out.println("Sai định dạng, vui lòng nhập lại");
-            System.out.print("                      VNĐ\r");
+            System.out.println("Khong hop le, vui long nhap lai");
+            System.out.print("                     VND\r");
             giaNhap = checkLoi.checkSoThuc(sc.next());
-
+        }
+        while (giaNhap > getGiaBan()) {
+            System.out.println("Gia nhap khong duoc lon hon gia ban");
+            System.out.print("                     VND\r");
+            giaNhap = checkLoi.checkSoThuc(sc.next());
         }
         this.giaNhap = giaNhap;
     }
@@ -92,17 +97,18 @@ public class MonAn {
         return giaNhap;
     }
 
-    public void setSoLuong2(int sl) {
-        soLuong = sl;
+    public void setSoLuong(int sl) {
+        this.soLuong = sl;
+        // System.out.println(soLuong);
     }
 
-    public void setSoLuong(Integer soLuong) {
+    public void setSoLuong() {
         System.out.println("Nhập số lượng " + this.getTenMon());
-        System.out.print("                        Cái/Ly/Lon\r");
+        System.out.print("                        Cai/Ly/Lon\r");
         soLuong = checkLoi.checkSo(sc.next());
         while (soLuong == -1) {
-            System.out.println("Sai định dạng, vui lòng nhập lại");
-            System.out.print("                      VNĐ\r");
+            System.out.println("Khong hop le, vui long nhap lai");
+            System.out.print("                      Cai/Ly/Lon\r");
             soLuong = checkLoi.checkSo(sc.next());
 
         }
@@ -113,10 +119,18 @@ public class MonAn {
         return soLuong;
     }
 
+    public void addSoLuong(Integer add) {
+        this.soLuong += add;
+    }
+
+    public void removeSoLuong(Integer remove) {
+        this.soLuong -= remove;
+    }
+
     public void Nhap() {
         // setMaMon(maMon);
         setTenMon(tenMon);
-        setSoLuong(soLuong);
+        setSoLuong();
         setGiaBan(giaBan);
         setGiaNhap(giaNhap);
 

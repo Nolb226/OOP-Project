@@ -84,15 +84,6 @@ public class checkLoi {
         }
     }
 
-    public static Boolean checkSDT(String s) {
-        Pattern rule = Pattern.compile("^0[3|5|7|8|9]\\d{8}$");
-        Matcher check = rule.matcher(s);
-        if (check.matches()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
 
     public static Double checkSoThuc(String s) {
         try {
