@@ -194,7 +194,7 @@ public class DanhSachMonAn implements DocGhiFile {
         do {
             System.out.println(" ________________Them________________");
             System.out.println(
-                    "|  1.Them n mon an                  |" +
+                              "|  1.Them n mon an                  |" +
                             "\n|                                   |" +
                             "\n|  2.Them mon an o vi tri k         |" +
                             "\n|                                   |" +
