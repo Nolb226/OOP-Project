@@ -1,9 +1,12 @@
-PT02;123456;Truong Tri Tai;2190 Pham The Hien Q.8;11/6/2002;0982315522;Sale ;40
+PT02;1;Truong Tri Tai;2190 Pham The Hien Q.8;11/6/2002;0982315522;Sale ;45
 PT05;123456;Pham Nhat Duy;40 Bong Sao Q.8;1/1/2002;0963156452;Pha che;35
 PT06;111;Vu Minh Khang;73 Nguyen Trai Q.5;20/10/2000;0943651203;Server;35
-FT02;123456;Tran Ha Tuan Kiet;332A Tran Binh Trong Q.5;8/7/2001;0908155687;Sale;20
+FT02;123456;Tran Ha Tuan Kiet;332A Tran Binh Trong Q.5;8/7/2001;0908155687;Sale;21
 FT03;123456;Nguyen Thi Thuy Tien;4 Nguyen Trai Q.5;12/6/1998;0913456745;Barista;27
 FT04;123456;Nguyen Thanh Dat;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Server;30
-MN10;1;Nguyen Thanh Dat;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Quan ly chi nhanh A;4
-MN15;123456;Nguyen Ngoc Son;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Quan ly chi nhanh B;1
+MN10;1;Nguyen Thanh Dat;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Quan ly chi nhanh A;9
+MN15;123456;Nguyen Ngoc Son;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Quan ly chi nhanh B;3
 FT522;123456;Nguyen Thanh Dat;Dong Thanh Hoc Mon HCM;9/12/2022;0961198450;Quan ly chi nhanh C;7
+MN889;123456;Nguyen A;Q1 HCM;11/11/2011;0972444371;Quan ly KH;0
+MN550;123456;Nguyen Van B;123 Nguyen van Cu;11/12/2004;0911877893;Quan ly ban hang;0
+MN594;123456;Nguyen Thi Nhi;111;11/11/2011;0961198450;thu ngan;1

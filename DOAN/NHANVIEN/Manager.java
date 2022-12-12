@@ -32,8 +32,8 @@ public class Manager extends NhanVien{
     }
 
     public void setCongviec(String congviec) {
-        System.out.println("Moi nhap cong viec: ");
-        congviec = scanner.next();
+        System.out.print("Moi nhap cong viec: ");
+        congviec = scanner.nextLine();
         this.congviec = congviec;
     }
 
@@ -42,11 +42,11 @@ public class Manager extends NhanVien{
     }
 
     public void setngaycong(int ngaycong){
-        System.out.println("Moi nhap vao so ngay cong: ");
+        System.out.print("Moi nhap vao so ngay cong: ");
         do{
             ngaycong = checkLoi.checkSo((sc.next()));
             if(ngaycong == -1)
-                System.out.println("Du lieu nhap khong hop le, moi nhap lai !");
+                System.out.print("Du lieu nhap khong hop le, moi nhap lai: ");
 
         }while(ngaycong == -1);
 
@@ -80,8 +80,6 @@ public class Manager extends NhanVien{
     public void Nhap(){
         super.Nhap();
         setngaycong(ngaycong);
-        // scanner.next();
-        System.out.print("Nhap cong viec cu the: ");
         setCongviec(scanner.nextLine());
     }
 
