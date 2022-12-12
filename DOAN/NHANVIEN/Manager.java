@@ -9,42 +9,26 @@ import MONAN.DanhSachMonAn;
 import DOANHTHU.*;
 
 public class Manager extends NhanVien{
-    private int capbac;
     private String congviec;
+    private int ngaycong;
 
     public Scanner sc = new Scanner(System.in);
     
     public  Manager(){
-        this.capbac = 0;
+        this.ngaycong = 0;
         this.congviec = null;
     }
 
     public Manager(Manager a){
         super(a.getMaNV(),a.getHoten(),a.getdiachi(),a.getNgaySinh(),a.getSdt());
-        this.capbac=a.capbac;
+        this.ngaycong=a.ngaycong;
         this.congviec=a.congviec;
     }
 
-    public Manager(String maNV, String hoten, String diachi, Date ngaySinh, String sdt, String congviec,  int capbac){
+    public Manager(String maNV, String hoten, String diachi, Date ngaySinh, String sdt, String congviec,  int ngaycong){
         super(maNV, hoten, diachi, ngaySinh, sdt);
-        this.capbac=capbac;
+        this.ngaycong=ngaycong;
         this.congviec=congviec;
-    }
-
-    public void setCapbac(int capbac) {
-        System.out.println("Moi nhap vao cap bac quan ly: ");
-        do{
-            capbac = checkLoi.checkSo((sc.next()));
-            if(capbac == -1)
-                System.out.println("Du lieu nhap khong hop le, moi nhap lai !");
-
-        }while(capbac == -1);
-
-        this.capbac = capbac;
-    }
-
-    public int getCapbac() {
-        return capbac;
     }
 
     public void setCongviec(String congviec) {
@@ -57,25 +41,45 @@ public class Manager extends NhanVien{
         return congviec;
     }
 
+    public void setngaycong(int ngaycong){
+        System.out.println("Moi nhap vao so ngay cong: ");
+        do{
+            ngaycong = checkLoi.checkSo((sc.next()));
+            if(ngaycong == -1)
+                System.out.println("Du lieu nhap khong hop le, moi nhap lai !");
+
+        }while(ngaycong == -1);
+
+        this.ngaycong=ngaycong;
+    }
+
+    public int getngaycong(){
+        return ngaycong;
+    }
+
+    @Override
     public double calSalary(){
-        if(getCapbac()==1){
-            return getLuongCoBan()+2000000;
-        }
-        if(getCapbac()==2){
-            return getLuongCoBan()+3000000;
-        }
-        if(getCapbac()==3){
-            return getLuongCoBan()+4000000;
-        }
-        else{
-            return -1;
+        return getLuongCoBan()+20000*ngaycong;
+    }
+
+    @Override
+    public void chamCong() {
+        this.ngaycong += 1;        
+    }
+
+    public void xuatLuong(NhanVien dsnv[]) {
+        System.out.println("\n\t\t\t========== Bang luong =========");
+        System.out.printf("\n\t%-20s||\t%-35s||\t%-30s", "Ma nhan vien", "Ho ten", "Luong"); 
+        System.out.print("\n-------------------------------------------------------------------------------------");
+        for(int i = 0; i < dsnv.length; i++) {
+            System.out.printf("\n\t%-20s||\t%-35s||\t%-30s", dsnv[i].getMaNV(), dsnv[i].getHoten(), dsnv[i].calSalary()); 
         }
     }
 
     @Override
     public void Nhap(){
         super.Nhap();
-        setCapbac(capbac);
+        setngaycong(ngaycong);
         // scanner.next();
         System.out.print("Nhap cong viec cu the: ");
         setCongviec(scanner.nextLine());
@@ -83,13 +87,13 @@ public class Manager extends NhanVien{
 
     @Override
     public String toString() {
-        return super.toString() + ";" + getCongviec() + ";" + getCapbac() + "\n";
+        return super.toString() + ";" + getCongviec() + ";" + getngaycong() + "\n";
     }
 
     @Override
     public void Xuat(){
         super.Xuat();
-        System.out.print(" || " + "Cap bac quan ly: " + getCapbac() + " || " + "Cong viec: " + getCongviec() + "\n");
+        System.out.print(" || " + "Ngay cong: " + getngaycong() + " || " + "Cong viec: " + getCongviec() + "\n");
     }
 
     @Override
@@ -111,6 +115,7 @@ public class Manager extends NhanVien{
             System.out.print("\n\t\t9. Quan ly san pham");
             System.out.print("\n\t\t10. Ban hang");
             System.out.print("\n\t\t11. Nhap hang");
+            System.out.print("\n\t\t12. Xuat bang luong");
             System.out.print("\n\t\t0. Exit.");
             System.out.print("\n\n\t\t================ END ================");
 
@@ -118,7 +123,7 @@ public class Manager extends NhanVien{
             selection=checkLoi.checkSo(scanner.nextLine());
             
 
-            if(selection < 0 || selection > 11)
+            if(selection < 0 || selection > 12)
             {
                 System.out.print("\nLua chon khong hop le !");
             }
@@ -191,6 +196,11 @@ public class Manager extends NhanVien{
             else if(selection == 11) {
                 dsma.nhapHang(dsma, dspn, user, DT);
                 DTT.updateDT(DT);
+            }
+
+            else if(selection == 12)
+            {
+                xuatLuong(dsnv.dsnv);
             }
 
             else if(selection == 0) {

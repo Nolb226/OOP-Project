@@ -29,7 +29,7 @@ public class FullTime extends NhanVien{
         System.out.println("Moi nhap vao so ngay cong: ");
         do{
             ngaycong = checkLoi.checkSo((sc.next()));
-            if(ngaycong == -1)
+            if(ngaycong == -1 || ngaycong > 31)
                 System.out.println("Du lieu nhap khong hop le, moi nhap lai !");
 
         }while(ngaycong == -1);
@@ -50,7 +50,8 @@ public class FullTime extends NhanVien{
     public String getcongviec(){
         return congviec;
     }
-    
+
+    @Override
     public double calSalary(){
         if(getngaycong()<20){
             return getLuongCoBan()-getLuongCoBan()*0.15;
@@ -58,6 +59,11 @@ public class FullTime extends NhanVien{
         else{
             return getLuongCoBan();
         }
+    }
+
+    @Override
+    public void chamCong() {
+        this.ngaycong += 1;        
     }
 
     @Override

@@ -81,7 +81,7 @@ public class DoanhThuThang implements DocGhiFile {
     public void addDT(DoanhThu a) {
         if (n == 0) {
             n++;
-            DTList[n - 1] = new DoanhThu(a);
+            DTList[n - 1] = a;
         } else {
             if (DTList[n - 1].getNgay().equals(a.getNgay())) {
                 DTList[n - 1].moreIN(a.getIn());

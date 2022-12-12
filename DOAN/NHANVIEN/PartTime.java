@@ -36,6 +36,10 @@ public class PartTime extends NhanVien{
         return congviec;
     }
 
+    public void chamCong() {
+        this.giocong += 5;
+    }
+
     public void setgiocong(int giocong){
         System.out.println("Moi nhap vao gio cong:");
         do{

@@ -41,14 +41,24 @@ public class main {
                     int userName = a.Kt_account(dsNV);
                     NhanVien user = dsNV.dsnv[userName];
                     if(user instanceof Manager) {
-                        user = ((Manager)user);
+                        Manager userMN = ((Manager)user);
+                        userMN.chamCong();
+                        dsNV.GhiFile();
                         user.QuanLy(dsNV, dskh, dsma, dshd, DT, user, dspn, DTT);
                     }
                     else {
+                        if(user instanceof PartTime) {
+                            PartTime userPT = (PartTime)user;
+                            userPT.chamCong();
+                        }
+                        else {
+                            FullTime userFT = (FullTime)user;
+                            userFT.chamCong();
+                        }
+                        
+                        dsNV.GhiFile();
                         user.QuanLy(dsNV, dskh, dsma, dshd, DT, user, dspn, DTT);
                     }
-                    
-                    
                     break;
                 case 2:
                     break;    

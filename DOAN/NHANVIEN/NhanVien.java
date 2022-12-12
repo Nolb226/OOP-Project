@@ -98,7 +98,8 @@ public abstract class NhanVien extends ConNguoi {
     }
 
     public abstract double calSalary();
-
+    public abstract void chamCong();
+    
 
     public void QuanLy(DanhSachNhanVien dsnv, DanhSachKhachHang dskh, DanhSachMonAn dsma, DanhSachHoaDon dshd, DoanhThu DT, NhanVien user, DanhSachPhieuNhap dspn, DoanhThuThang DTT) {
         DoanhThu doanhThu = new DoanhThu();

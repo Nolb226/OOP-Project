@@ -101,7 +101,7 @@ public class DanhSachNhanVien implements DocGhiFile {
                         break;
 
                     case 5: {
-                        temp.setCapbac(0);
+                        temp.setngaycong(0);
                         GhiFile();
                     }
                         ;
