@@ -135,9 +135,18 @@ public class DanhSachHoaDon implements DocGhiFile {
         if (mkh == null) {
             hd.taoPhieu(a, null);
         } else {
+            if(dskh.SearchKH(mkh)==null)
+            {
+                System.out.print("Khong tim thay khach hang nhap 1 de tao khach hang moi! :");
+                if(checkLoi.checkSo(input.nextLine())==1)
+                {
+                    dskh.NhapThemKh();
+                }
+            }
             hd.taoPhieu(a, dskh.SearchKH(mkh));
         }
         do {
+            dssp.xuatDanhSach();
             System.out.print("Ma san pham: ");
             String m = input.nextLine();
             if (dssp.timKiemMaMon(m).getMaMon() == null) {

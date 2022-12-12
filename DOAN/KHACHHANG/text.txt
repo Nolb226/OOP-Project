@@ -10,6 +10,7 @@ KH4255,Nguyen Thanh Dat,16/5/2003,0956115809,Hoc Mon.
 KH4445,Nguyen Ngoc Sang,20/4/2003,0895544253,Q8.
 KH6010,Vo Hoang Tu,29/4/2003,0954822362,Hoc Mon
 KH1715,son ,20/5/2003,0987456321,amhbvdjhasd
-KH1329,dat,16/5/2003,0985632145,sajdnaslkndlkas
 KH8268,hoang map,6/2/2002,0956783214,lajsbdlasd
 KH9077,Nguyen Thanh dat,20/5/2003,0365412897,46 Hoc Mon 
+KH5792,Nguyen van a,11/2/2003,0978222987,12 Quan Trung Go Vap HCM
+KH8525,Nguyen Ngoc Son,20/5/2003,0898504720,khbiaodkmas

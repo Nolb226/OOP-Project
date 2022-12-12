@@ -101,7 +101,7 @@ public class DanhSachNhanVien implements DocGhiFile {
                         break;
 
                     case 5: {
-                        temp.setCapbac(0);
+                        temp.setngaycong(0);
                         GhiFile();
                     }
                         ;
@@ -387,8 +387,6 @@ public class DanhSachNhanVien implements DocGhiFile {
 
         // Check loai nhan vien
 
-        // System.out.println(stt);
-
         if (maNV.contains("PT")) {
             String congviec;
             int giocong;
@@ -422,18 +420,6 @@ public class DanhSachNhanVien implements DocGhiFile {
             stt++;
         }
     }
-
-    // public void GhiFile(String input){
-    // try{
-    // FileWriter fw = new FileWriter("NHANVIEN/NhanVien",true);
-    // BufferedWriter bufferedWriter = new BufferedWriter(fw);
-    // bufferedWriter.write(input);
-    // bufferedWriter.close();
-    // fw.close();
-    // } catch (IOException e ){
-    // System.out.println("Loi ghi du lieu len file!");
-    // }
-    // }
 
     public void GhiFile() {
         try {
@@ -471,7 +457,7 @@ public class DanhSachNhanVien implements DocGhiFile {
                     int n;
                     System.out.println("Nhap vao so luong nhan vien Part-time can them: ");
                     n = sc.nextInt();
-                    NhanVien[] newPT = new NhanVien[n];
+                    PartTime[] newPT = new PartTime[n];
                     for (int i = 0; i < n; i++) {
                         newPT[i] = new PartTime();
                         System.out.printf("\t----------- Nhap vao nhan vien thu %d ---------\n", i + 1);
@@ -492,13 +478,12 @@ public class DanhSachNhanVien implements DocGhiFile {
                     int n;
                     System.out.println("Nhap vao so luong nhan vien Full-time can them: ");
                     n = sc.nextInt();
-                    NhanVien[] newFT = new NhanVien[n];
+                    FullTime[] newFT = new FullTime[n];
                     for (int i = 0; i < n; i++) {
                         newFT[i] = new FullTime();
                         System.out.printf("\t----------- Nhap vao nhan vien thu %d ---------\n", i + 1);
                         newFT[i].Nhap();
                         newFT[i].setMaNV(taoMNVFT());
-                        System.out.println("hello");
 
                         // Cap nhat danh sach nhan vien
                         dsnv = Arrays.copyOf(dsnv, stt + 1);
@@ -514,7 +499,7 @@ public class DanhSachNhanVien implements DocGhiFile {
                     int n;
                     System.out.println("Nhap vao so luong nhan vien Manager can them: ");
                     n = sc.nextInt();
-                    NhanVien[] newMN = new NhanVien[n];
+                    Manager[] newMN = new Manager[n];
                     for (int i = 0; i < n; i++) {
                         newMN[i] = new Manager();
                         System.out.printf("\t----------- Nhap vao nhan vien thu %d ---------\n", i + 1);
