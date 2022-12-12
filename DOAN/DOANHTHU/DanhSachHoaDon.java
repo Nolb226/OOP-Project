@@ -141,6 +141,7 @@ public class DanhSachHoaDon implements DocGhiFile {
                 if(checkLoi.checkSo(input.nextLine())==1)
                 {
                     dskh.NhapThemKh();
+                    mkh=dskh.layMaKHCuoi();
                 }
             }
             hd.taoPhieu(a, dskh.SearchKH(mkh));

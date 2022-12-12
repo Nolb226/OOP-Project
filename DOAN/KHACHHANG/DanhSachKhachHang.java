@@ -33,6 +33,11 @@ public class DanhSachKhachHang implements DocGhiFile {
         DocFile();
     }
 
+    public String layMaKHCuoi()
+    {
+        return List.get(List.size()-1).getMSKH();
+    }
+
     public DanhSachKhachHang(ArrayList<KhachHang> a) {
         this.List = a;
     }

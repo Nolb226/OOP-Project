@@ -4,7 +4,7 @@ PT06;111;Vu Minh Khang;73 Nguyen Trai Q.5;20/10/2000;0943651203;Server;35
 FT02;123456;Tran Ha Tuan Kiet;332A Tran Binh Trong Q.5;8/7/2001;0908155687;Sale;21
 FT03;123456;Nguyen Thi Thuy Tien;4 Nguyen Trai Q.5;12/6/1998;0913456745;Barista;27
 FT04;123456;Nguyen Thanh Dat;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Server;30
-MN10;1;Nguyen Thanh Dat;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Quan ly chi nhanh A;14
+MN10;1;Nguyen Thanh Dat;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Quan ly chi nhanh A;17
 MN15;123456;Nguyen Ngoc Son;273/4 Nguyen Van Cu Q.5;13/10/1995;0795663114;Quan ly chi nhanh B;3
 FT522;123456;Nguyen Thanh Dat;Dong Thanh Hoc Mon HCM;9/12/2022;0961198450;Quan ly chi nhanh C;7
 MN889;123456;Nguyen A;Q1 HCM;11/11/2011;0972444371;Quan ly KH;0

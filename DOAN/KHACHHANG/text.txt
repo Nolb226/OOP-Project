@@ -14,3 +14,5 @@ KH8268,hoang map,6/2/2002,0956783214,lajsbdlasd
 KH9077,Nguyen Thanh dat,20/5/2003,0365412897,46 Hoc Mon 
 KH5792,Nguyen van a,11/2/2003,0978222987,12 Quan Trung Go Vap HCM
 KH8525,Nguyen Ngoc Son,20/5/2003,0898504720,khbiaodkmas
+KH125,Nguyen Xuan Mai,31/10/2000,0966366585,aihbhkasd
+KH7140,Nguyen Xuan Mia,31/10/2000,0988755655,aihbdhiksda
