@@ -48,8 +48,8 @@ public class DoanhThu{
         this.ngay = ngay;
     }
 
-    public Date getNgay() {
-        return ngay;
+    public String getNgay() {
+        return ngay.toString();
     }
 
     public void setIn(double in) {

@@ -24,7 +24,7 @@ public class main {
         DoanhThu DT = new DoanhThu();
         DTT.addDT(DT);
         Account a = new Account();
-
+        DTT.thongKe();
         Scanner scanner = new Scanner(System.in);
 
         int choose;

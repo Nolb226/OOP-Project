@@ -152,6 +152,8 @@ public abstract class NhanVien extends ConNguoi {
                     System.out.println("Nhap ma khach hang: ");
                     String mkh = scanner.next();
                     dsma.banHang(dsma, dshd, mkh, dskh, user, DT);
+                    DTT.updateDT(DT);
+                    DTT.GhiFile();
                 }
     
                 else

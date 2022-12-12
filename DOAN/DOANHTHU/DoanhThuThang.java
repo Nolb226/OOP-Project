@@ -46,7 +46,6 @@ public class DoanhThuThang implements DocGhiFile {
             BufferedReader br = new BufferedReader(fr);
             while ((s = br.readLine()) != null) {
                 String temp[] = s.split(",");
-                System.out.println(s);
                 Date date = new Date();
                 date.xulyngay(temp[0]);
                 Double cash_in = Double.parseDouble(temp[1]);
@@ -86,9 +85,11 @@ public class DoanhThuThang implements DocGhiFile {
             n++;
             DTList[n - 1] = a;
         } else {
-            if (DTList[n - 1].getNgay().equals(a.getNgay())) {
+            if ( DTList[n - 1].getNgay().equals(a.getNgay())) {
                 DTList[n - 1].moreIN(a.getIn());
                 DTList[n - 1].moreOut(a.getOut());
+                a.setIn(DTList[n - 1].getIn());
+                a.setOut(DTList[n - 1].getOut());
             } else {
                 if (n == 30) {
                     removeDT();
