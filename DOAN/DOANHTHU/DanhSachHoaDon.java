@@ -13,6 +13,7 @@ import KHACHHANG.DanhSachKhachHang;
 import NHANVIEN.DanhSachNhanVien;
 import NHANVIEN.NhanVien;
 import MONAN.DanhSachMonAn;
+import MONAN.MonAn;
 
 public class DanhSachHoaDon implements DocGhiFile {
     private HoaDon[] HDlist;
@@ -135,21 +136,30 @@ public class DanhSachHoaDon implements DocGhiFile {
         if (mkh == null) {
             hd.taoPhieu(a, null);
         } else {
-            if(dskh.SearchKH(mkh)==null)
-            {
+            if (dskh.SearchKH(mkh) == null) {
                 System.out.print("Khong tim thay khach hang nhap 1 de tao khach hang moi! :");
-                if(checkLoi.checkSo(input.nextLine())==1)
-                {
+                if (checkLoi.checkSo(input.nextLine()) == 1) {
                     dskh.NhapThemKh();
-                    mkh=dskh.layMaKHCuoi();
+                    mkh = dskh.layMaKHCuoi();
                 }
             }
             hd.taoPhieu(a, dskh.SearchKH(mkh));
         }
         do {
             dssp.xuatDanhSach();
-            System.out.print("Ma san pham: ");
-            String m = input.nextLine();
+            String m;
+            MonAn temp;
+            while (true) {
+                System.out.print("Ma san pham: ");
+
+                m = input.nextLine();
+                if ((temp = dssp.timKiemMaMon(m)).getMaMon() != null) {
+                    break;
+                } else {
+                    System.out.println("Khong tim thay san pham, moi nhap lai");
+
+                }
+            }
             if (dssp.timKiemMaMon(m).getMaMon() == null) {
                 System.out.println("Khong tim thay san pham.");
             } else {
@@ -157,7 +167,7 @@ public class DanhSachHoaDon implements DocGhiFile {
                 int sl;
                 while (true) {
                     System.out.print("So luong: ");
-                    sl = checkLoi.inputIntNumberError(input.nextLine());
+                    sl = checkLoi.inputIntNumberError(input.next());
                     if (sl < 0) {
                         System.out.println("Khong hop le, moi nhap lai");
                     } else {
@@ -171,21 +181,21 @@ public class DanhSachHoaDon implements DocGhiFile {
                 }
             }
             System.out.print("Nhan bat ki de tiep tuc, nhan 't' de thoat: ");
-        } while (checkLoi.continueString(input.nextLine()) != 't');
+        } while (checkLoi.continueString(input.next()) != 't');
         hd.inPhieu();
         System.out.print("Nhan bat ki de luu, 'h' de huy hoa don: ");
-        if (checkLoi.continueString(input.nextLine()) != 'h') {
+        if (checkLoi.continueString(input.next()) != 'h') {
             for (int i = 0; i < hd.sp.length; i++) {
 
-                //Food Attr define
+                // Food Attr define
                 String food_id = dssp.timKiemMaMon(hd.getSp()[i].getMaMon()).getMaMon();
-                Integer food_number =Integer.parseInt( food_id.split("MH")[1])-1;
+                Integer food_number = Integer.parseInt(food_id.split("MH")[1]) - 1;
 
                 // System.out.println(food_id);
                 // System.out.println(food_number);
-                //Decrease the number of food in store
+                // Decrease the number of food in store
                 dssp.foodList[food_number].removeSoLuong(hd.getSoLuong()[i]);
-                
+
             }
             DT.moreIN(hd.price());
             add(hd);
@@ -194,7 +204,7 @@ public class DanhSachHoaDon implements DocGhiFile {
             System.out.println("Da luu");
         }
         System.out.print("Nhan phim bat ki de tiep tuc.");
-        input.nextLine();
+        input.next();
     }
 
     public boolean checkMaHD(String m) {

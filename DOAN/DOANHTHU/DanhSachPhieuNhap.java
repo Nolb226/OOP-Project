@@ -11,6 +11,7 @@ import INTERFACE.*;
 import NHANVIEN.DanhSachNhanVien;
 import NHANVIEN.NhanVien;
 import MONAN.DanhSachMonAn;
+import MONAN.MonAn;
 
 public class DanhSachPhieuNhap implements DocGhiFile {
     private PhieuNhap[] PNlist;
@@ -124,12 +125,24 @@ public class DanhSachPhieuNhap implements DocGhiFile {
         pn = new PhieuNhap(mpn);
         pn.taoPhieu(a, null);
         do {
-            System.out.print("Ma san pham muon nhap them: ");
-            String m = input.nextLine();
-            if (dssp.timKiemMaMon(m) == null) {
+            String m;
+            MonAn temp;
+            while (true) {
+                System.out.print("Ma san pham muon nhap them: ");
+
+                m = input.nextLine();
+                if ((temp = dssp.timKiemMaMon(m)).getMaMon() != null) {
+                    break;
+                } else {
+                    System.out.println("Khong tim thay san pham, moi nhap lai");
+
+                }
+            }
+
+            if (temp.getMaMon() == null) {
                 System.out.println("Khong tim thay san pham.");
             } else {
-                dssp.timKiemMaMon(m).Xuat();
+                temp.Xuat();
                 int sl;
                 while (true) {
                     System.out.print("So luong muon nhap them la: ");
