@@ -191,11 +191,13 @@ public class Manager extends NhanVien{
                 String mkh = scanner.next();
                 dsma.banHang(dsma, dshd, mkh, dskh, user, DT);
                 DTT.updateDT(DT);
+                DTT.GhiFile();
             }
 
             else if(selection == 11) {
                 dsma.nhapHang(dsma, dspn, user, DT);
                 DTT.updateDT(DT);
+                DTT.GhiFile();
             }
 
             else if(selection == 12)
